@@ -29,9 +29,9 @@ function createEmptyCart(): Cart {
     totalQuantity: 0,
     lines: [],
     cost: {
-      subtotalAmount: { amount: "0", currencyCode: "USD" },
-      totalAmount: { amount: "0", currencyCode: "USD" },
-      totalTaxAmount: { amount: "0", currencyCode: "USD" },
+      subtotalAmount: { amount: "0", currencyCode: "RON" },
+      totalAmount: { amount: "0", currencyCode: "RON" },
+      totalTaxAmount: { amount: "0", currencyCode: "RON" },
     },
   };
 }
@@ -79,7 +79,7 @@ function updateCartTotals(
     0
   );
 
-  const currencyCode = lines[0]?.cost.totalAmount.currencyCode ?? "USD";
+  const currencyCode = lines[0]?.cost.totalAmount.currencyCode ?? "RON";
 
   return {
     totalQuantity,
