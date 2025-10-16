@@ -16,7 +16,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
+        className="flex h-11 w-11 items-center justify-center rounded-md border border-accent-primary/50 text-accent-secondary transition-colors md:hidden"
       >
         <Bars3Icon className="h-4" />
       </button>
@@ -43,10 +43,10 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-[-100%]"
           >
-            <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6 dark:bg-black">
+            <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-black pb-6">
               <div className="p-4">
                 <button
-                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
+                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-accent-primary/50 text-accent-secondary transition-colors"
                   onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
                 >
@@ -55,9 +55,24 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 <div className="mb-4 w-full">
                   <Search />
                 </div>
-                {menu.length > 0 ? (
-                  <ul className="flex w-full flex-col">
-                    {menu.map((item: Menu) => (
+                <ul className="flex w-full flex-col">
+                  <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
+                    <Link href="/search" prefetch={false} onClick={closeMobileMenu}>
+                      Products
+                    </Link>
+                  </li>
+                  <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
+                    <Link href="/about-us" prefetch={false} onClick={closeMobileMenu}>
+                      About Us
+                    </Link>
+                  </li>
+                  <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
+                    <Link href="/contact-us" prefetch={false} onClick={closeMobileMenu}>
+                      Contact Us
+                    </Link>
+                  </li>
+                  {menu.length > 0 ? 
+                    menu.map((item: Menu) => (
                       <li
                         className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
                         key={item.title}
@@ -70,9 +85,9 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                           {item.title}
                         </Link>
                       </li>
-                    ))}
-                  </ul>
-                ) : null}
+                    ))
+                  : null}
+                </ul>
               </div>
             </Dialog.Panel>
           </Transition.Child>

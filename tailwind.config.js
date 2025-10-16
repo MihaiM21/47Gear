@@ -14,29 +14,31 @@ module.exports = {
         sans: ["var(--font-geist-sans)"],
       },
       colors: {
-        // Modern gaming color scheme
+        // Modern dark theme with purple accents
         'gaming': {
-          50: '#F5F5F7',
-          100: '#EBEDF2',
-          200: '#D0D5E1',
-          300: '#9BA4BC',
-          400: '#6E7A9A',
-          500: '#444E67',
-          600: '#323849',
-          700: '#1F2331',
-          800: '#161A24',
-          900: '#0C0E14',
+          50: '#F5F2FF',
+          100: '#EAE5F5',
+          200: '#D8D0E8',
+          300: '#B6ADC6',
+          400: '#9689A8',
+          500: '#7A6C8F',
+          600: '#5E5173',
+          700: '#473A5C',
+          800: '#2B2439',
+          900: '#1A1423',
         },
         'accent': {
-          'primary': '#7D5DEC', // Purple for primary accents
-          'secondary': '#29D8DB', // Cyan for secondary accents
-          'red': '#FF3C5F', // Modern red accent for sales/alerts
-          'green': '#2AE794', // Modern green for success states
+          'primary': '#8A63FF', // Brighter purple for primary accents
+          'secondary': '#C2A0FF', // Light purple for secondary accents
+          'tertiary': '#5F45B0', // Darker purple for tertiary accents
+          'red': '#FF4A6E', // Modern red accent for sales/alerts
+          'green': '#4EEAAA', // Modern green for success states
         },
       },
       boxShadow: {
-        'neon': '0 0 5px rgba(125, 93, 236, 0.5), 0 0 20px rgba(125, 93, 236, 0.3)',
-        'neon-cyan': '0 0 5px rgba(41, 216, 219, 0.5), 0 0 20px rgba(41, 216, 219, 0.3)',
+        'neon': '0 0 5px rgba(138, 99, 255, 0.5), 0 0 20px rgba(138, 99, 255, 0.3)',
+        'neon-purple': '0 0 5px rgba(194, 160, 255, 0.5), 0 0 20px rgba(194, 160, 255, 0.3)',
+        'neon-dark': '0 0 5px rgba(95, 69, 176, 0.5), 0 0 20px rgba(95, 69, 176, 0.3)',
       },
       keyframes: {
         fadeIn: {
@@ -50,8 +52,12 @@ module.exports = {
           '50%': { opacity: 0.7 },
         },
         glow: {
-          '0%, 100%': { boxShadow: '0 0 5px rgba(125, 93, 236, 0.3), 0 0 15px rgba(125, 93, 236, 0.2)' },
-          '50%': { boxShadow: '0 0 8px rgba(125, 93, 236, 0.6), 0 0 25px rgba(125, 93, 236, 0.4)' },
+          '0%, 100%': { boxShadow: '0 0 5px rgba(138, 99, 255, 0.3), 0 0 15px rgba(138, 99, 255, 0.2)' },
+          '50%': { boxShadow: '0 0 8px rgba(138, 99, 255, 0.6), 0 0 25px rgba(138, 99, 255, 0.4)' },
+        },
+        glowPurple: {
+          '0%, 100%': { boxShadow: '0 0 5px rgba(194, 160, 255, 0.3), 0 0 15px rgba(194, 160, 255, 0.2)' },
+          '50%': { boxShadow: '0 0 8px rgba(194, 160, 255, 0.6), 0 0 25px rgba(194, 160, 255, 0.4)' },
         }
       },
       blink: {
@@ -64,6 +70,7 @@ module.exports = {
         blink: "blink 1.4s both infinite",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         glow: "glow 2s ease-in-out infinite",
+        glowPurple: "glowPurple 2s ease-in-out infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -71,7 +71,7 @@ export default function Home() {
       </section>
       
       {/* Features Section */}
-      <section className="w-full py-16 md:py-24 bg-gaming-900">
+      <section className="w-full py-16 md:py-24 bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
             <div className="space-y-2 max-w-3xl">
@@ -79,7 +79,7 @@ export default function Home() {
                 Superior Performance
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-gradient-to-r from-white to-gaming-200 bg-clip-text text-transparent">
-                Why Choose Pro Pad?
+                Why Choose 47GEAR?
               </h2>
               <p className="max-w-[900px] text-gaming-300 md:text-xl/relaxed">
                 Our mousepads are engineered with premium materials and cutting-edge technology to deliver unmatched gaming performance.
@@ -89,9 +89,9 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Feature 1 */}
-            <div className="bg-gaming-800/50 border border-gaming-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
+            <div className="bg-black/50 border border-gray-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
               <div className="bg-gradient-to-br from-accent-primary to-accent-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -100,7 +100,7 @@ export default function Home() {
             </div>
             
             {/* Feature 2 */}
-            <div className="bg-gaming-800/50 border border-gaming-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
+            <div className="bg-black/50 border border-gray-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
               <div className="bg-gradient-to-br from-accent-primary to-accent-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -111,7 +111,7 @@ export default function Home() {
             </div>
             
             {/* Feature 3 */}
-            <div className="bg-gaming-800/50 border border-gaming-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
+            <div className="bg-black/50 border border-gray-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
               <div className="bg-gradient-to-br from-accent-primary to-accent-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
@@ -122,7 +122,7 @@ export default function Home() {
             </div>
             
             {/* Feature 4 */}
-            <div className="bg-gaming-800/50 border border-gaming-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
+            <div className="bg-black/50 border border-gray-700 p-6 rounded-xl transition-all duration-300 hover:border-accent-primary hover:shadow-neon">
               <div className="bg-gradient-to-br from-accent-primary to-accent-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
@@ -173,15 +173,15 @@ export default function Home() {
             </div>
             <div className="grid gap-1">
               <Link
-                href="/search/rgb-collection"
+                href="/search/special-collection"
                 className="group"
                 prefetch={false}
               >
                 <div className="aspect-[4/3] overflow-hidden rounded-xl border border-gaming-700 bg-gaming-800 group-hover:border-accent-secondary transition-all duration-300 relative shadow-lg">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">RGB Series</h3>
-                      <p className="text-gaming-300 mb-4">Light up your setup with RGB-enabled mousepads</p>
+                      <h3 className="text-xl font-bold text-white mb-2">Special Series</h3>
+                      <p className="text-gaming-300 mb-4">Light up your setup with our special design mousepads</p>
                       <span className="inline-block bg-accent-secondary text-white text-sm font-medium px-4 py-2 rounded-md transition-transform group-hover:scale-105">
                         Shop Now
                       </span>
@@ -200,7 +200,7 @@ export default function Home() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center p-6">
                       <h3 className="text-xl font-bold text-white mb-2">Desk Series</h3>
-                      <p className="text-gaming-300 mb-4">Full-desk mousepads for complete coverage</p>
+                      <p className="text-gaming-300 mb-4">Mousepads for complete coverage</p>
                       <span className="inline-block bg-accent-green text-white text-sm font-medium px-4 py-2 rounded-md transition-transform group-hover:scale-105">
                         Shop Now
                       </span>
@@ -231,7 +231,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="bg-gaming-800/60 border border-gaming-700 p-8 rounded-2xl shadow-lg hover:shadow-neon-cyan transition-all duration-300">
+            <div className="bg-black/60 border border-gray-700 p-8 rounded-2xl shadow-lg hover:shadow-neon-cyan transition-all duration-300">
               <div className="bg-accent-red/10 text-accent-red rounded-full px-4 py-1 text-sm inline-block font-bold mb-4">
                 SAVE 25%
               </div>
@@ -253,7 +253,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="bg-gaming-800/60 border border-gaming-700 p-8 rounded-2xl shadow-lg hover:shadow-neon transition-all duration-300">
+            <div className="bg-black/60 border border-gray-700 p-8 rounded-2xl shadow-lg hover:shadow-neon transition-all duration-300">
               <div className="bg-accent-secondary/10 text-accent-secondary rounded-full px-4 py-1 text-sm inline-block font-bold mb-4">
                 NEW CUSTOMER
               </div>

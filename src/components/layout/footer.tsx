@@ -6,7 +6,7 @@ import LogoSquare from "@/components/logo-square";
 export default async function Footer() {
   const menu = await getMenu("next-js-footer-menu");
   return (
-    <footer className="bg-gaming-900 border-t border-gaming-700 pt-12 pb-8 text-gaming-300">
+    <footer className="bg-black border-t border-gray-800 pt-12 pb-8 text-gray-300">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Logo and about section */}
@@ -49,7 +49,7 @@ export default async function Footer() {
             <h3 className="font-bold text-white mb-4">Shop</h3>
             <ul className="space-y-3">
               <li><Link href="/search/gaming-collection" className="text-gaming-400 hover:text-accent-primary transition-colors">Gaming Mousepads</Link></li>
-              <li><Link href="/search/rgb-collection" className="text-gaming-400 hover:text-accent-primary transition-colors">RGB Series</Link></li>
+              {/* <li><Link href="/search/rgb-collection" className="text-gaming-400 hover:text-accent-primary transition-colors">RGB Series</Link></li> */}
               <li><Link href="/search/desk-collection" className="text-gaming-400 hover:text-accent-primary transition-colors">Desk Pads</Link></li>
               <li><Link href="/search/accessories" className="text-gaming-400 hover:text-accent-primary transition-colors">Accessories</Link></li>
               <li><Link href="/search/sales" className="text-gaming-400 hover:text-accent-primary transition-colors">Sales</Link></li>
@@ -75,8 +75,8 @@ export default async function Footer() {
               ) : (
                 <>
                   <li><Link href="/about" className="text-gaming-400 hover:text-accent-primary transition-colors">About Us</Link></li>
-                  <li><Link href="/contact" className="text-gaming-400 hover:text-accent-primary transition-colors">Contact</Link></li>
-                  <li><Link href="/careers" className="text-gaming-400 hover:text-accent-primary transition-colors">Careers</Link></li>
+                  <li><Link href="/contact" className="text-gaming-400 hover:text-accent-primary transition-colors">Contact Us</Link></li>
+                  {/* <li><Link href="/careers" className="text-gaming-400 hover:text-accent-primary transition-colors">Careers</Link></li> */}
                 </>
               )}
             </ul>
@@ -98,7 +98,7 @@ export default async function Footer() {
               <input 
                 type="email" 
                 placeholder="Your email" 
-                className="flex-grow bg-gaming-800 border border-gaming-700 rounded-l-md px-4 py-2 text-sm focus:outline-none focus:border-accent-primary text-white"
+                className="flex-grow bg-black/80 border border-gray-700 rounded-l-md px-4 py-2 text-sm focus:outline-none focus:border-accent-primary text-white"
               />
               <button 
                 type="submit" 

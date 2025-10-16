@@ -43,7 +43,7 @@ export function GridTileImage({
       
       {/* Product badge - top right */}
       <div className="absolute top-2 right-2 z-20">
-        <div className="bg-gaming-800/80 backdrop-blur-sm text-accent-secondary text-xs font-medium px-2 py-1 rounded-md border border-accent-secondary/20">
+        <div className="bg-black/80 backdrop-blur-sm text-accent-secondary text-xs font-medium px-2 py-1 rounded-md border border-accent-secondary/20">
           Gaming
         </div>
       </div>
