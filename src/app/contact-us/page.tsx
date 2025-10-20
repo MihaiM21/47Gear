@@ -9,8 +9,8 @@ export default function ContactUsPage() {
   return (
     <div className="mx-auto max-w-screen-lg px-4 py-12 bg-gradient-to-b from-black/30 to-transparent">
       <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-accent-primary to-accent-tertiary bg-clip-text text-transparent">
-          Contact Us
+        <h1 className="text-4xl font-bold tracking-tight">
+          <span className="text-accent-primary">Contact</span> <span className="text-accent-yellow">Us</span>
         </h1>
         <p className="mt-4 text-lg text-white">We'd love to hear from you</p>
       </div>

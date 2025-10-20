@@ -13,8 +13,8 @@ export default async function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <LogoSquare />
-              <span className="text-lg font-bold bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
-                PRO PAD
+              <span className="text-lg font-bold">
+                <span className="text-accent-primary">47</span><span className="text-accent-yellow">GEAR</span>
               </span>
             </div>
             <p className="text-sm text-gaming-400 max-w-xs">

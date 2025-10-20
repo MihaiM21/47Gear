@@ -21,8 +21,8 @@ export async function Navbar() {
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6 group"
           >
             <LogoSquare />
-            <div className="ml-3 flex-none text-sm font-bold uppercase md:hidden lg:block bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent hover:animate-pulse">
-              47Gear
+            <div className="ml-3 flex-none text-sm font-bold uppercase md:hidden lg:block hover:animate-pulse">
+              <span className="text-accent-primary">47</span><span className="text-accent-yellow">GEAR</span>
             </div>
           </Link>
 
@@ -45,6 +45,14 @@ export async function Navbar() {
         </div>
         <div className="hidden justify-center md:flex md:w-1/3">
           <div className="flex items-center space-x-6">
+            <Link
+              href="/"
+              className="group relative px-3 py-2 text-sm font-medium text-white transition-all duration-300"
+              prefetch={false}
+            >
+              Home
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <Link
               href="/search"
               className="group relative px-3 py-2 text-sm font-medium text-white transition-all duration-300"

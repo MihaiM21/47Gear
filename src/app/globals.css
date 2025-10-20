@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --primary: #7D5DEC;
-  --secondary: #29D8DB;
-  --gaming-dark: #161A24;
-  --gaming-medium: #323849;
+  --primary: #4A2B74;
+  --secondary: #8A63FF;
+  --gaming-dark: #131313;
+  --gaming-medium: #2A2A2A;
   --gaming-light: #9BA4BC;
   --accent-red: #FF3C5F;
+  --accent-yellow: #EFCA4E;
 }
 
 /* Dark mode by default for the gaming theme */
@@ -45,6 +46,46 @@ button {
   
   .btn-hover-effect::before {
     @apply content-[''] absolute top-0 left-0 w-0 h-full bg-white/10 transition-all duration-300 ease-out z-[-1];
+  }
+  
+  /* Animated gradient background */
+  .animated-gradient {
+    background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--gaming-dark), var(--accent-yellow));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Modern glass card */
+  .glass-card {
+    @apply bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  /* Better 3D effect for cards */
+  .card-3d-effect {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .card-3d-effect:hover .card-inner {
+    transform: rotateY(5deg) rotateX(5deg);
+  }
+  
+  .card-inner {
+    @apply transition-all duration-500;
+    transform: rotateY(0) rotateX(0);
   }
   
   .btn-hover-effect:hover::before {
@@ -134,6 +175,99 @@ button {
   .gradient-text {
     @apply bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent;
   }
+  
+  /* Hover shine effect */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shine-effect::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: all 0.6s;
+  }
+  
+  .shine-effect:hover::after {
+    left: 120%;
+  }
+  
+  /* Text shadow effect for headings */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(138, 99, 255, 0.5), 0 0 20px rgba(138, 99, 255, 0.3);
+  }
+  
+  /* Parallax scrolling effect */
+  .parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Gradient text effects */
+.text-gradient-purple {
+  background-image: linear-gradient(to right, var(--primary), var(--secondary), #a78bfa);
+  background-clip: text;
+  color: transparent;
+}
+
+.animate-gradient {
+  background-image: linear-gradient(to right, #ffffff, var(--primary), var(--secondary), #ffffff);
+  background-size: 300% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-x 3s ease infinite;
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Shadow effects */
+.shadow-glow-purple {
+  box-shadow: 0 0 15px 2px rgba(138, 99, 255, 0.3), 0 0 30px 5px rgba(138, 99, 255, 0.2);
+}
+
+.shadow-glow-sm {
+  box-shadow: 0 0 8px 1px rgba(138, 99, 255, 0.3);
+}
+
+/* Glass card effect */
+.glass-card {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 /* Apply custom scrollbar */
