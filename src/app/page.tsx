@@ -12,7 +12,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="flex-1 bg-gradient-to-b from-gaming-900 to-gaming-800 text-white">
-      <section className="w-full pt-12 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16 relative overflow-hidden">
+      <section className="w-full h-screen pt-12 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16 relative overflow-hidden">
         {/* Abstract geometric shapes background */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent-primary/5 blur-[100px]"></div>
