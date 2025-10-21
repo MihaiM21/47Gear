@@ -114,7 +114,7 @@ export default async function Footer() {
           <p className="text-xs text-gaming-500 mb-4 sm:mb-0">&copy; {new Date().getFullYear()} 47Gear. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Terms of Service</Link>
+            <Link href="/terms-of-service" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Terms of Service</Link>
             <Link href="/shipping" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Shipping Info</Link>
           </div>
         </div>
