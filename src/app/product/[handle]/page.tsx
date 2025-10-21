@@ -16,8 +16,7 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const resolvedParams = await params;
-  const product = await getProduct(resolvedParams.handle);
+  const product = await getProduct(params.handle);
 
   if (!product) return notFound();
 
@@ -55,8 +54,7 @@ export default async function ProductPage({
 }: {
   params: { handle: string };
 }) {
-  const resolvedParams = await params;
-  const product = await getProduct(resolvedParams.handle);
+  const product = await getProduct(params.handle);
   if (!product) return notFound();
   return (
     <ProductProvider>

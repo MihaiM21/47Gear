@@ -13,8 +13,10 @@ export default async function SearchPage({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const sort = typeof searchParams?.sort === 'string' ? searchParams.sort : undefined;
-  const searchValue = typeof searchParams?.q === 'string' ? searchParams.q : '';
+  // Await searchParams before using it
+  const params = await searchParams;
+  const sort = typeof params?.sort === 'string' ? params.sort : undefined;
+  const searchValue = typeof params?.q === 'string' ? params.q : '';
   const { sortKey, reverse } =
     sorting.find((item) => item.slug === sort) || defaultSort;
   const products = await getProducts({ sortKey, reverse, query: searchValue });

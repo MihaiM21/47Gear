@@ -16,7 +16,7 @@ export default function ContactUsPage() {
         </h1>
         <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mx-auto my-4"></div>
         <p className="mt-3 text-base text-white/80 max-w-xl mx-auto">
-          We're here to answer your questions and help you level up your gaming experience.
+          We&apos;re here to answer your questions and help you level up your gaming experience.
         </p>
       </div>
 
@@ -198,7 +198,7 @@ export default function ContactUsPage() {
       {/* FAQ section - more compact */}
       <div className="mt-14 text-center">
         <h2 className="text-xl font-bold mb-1 text-gradient-purple">Frequently Asked Questions</h2>
-        <p className="text-white/70 text-sm mb-6">Got questions? We've got answers.</p>
+        <p className="text-white/70 text-sm mb-6">Got questions? We&apos;ve got answers.</p>
         
         <div className="grid md:grid-cols-2 gap-4">
           <div className="glass-card p-4 text-left border border-accent-primary/20 hover:shadow-neon transition-all duration-300">
@@ -212,7 +212,7 @@ export default function ContactUsPage() {
           </div>
           
           <div className="glass-card p-4 text-left border border-accent-primary/20 hover:shadow-neon transition-all duration-300">
-            <h3 className="text-base font-semibold text-accent-secondary mb-1">What's your return policy?</h3>
+            <h3 className="text-base font-semibold text-accent-secondary mb-1">What&apos;s your return policy?</h3>
             <p className="text-white/80 text-sm">We offer a 30-day return policy. Products must be in original condition with all packaging and accessories.</p>
           </div>
           

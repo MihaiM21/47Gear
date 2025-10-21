@@ -43,6 +43,7 @@ export function GridTileImage({
                 isInteractive,
             })}
             {...props}
+            alt={props.alt || "Product image"}
           />
         </div>
       ) : null}

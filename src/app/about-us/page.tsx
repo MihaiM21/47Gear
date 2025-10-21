@@ -34,7 +34,7 @@ export default function AboutUsPage() {
               comprehensive gear provider trusted by casual and professional gamers alike.
             </p>
             <p className="text-white/90 text-lg leading-relaxed mt-4">
-              Our journey hasn't always been easy, but our passion for gaming and commitment to quality has helped us build 
+              Our journey hasn&apos;t always been easy, but our passion for gaming and commitment to quality has helped us build 
               a community that values performance, durability, and innovation in gaming hardware.
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function AboutUsPage() {
               Our Mission
             </h2>
             <p className="text-white/90 relative z-10">
-              At 47Gear, we're dedicated to providing gamers with the highest quality gaming peripherals and accessories. 
+              At 47Gear, we&apos;re dedicated to providing gamers with the highest quality gaming peripherals and accessories. 
               We believe that the right equipment can transform your gaming experience, giving you the competitive edge 
               you need to perform at your best.
             </p>
@@ -69,7 +69,7 @@ export default function AboutUsPage() {
             </h2>
             <p className="text-white/90 relative z-10">
               We envision a gaming community where every player has access to professional-grade equipment that enhances 
-              their skills and enjoyment. We're committed to innovation, quality, and customer satisfaction in everything we do.
+              their skills and enjoyment. We&apos;re committed to innovation, quality, and customer satisfaction in everything we do.
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Competitive Pricing</h3>
               <p className="text-white/80">
-                Premium quality gear at affordable prices. We believe top-tier gaming shouldn't break the bank.
+                Premium quality gear at affordable prices. We believe top-tier gaming shouldn&apos;t break the bank.
               </p>
             </div>
             

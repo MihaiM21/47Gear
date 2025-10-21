@@ -18,7 +18,7 @@ export default function Home() {
           <div className="absolute -top-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent-primary/5 blur-[100px]"></div>
           <div className="absolute top-[20%] -right-[20%] w-[40%] h-[40%] rounded-full bg-accent-secondary/5 blur-[80px]"></div>
           <div className="absolute -bottom-[10%] left-[30%] w-[50%] h-[50%] rounded-full bg-accent-tertiary/10 blur-[120px]"></div>
-          <div className="absolute w-full h-full bg-[url('/images/grid-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div>
+          {/* <div className="absolute w-full h-full bg-[url('/images/grid-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div> */}
         </div>
         
         <div className="px-4 ml-20 md:px-6 space-y-10 xl:space-y-16 relative z-10">
@@ -100,7 +100,7 @@ export default function Home() {
       <section className="w-full py-16 md:py-24 bg-black relative">
         {/* Background patterns and effects */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/circuit-pattern.png')] bg-repeat opacity-10"></div>
+          {/* <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/circuit-pattern.png')] bg-repeat opacity-10"></div> */}
         </div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -187,7 +187,7 @@ export default function Home() {
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-accent-primary/5 blur-[80px]"></div>
           <div className="absolute bottom-0 left-0 w-2/3 h-1/3 bg-accent-yellow/5 blur-[100px]"></div>
-          <div className="absolute w-full h-full bg-[url('/images/hex-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div>
+          {/* <div className="absolute w-full h-full bg-[url('/images/hex-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div> */}
         </div>
         
         <div className="container space-y-12 px-4 md:px-6 mx-auto relative z-10">
@@ -216,7 +216,7 @@ export default function Home() {
               >
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl relative shadow-lg group-hover:shadow-neon transition-all duration-500">
                   {/* Background Image */}
-                  <div className="absolute inset-0 bg-[url('/images/gaming-series-bg.jpg')] bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"></div>
+                  {/* <div className="absolute inset-0 bg-[url('/images/gaming-series-bg.jpg')] bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"></div> */}
                   
                   {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-80"></div>
@@ -254,7 +254,7 @@ export default function Home() {
               >
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl relative shadow-lg group-hover:shadow-neon-purple transition-all duration-500">
                   {/* Background Image */}
-                  <div className="absolute inset-0 bg-[url('/images/special-series-bg.jpg')] bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"></div>
+                  {/* <div className="absolute inset-0 bg-[url('/images/special-series-bg.jpg')] bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"></div> */}
                   
                   {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-80"></div>
@@ -292,7 +292,7 @@ export default function Home() {
               >
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl relative shadow-lg group-hover:shadow-neon-purple transition-all duration-500">
                   {/* Background Image */}
-                  <div className="absolute inset-0 bg-[url('/images/desk-series-bg.jpg')] bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"></div>
+                  {/* <div className="absolute inset-0 bg-[url('/images/desk-series-bg.jpg')] bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"></div> */}
                   
                   {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-80"></div>
@@ -343,7 +343,7 @@ export default function Home() {
           <div className="absolute top-1/4 left-1/4 w-1/2 h-1/3 bg-accent-primary/10 rounded-full blur-[100px] animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-1/3 h-1/3 bg-accent-tertiary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-3/4 left-1/2 w-1/4 h-1/4 bg-accent-secondary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute w-full h-full bg-[url('/images/noise-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div>
+          {/* <div className="absolute w-full h-full bg-[url('/images/noise-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div> */}
         </div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
