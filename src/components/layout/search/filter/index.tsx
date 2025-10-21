@@ -26,11 +26,11 @@ export default function FilterList({
     <>
       <nav>
         {title ? (
-          <h3 className="hidden text-xs text-neutral-500 md:block dark:text-neutral-400">
+          <h3 className="hidden text-sm text-white/70 font-medium md:block">
             {title}
           </h3>
         ) : null}
-        <ul className="hidden md:block">
+        <ul className="hidden md:block space-y-1">
           <FilterItemList list={list} />
         </ul>
         <ul className="md:hidden">

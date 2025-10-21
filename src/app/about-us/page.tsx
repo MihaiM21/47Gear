@@ -8,10 +8,6 @@ export const metadata: Metadata = {
 export default function AboutUsPage() {
   return (
     <div className="relative mx-auto max-w-screen-lg px-4 py-16 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-primary/10 via-black/80 to-black z-0"></div>
-      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-radial from-accent-primary/20 to-transparent opacity-70"></div>
-      <div className="absolute bottom-0 right-0 w-1/2 h-96 bg-gradient-radial from-purple-600/10 to-transparent blur-2xl"></div>
       
       <div className="relative z-10">
         {/* Hero Section */}

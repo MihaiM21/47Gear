@@ -21,7 +21,7 @@ export default function Home() {
           <div className="absolute w-full h-full bg-[url('/images/grid-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div>
         </div>
         
-        <div className="px-4 md:px-6 space-y-10 xl:space-y-16 relative z-10">
+        <div className="px-4 ml-20 md:px-6 space-y-10 xl:space-y-16 relative z-10">
           <div className="grid max-w-[1300px] mx-auto gap-8 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16 items-center">
             <div className="relative z-10">
               <div className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium border border-accent-primary/30 bg-gaming-800/60 backdrop-blur-sm">

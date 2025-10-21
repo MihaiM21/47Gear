@@ -15,7 +15,10 @@ function GridItem(props: React.ComponentProps<"li">) {
   return (
     <li
       {...props}
-      className={clsx("aspect-square transition-all duration-300 hover:scale-[1.02] hover:shadow-neon", props.className)}
+      className={clsx(
+        "aspect-square transition-all duration-500 hover:scale-[1.03] hover:z-10 hover:shadow-glow-purple group",
+        props.className
+      )}
     >
       {props.children}
     </li>

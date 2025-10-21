@@ -11,8 +11,11 @@ export default function ProductGridItems({
 }) {
   return (
     <>
-      {products.map((product) => (
-        <Grid.Item key={product.handle} className="animate-fadeIn">
+      {products.map((product, index) => (
+        <Grid.Item 
+          key={product.handle} 
+          className={`animate-fadeIn transition-all duration-700 animate-delay-${(index % 9) * 100}`}
+        >
           <Link
             href={`/product/${product.handle}`}
             className="relative inline-block h-full w-full"
