@@ -120,13 +120,10 @@ export default function CartModal() {
                         return (
                           <li
                             key={i}
-                            className="lex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
+                            className="lex w-full flex-col border-b border-neutral-300 dark:border-neutral-700 pb-2"
                           >
                             <div className="relative flex w-full flex-row justify-between px-1 py-4">
-                              <DeleteItemButton
-                                item={item}
-                                optimisticUpdate={updateCartItem}
-                              />
+                              
                             </div>
                             <div className="flex flex-row">
                               <div className="relative h-16 w-16 overflow-hidden rounded-lg border border-gaming-600 bg-gaming-700 hover:border-accent-primary transition-all duration-300">
@@ -153,7 +150,7 @@ export default function CartModal() {
                                     {item.merchandise.product.title}
                                   </span>
                                   {item.merchandise.title !== DEFAULT_OPTION ? (
-                                    <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                                    <p className="text-sm text-white dark:text-white">
                                       {item.merchandise.title}
                                     </p>
                                   ) : null}
@@ -168,23 +165,32 @@ export default function CartModal() {
                                   item.cost.totalAmount.currencyCode
                                 }
                               />
-                              <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
-                                <EditItemQuantityButton
+                              <div className="mt-2 flex flex-row items-center gap-4">
+                                <DeleteItemButton
                                   item={item}
-                                  type="minus"
                                   optimisticUpdate={updateCartItem}
                                 />
-                                <p className="w-6 text-center">
-                                  <span className="w-full text-sm">
-                                    {item.quantity}
-                                  </span>
-                                </p>
-                                <EditItemQuantityButton
-                                  item={item}
-                                  type="plus"
-                                  optimisticUpdate={updateCartItem}
-                                />
+                                <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
+                                  
+                                  <EditItemQuantityButton
+                                    item={item}
+                                    type="minus"
+                                    optimisticUpdate={updateCartItem}
+                                  />
+                                  <p className="w-6 text-center">
+                                    <span className="w-full text-sm">
+                                      {item.quantity}
+                                    </span>
+                                  </p>
+                                  
+                                  <EditItemQuantityButton
+                                    item={item}
+                                    type="plus"
+                                    optimisticUpdate={updateCartItem}
+                                  />
+                                </div>
                               </div>
+                              
                             </div>
                           </li>
                         );
@@ -234,7 +240,7 @@ function CheckoutButton() {
       type="submit"
       disabled={pending}
     >
-      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Proceed to </span><span className="text-accent-yellow">Checkout</span></>}
+      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Proceed to </span><span className="text-white">Checkout</span></>}
     </button>
   );
 }

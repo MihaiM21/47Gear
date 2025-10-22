@@ -35,7 +35,7 @@ export function GridTileImage({
       
       {/* Product image with hover effects */}
       {props.src ? (
-        <div className="relative h-full w-full z-10 p-4 flex items-center justify-center overflow-hidden">
+        <div className="relative h-full w-full z-10 p-0 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
           <Image
             className={clsx("relative object-contain z-10 transition-all duration-700", {
@@ -52,11 +52,11 @@ export function GridTileImage({
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-20 shine-effect"></div>
       
       {/* Product badge - top right */}
-      <div className="absolute top-3 right-3 z-20 transition-transform duration-500 group-hover:translate-y-1 group-hover:translate-x-1">
+      {/* <div className="absolute top-3 right-3 z-20 transition-transform duration-500 group-hover:translate-y-1 group-hover:translate-x-1">
         <div className="bg-black/80 backdrop-blur-md text-accent-secondary text-xs font-medium px-3 py-1 rounded-full border border-accent-secondary/30 shadow-glow-sm">
           Premium
         </div>
-      </div>
+      </div> */}
       
       {label ? (
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent py-4 px-4 z-20 transform transition-transform duration-500 translate-y-0">

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const metadata = {
   description:
-    "Pro Pad - Premium gaming mousepads for professional gamers and enthusiasts.",
+    "47Gear - Premium gaming mousepads for professional gamers and enthusiasts.",
   openGraph: {
     type: "website",
   },
@@ -14,7 +14,7 @@ export default function Home() {
     <main className="flex-1 bg-gradient-to-b from-gaming-900 to-gaming-800 text-white">
       <section className="w-full h-screen pt-12 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16 relative overflow-hidden">
         {/* Abstract geometric shapes background */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-accent-primary/5 via-black/80 to-black">
           <div className="absolute -top-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent-primary/5 blur-[100px]"></div>
           <div className="absolute top-[20%] -right-[20%] w-[40%] h-[40%] rounded-full bg-accent-secondary/5 blur-[80px]"></div>
           <div className="absolute -bottom-[10%] left-[30%] w-[50%] h-[50%] rounded-full bg-accent-tertiary/10 blur-[120px]"></div>
@@ -25,7 +25,7 @@ export default function Home() {
           <div className="grid max-w-[1300px] mx-auto gap-8 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16 items-center">
             <div className="relative z-10">
               <div className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium border border-accent-primary/30 bg-gaming-800/60 backdrop-blur-sm">
-                <span className="text-accent-secondary">Next-Gen</span> <span className="text-accent-yellow">Performance</span>
+                <span className="text-accent-secondary">Next-Gen</span> <span className="text-accent-red">Performance</span>
               </div>
               <h1 className="lg:leading-tight text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] bg-gradient-to-r from-white via-white to-gaming-200 bg-clip-text text-transparent mb-6">
                 <span className="text-accent-secondary">Gaming</span> <span className="relative inline-block">
