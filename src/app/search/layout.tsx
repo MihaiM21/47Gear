@@ -19,17 +19,21 @@ export default function SearchLayout({
         
         {/* Content */}
         <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 pt-12 text-white md:flex-row relative z-0">
-          <div className="order-first w-full flex-none md:max-w-[200px] glass-card p-4 md:p-6 h-fit">
-            <h2 className="text-xl font-bold mb-4 text-gradient-purple">Categories</h2>
-            <Collections />
+          <div>
+            <div className="order-first w-full flex-none md:max-w-[200px] glass-card p-4 md:p-6 h-fit mb-8 md:mb-8">
+              <h2 className="text-xl font-bold mb-4 text-gradient-purple">Categories</h2>
+              <Collections />
+            </div>
+            <div className="order-first flex-none md:order-first md:w-[200px] glass-card p-4 md:p-6 h-fit">
+              <h2 className="text-xl font-bold mb-4 text-gradient-purple">Filters</h2>
+              <FilterList list={sorting} title="" />
+            </div>
           </div>
+          
           <div className="order-last min-h-screen w-full md:order-none">
             {children}
           </div>
-          <div className="order-none flex-none md:order-last md:w-[200px] glass-card p-4 md:p-6 h-fit">
-            <h2 className="text-xl font-bold mb-4 text-gradient-purple">Filters</h2>
-            <FilterList list={sorting} title="" />
-          </div>
+          
         </div>
       </div>
     </>
