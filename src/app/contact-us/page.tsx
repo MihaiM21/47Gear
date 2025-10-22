@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ContactForm from "@/components/forms/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Us | 47Gear",
@@ -110,80 +111,9 @@ export default function ContactUsPage() {
           <div className="absolute -left-20 -bottom-20 w-40 h-40 bg-accent-primary/10 rounded-full blur-2xl"></div>
           
           <h2 className="text-xl font-bold mb-5 text-gradient-purple">Send a Message</h2>
-          <form className="space-y-4 relative z-10">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <label htmlFor="name" className="block text-xs font-medium text-accent-secondary">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-                  placeholder="John Doe"
-                />
-              </div>
-              
-              <div className="space-y-1">
-                <label htmlFor="email" className="block text-xs font-medium text-accent-secondary">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-            
-            <div className="space-y-1">
-              <label htmlFor="subject" className="block text-xs font-medium text-accent-secondary">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-                placeholder="How can we help you?"
-              />
-            </div>
-            
-            <div className="space-y-1">
-              <label htmlFor="message" className="block text-xs font-medium text-accent-secondary">
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-                placeholder="Tell us what's on your mind..."
-              ></textarea>
-            </div>
-            
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="consent"
-                className="h-4 w-4 rounded border-accent-primary/50 bg-black text-accent-secondary focus:ring-accent-secondary/30"
-              />
-              <label htmlFor="consent" className="text-xs text-white/70">
-                I agree to receive gaming updates and promotional emails
-              </label>
-            </div>
-            
-            <button
-              type="submit"
-              className="w-full rounded-md bg-gradient-to-r from-accent-primary to-accent-secondary px-4 py-2 text-center font-medium text-white text-sm shadow-neon hover:shadow-neon-purple transition-all duration-300 hover:translate-y-[-1px] relative overflow-hidden shine-effect"
-            >
-              <div className="flex items-center justify-center">
-                <span>Send Message</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </div>
-            </button>
-          </form>
+          
+          {/* Using the new ContactForm component */}
+          <ContactForm />
           
           {/* Response time indicator - more compact */}
           <div className="mt-4 pt-3 border-t border-white/10 flex items-center text-white/60 text-xs">
