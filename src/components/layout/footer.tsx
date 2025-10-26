@@ -13,9 +13,6 @@ export default async function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <LogoSquare />
-              <span className="text-lg font-bold">
-                <span className="text-accent-primary">47</span><span className="text-accent-yellow">GEAR</span>
-              </span>
             </div>
             <p className="text-sm text-gaming-400 max-w-xs">
               Premium gaming mousepads engineered for professional gamers and enthusiasts who demand the best in precision, comfort, and durability.

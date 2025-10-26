@@ -1,22 +1,15 @@
 import clsx from "clsx";
 import LogoIcon from "./icons/logo";
+import Image from "next/image";
 
 export default function LogoSquare({ size }: { size?: "sm" | undefined }) {
   return (
-    <div
-      className={clsx(
-        "flex flex-none items-center justify-center border border-accent-primary bg-black animate-pulse rounded-md transition-all duration-300 hover:shadow-neon",
-        {
-          "h-[48px] w-[48px] rounded-xl": !size,
-          "h-[36px] w-[36px] rounded-lg": size === "sm",
-        }
-      )}
-    >
-      <LogoIcon
-        className={clsx({
-          "h-[32px] w-[32px]": !size,
-          "h-[24px] w-[24px]": size === "sm",
-        })}
+    <div className="flex items-center justify-center">
+      <Image
+        src="/logo/logo_purple.png"
+        alt="Logo"
+        width={size === "sm" ? 48 : 64}
+        height={size === "sm" ? 48 : 64}
       />
     </div>
   );

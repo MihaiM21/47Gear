@@ -21,9 +21,9 @@ export async function Navbar() {
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6 group"
           >
             <LogoSquare />
-            <div className="ml-3 flex-none text-sm font-bold uppercase md:hidden lg:block hover:animate-pulse">
+            {/* <div className="ml-3 flex-none text-sm font-bold uppercase md:hidden lg:block hover:animate-pulse">
               <span className="text-accent-primary">47</span><span className="text-accent-yellow">GEAR</span>
-            </div>
+            </div> */}
           </Link>
 
           {menu.length > 0 ? (
