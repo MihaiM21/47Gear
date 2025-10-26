@@ -71,8 +71,8 @@ export default async function Footer() {
                 ))
               ) : (
                 <>
-                  <li><Link href="/about" className="text-gaming-400 hover:text-accent-primary transition-colors">About Us</Link></li>
-                  <li><Link href="/contact" className="text-gaming-400 hover:text-accent-primary transition-colors">Contact Us</Link></li>
+                  <li><Link href="/about-us" className="text-gaming-400 hover:text-accent-primary transition-colors">About Us</Link></li>
+                  <li><Link href="/contact-us" className="text-gaming-400 hover:text-accent-primary transition-colors">Contact Us</Link></li>
                   {/* <li><Link href="/careers" className="text-gaming-400 hover:text-accent-primary transition-colors">Careers</Link></li> */}
                 </>
               )}
@@ -112,7 +112,7 @@ export default async function Footer() {
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Privacy Policy</Link>
             <Link href="/terms-of-service" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Terms of Service</Link>
-            <Link href="/shipping" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Shipping Info</Link>
+            {/* <Link href="/shipping" className="text-xs text-gaming-500 hover:text-gaming-400 transition-colors">Shipping Info</Link> */}
           </div>
         </div>
       </div>
