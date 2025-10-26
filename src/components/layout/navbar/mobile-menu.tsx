@@ -45,29 +45,29 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
           >
             <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-black pb-6">
               <div className="p-4">
-                <button
+                {/* <button
                   className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-accent-primary/50 text-accent-secondary transition-colors"
                   onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
                 >
                   <XMarkIcon className="h-6" />
-                </button>
-                <div className="mb-4 w-full">
+                </button> */}
+                <div className="mb-4 mt-20 w-full">
                   <Search />
                 </div>
                 <ul className="flex w-full flex-col">
-                  <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
-                    <Link href="/search" prefetch={false} onClick={closeMobileMenu}>
+                  <li className=" py-2 text-xl text-white transition-colors hover:text-accent-primary">
+                    <Link href="/search" prefetch={false} onClick={closeMobileMenu} className="justify-center flex mr-2">
                       Products
                     </Link>
                   </li>
                   <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
-                    <Link href="/about-us" prefetch={false} onClick={closeMobileMenu}>
+                    <Link href="/about-us" prefetch={false} onClick={closeMobileMenu} className="justify-center flex mr-2">
                       About Us
                     </Link>
                   </li>
                   <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
-                    <Link href="/contact-us" prefetch={false} onClick={closeMobileMenu}>
+                    <Link href="/contact-us" prefetch={false} onClick={closeMobileMenu} className="justify-center flex mr-2">
                       Contact Us
                     </Link>
                   </li>
