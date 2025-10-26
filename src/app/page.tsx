@@ -21,7 +21,7 @@ export default function Home() {
           {/* <div className="absolute w-full h-full bg-[url('/images/grid-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div> */}
         </div>
         
-        <div className="px-4 ml-20 md:px-6 space-y-10 xl:space-y-16 relative z-10">
+        <div className="px-4 ml-0 md:px-6 space-y-10 xl:space-y-16 relative z-10">
           <div className="grid max-w-[1300px] mx-auto gap-8 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16 items-center">
             <div className="relative z-10">
               <div className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium border border-accent-primary/30 bg-gaming-800/60 backdrop-blur-sm">
@@ -66,13 +66,13 @@ export default function Home() {
             </div>
             <div className="relative hidden md:block">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 opacity-70 blur-3xl animate-pulse"></div>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-sm transition-all duration-500 hover:shadow-neon border border-accent-primary/20 flex items-center justify-center" style={{ width: '450px', height: '450px' }}>
+              <div className="relative ml-20 rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-sm transition-all duration-500 hover:shadow-neon border border-accent-primary/20 flex items-center justify-center" style={{ width: '450px', height: '450px' }}>
                 {/* Modern minimalist product display */}
                 <div className="relative w-[400px] h-[400px] float-animation">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Image
                       src="/images/mousepad_01.png"
-                      alt="Pro Pad XL"
+                      alt="Main Product"
                       width={410}
                       height={410}
                       className="object-contain drop-shadow-[0_10px_30px_rgba(74,43,116,0.6)] z-10 transform transition-all duration-700 hover:scale-105 rounded-2xl"
