@@ -15,7 +15,7 @@ export default function SearchLayout({
         <div className="absolute inset-0 bg-gradient-to-b from-accent-primary/5 via-black/80 to-black -z-10"></div>
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-radial from-accent-primary/10 to-transparent opacity-50 -z-10"></div>
         <div className="absolute top-40 right-20 w-72 h-72 rounded-full bg-purple-600/10 blur-3xl -z-10"></div>
-        <div className="absolute bottom-40 left-20 w-80 h-80 rounded-full bg-accent-primary/5 blur-3xl -z-10"></div>
+        {/* <div className="absolute bottom-40 left-20 w-80 h-80 rounded-full bg-accent-primary/5 blur-3xl -z-10"></div> */}
         
         {/* Content */}
         <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 pt-12 text-white md:flex-row relative z-0">
