@@ -13,7 +13,7 @@ export default function ContactUsPage() {
       <div className="mb-10 text-center relative">
         <div className="absolute -z-10 inset-0 bg-gradient-to-r from-accent-primary/20 via-accent-secondary/10 to-accent-primary/20 blur-xl opacity-30 rounded-full"></div>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-1 animate-gradient">
-          Contact <span className="text-accent-yellow">47</span>Gear
+          Contact Us
         </h1>
         <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mx-auto my-4"></div>
         <p className="mt-3 text-base text-white/80 max-w-xl mx-auto">
@@ -88,7 +88,7 @@ export default function ContactUsPage() {
                   <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                 </svg>
               </a>
-              <a href="#" className="h-8 w-8 rounded-full bg-gaming-800 flex items-center justify-center group transition-all duration-300 hover:bg-accent-primary">
+              <a href="https://www.instagram.com/47gear.ro/" className="h-8 w-8 rounded-full bg-gaming-800 flex items-center justify-center group transition-all duration-300 hover:bg-accent-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-secondary group-hover:text-white">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
