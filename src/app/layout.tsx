@@ -10,7 +10,7 @@ import { getCart } from "@/lib/shopify";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "47Gear Store",
+  title: "47Gear",
   description: "Mousepads and accessories for gamers.",
 };
 
