@@ -73,6 +73,7 @@ export default async function Footer() {
                 <>
                   <li><Link href="/about-us" className="text-gaming-400 hover:text-accent-primary transition-colors">About Us</Link></li>
                   <li><Link href="/contact-us" className="text-gaming-400 hover:text-accent-primary transition-colors">Contact Us</Link></li>
+                  <li><Link href="/search" className="text-gaming-400 hover:text-accent-primary transition-colors">Products</Link></li>
                   {/* <li><Link href="/careers" className="text-gaming-400 hover:text-accent-primary transition-colors">Careers</Link></li> */}
                 </>
               )}
