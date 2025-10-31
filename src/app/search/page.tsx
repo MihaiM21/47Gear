@@ -4,7 +4,7 @@ import { defaultSort, sorting } from "@/lib/constants";
 import { getProducts } from "@/lib/shopify";
 
 export const metadata = {
-  title: "Search - 47Gear",
+  title: "Products | 47Gear",
   description: "Find premium gaming gear and accessories for professional gamers.",
 };
 
