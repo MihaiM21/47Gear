@@ -29,13 +29,12 @@ export default function AboutUsPage() {
           <div className="relative glass-card hover:shadow-glow-purple transition-all duration-500 p-8">
             <div className="absolute top-0 right-0 h-20 w-20 bg-accent-primary/10 rounded-full blur-2xl"></div>
             <p className="text-white/90 text-lg leading-relaxed">
-              Founded in 2021 by professional gamers, 47Gear was born from a simple idea: gaming peripherals should be as 
-              exceptional as the players who use them. We started with a single mousepad design and have grown into a 
-              comprehensive gear provider trusted by casual and professional gamers alike.
+              Founded in 2025. Driven by passion.
+              Born from the experience of professional gamers, 47Gear started with one idea to create peripherals that truly understand the needs of players.
+              
             </p>
             <p className="text-white/90 text-lg leading-relaxed mt-4">
-              Our journey hasn&apos;t always been easy, but our passion for gaming and commitment to quality has helped us build 
-              a community that values performance, durability, and innovation in gaming hardware.
+              What began with a single mousepad has evolved into a trusted name in premium gaming gear, known for quality, precision, and performance.
             </p>
           </div>
         </div>
@@ -51,9 +50,9 @@ export default function AboutUsPage() {
               Our Mission
             </h2>
             <p className="text-white/90 relative z-10">
-              At 47Gear, we&apos;re dedicated to providing gamers with the highest quality gaming peripherals and accessories. 
-              We believe that the right equipment can transform your gaming experience, giving you the competitive edge 
-              you need to perform at your best.
+              Gear that gives you the edge.
+              We&apos;re dedicated to creating gaming equipment that combines precision, durability, and comfort. Because in every match, every 
+              move matters and the right gear makes all the difference.
             </p>
           </div>
 
@@ -68,8 +67,9 @@ export default function AboutUsPage() {
               Our Vision
             </h2>
             <p className="text-white/90 relative z-10">
-              We envision a gaming community where every player has access to professional-grade equipment that enhances 
-              their skills and enjoyment. We&apos;re committed to innovation, quality, and customer satisfaction in everything we do.
+              Empowering every gamer.
+              We believe every player deserves access to professional-grade equipment that enhances skill and confidence.
+              Through innovation and community, 47Gear continues to push gaming forward one product at a time.
             </p>
           </div>
         </div>
