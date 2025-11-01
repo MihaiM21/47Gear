@@ -76,6 +76,21 @@
   0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
   50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); }
 }
+@keyframes glow_red{
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 60, 95, 0.5)); }
+  50% { filter: drop-shadow(0 0 15px rgba(255, 60, 95, 0.8)); }
+}
+
+@keyframes slideUpFade {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 /* Dark mode by default for the gaming theme */
 html {
@@ -91,6 +106,52 @@ html {
   --tinsel-silver: #C0C0C0;
   --snow-white: #FFFFFF;
 }
+
+/* Santa's corner message */
+[data-theme='christmas']::before {
+  content: "";
+  position: fixed;
+  bottom: 30px;
+  right: 70px;
+  width: 150px;
+  height: 150px;
+
+  background-image: url('/christmas-theme/santa.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1001;
+  animation: float 3s ease-in-out infinite;
+  animation: slideUpFade 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.2s;
+}
+
+[data-theme='christmas']::after {
+  content: "✨ Don't miss Santa's offer!";
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: rgba(25, 25, 35, 0.85);
+  backdrop-filter: blur(12px) saturate(180%);
+  padding: 16px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--snow-white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(151, 60, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateY(100px);
+  opacity: 0;
+  animation: slideUpFade 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.2s;
+}
+
+
 
 /* Christmas theme effects */
 [data-theme='christmas'] .product-card {
@@ -135,15 +196,13 @@ html {
   background-image: url('/christmas-theme/tinsel.png');
   background-repeat: repeat-x;
   background-size: auto 100%;
-  animation: float 3s ease-in-out infinite;
+  /* animation: float 3s ease-in-out infinite; */
   z-index: 10;
   filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
   width: 100%;
   justify-content: center;
   align-items: center;
   z-index: 10;
-  /* animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); */
 }
 
 /* Glow effect behind the decorations */
@@ -199,14 +258,15 @@ html {
   height: 100%;
   pointer-events: none;
   background-image: 
-    radial-gradient(circle at center, white 5px, transparent 5px),
-    radial-gradient(circle at center, white 3px, transparent 3px),
-    radial-gradient(circle at center, white 1.5px, transparent 1.5px);
-  background-size: 100px 100px, 150px 150px, 75px 75px;
+    url('/christmas-theme/snowflake.png'),
+    url('/christmas-theme/snowflake.png'),
+    url('/christmas-theme/snowflake.png');
+  background-size: 24px 24px, 16px 16px, 12px 12px;
   background-position: 0 0, 50px 50px, 25px 25px;
   animation: snowfall 20s linear infinite;
-  opacity: 0.3;
+  opacity: 0.4;
   z-index: 1;
+  filter: brightness(1.2);
 }
 
 /* Default body styles */
@@ -269,7 +329,7 @@ body {
   background-image: url('/christmas-theme/tinsel.png');
   background-repeat: repeat-x;
   background-size: auto 100%;
-  animation: float 3s ease-in-out infinite;
+  /* animation: float 3s ease-in-out infinite; */
   z-index: 10;
   filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
   width: 100%;
@@ -302,10 +362,10 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-image: radial-gradient(circle at center, white 2px, transparent 2px),
-                    radial-gradient(circle at center, white 1px, transparent 1px);
-  background-size: 100px 100px, 150px 150px;
-  background-position: 0 0, 50px 50px;
+  background-image: 
+    url('/christmas-theme/snowflake_2.png');
+  background-size: 200px 200px, 20px 20px;
+  background-position: 0 0, 15px 15px;
   animation: snowfall 20s linear infinite;
   opacity: 0.3;
 }
@@ -332,10 +392,16 @@ body {
 /* Snowfall animation */
 @keyframes snowfall {
   0% {
-    background-position: 0 0, 50px 50px;
+    background-position: 
+      0 0,
+      50px 50px,
+      25px 25px;
   }
   100% {
-    background-position: 100px 600px, 150px 650px;
+    background-position: 
+      100px 600px,
+      150px 650px,
+      75px 625px;
   }
 }
 
