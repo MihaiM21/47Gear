@@ -12,13 +12,7 @@
   --accent-yellow: #EFCA4E;
 }
 
-/* Dark mode by default for the gaming theme */
-html {
-  color-scheme: dark;
-  scroll-behavior: smooth;
-}
-
-/* Snowfall animation */
+/* Christmas theme animations */
 @keyframes snowfall {
   0% {
     background-position: 0 0, 50px 50px, 25px 25px;
@@ -26,6 +20,173 @@ html {
   100% {
     background-position: 100px 600px, 150px 650px, 75px 625px;
   }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes jingle {
+  0% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(-3deg); }
+}
+
+@keyframes tinselWave {
+  0% { 
+    transform: skewX(0deg) scaleY(1);
+    filter: brightness(1);
+  }
+  25% { 
+    transform: skewX(2deg) scaleY(1.05);
+    filter: brightness(1.2);
+  }
+  75% { 
+    transform: skewX(-2deg) scaleY(1.05);
+    filter: brightness(1.1);
+  }
+  100% { 
+    transform: skewX(0deg) scaleY(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes tinselShimmer {
+  0% { 
+    opacity: 0.4;
+    transform: translateX(-10px);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(10px);
+  }
+  100% { 
+    opacity: 0.4;
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+  50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); }
+}
+
+/* Dark mode by default for the gaming theme */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+/* Christmas theme styles */
+[data-theme='christmas'] {
+  --christmas-red: #D42426;
+  --christmas-green: #165B33;
+  --christmas-gold: #FFD700;
+  --tinsel-silver: #C0C0C0;
+  --snow-white: #FFFFFF;
+}
+
+/* Christmas theme effects */
+[data-theme='christmas'] .product-card {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+[data-theme='christmas'] .product-card:hover {
+  transform: translateY(-5px);
+}
+
+[data-theme='christmas'] .product-card::before {
+  content: '🎄';
+  position: absolute;
+  top: -15px;
+  right: -5px;
+  font-size: 24px;
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+[data-theme='christmas'] .product-card:hover::before {
+  opacity: 1;
+  transform: scale(1) rotate(10deg);
+}
+
+/* Navbar Christmas decorations */
+[data-theme='christmas'] #header {
+  position: relative;
+  margin-bottom: 35px; /* Add space for the decorations */
+}
+
+/* Christmas decorative border */
+[data-theme='christmas'] #header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -21px;
+  height: 30px;
+  background-image: url('/christmas-theme/tinsel.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: float 3s ease-in-out infinite;
+  z-index: 10;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); */
+}
+
+/* Glow effect behind the decorations */
+[data-theme='christmas'] #header::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 215, 0, 0.1),
+    transparent
+  );
+  filter: blur(5px);
+  z-index: 9;
+}
+
+/* Festive button styles */
+[data-theme='christmas'] .button-primary {
+  background: linear-gradient(45deg, var(--christmas-red), var(--christmas-green));
+  border: 2px solid var(--christmas-gold);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+[data-theme='christmas'] .button-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  border-color: var(--snow-white);
+}
+
+/* Festive links */
+[data-theme='christmas'] .nav-link {
+  transition: all 0.3s ease;
+}
+
+[data-theme='christmas'] .nav-link:hover {
+  color: var(--christmas-gold);
+  text-shadow: 0 0 10px var(--christmas-gold);
+  animation: jingle 0.5s ease infinite;
 }
 
 /* Christmas theme snowfall effect */
@@ -58,6 +219,70 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+}
+
+/* Christmas body styles */
+[data-theme='christmas'] body {
+  background: linear-gradient(135deg, #1a1021 0%, #0f0b16 30%, #090713 70%, #0d0a15 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Christmas price tags */
+[data-theme='christmas'] .price {
+  position: relative;
+  display: inline-block;
+  color: var(--christmas-gold);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  animation: glow 2s infinite;
+}
+
+[data-theme='christmas'] .price::before {
+  content: '🎅';
+  position: absolute;
+  right: -25px;
+  top: -2px;
+  font-size: 0.9em;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+[data-theme='christmas'] .price:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Christmas footer */
+[data-theme='christmas'] footer {
+  position: relative;
+
+}
+
+[data-theme='christmas'] footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  height: 30px;
+  background-image: url('/christmas-theme/tinsel.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: float 3s ease-in-out infinite;
+  z-index: 10;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* content: '⭐ 🎄 ⭐';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  white-space: nowrap; */
 }
 
 /* Christmas theme body styles */
