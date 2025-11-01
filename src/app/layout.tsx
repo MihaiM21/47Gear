@@ -23,7 +23,7 @@ export default async function RootLayout({
   const cartId = cookiesStore.get("cartId")?.value;
   const cart = getCart(cartId);
   return (
-    <html lang="en">
+    <html lang="en" data-theme={process.env.SITE_THEME || 'default'}>
       <body className={inter.className}>
         <CartProvider cartPromise={cart}>
           <Navbar />

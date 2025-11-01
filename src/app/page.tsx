@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="flex-1 bg-gradient-to-b from-gaming-900 to-gaming-800 text-white">
+    <main className="flex-1  text-white">
       <section className="w-full h-screen pt-12 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16 relative overflow-hidden">
         {/* Abstract geometric shapes background */}
         <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-accent-primary/5 via-black/80 to-black">
@@ -182,11 +182,11 @@ export default function Home() {
       </section>
       
       {/* Product Categories Section */}
-      <section className="w-full py-16 md:py-24 bg-gradient-to-b from-black to-gaming-900 relative overflow-hidden">
+      <section className="w-full py-16 md:py-24 bg-black relative overflow-hidden">
         {/* Abstract background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-accent-primary/5 blur-[80px]"></div>
-          <div className="absolute bottom-0 left-0 w-2/3 h-1/3 bg-accent-yellow/5 blur-[100px]"></div>
+          {/* <div className="absolute bottom-0 left-0 w-2/3 h-1/3 bg-accent-yellow/5 blur-[100px]"></div> */}
           {/* <div className="absolute w-full h-full bg-[url('/images/hex-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div> */}
         </div>
         
@@ -341,8 +341,8 @@ export default function Home() {
         {/* Enhanced background elements */}
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute top-1/4 left-1/4 w-1/2 h-1/3 bg-accent-primary/10 rounded-full blur-[100px] animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-1/3 h-1/3 bg-accent-tertiary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-3/4 left-1/2 w-1/4 h-1/4 bg-accent-secondary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+          {/* <div className="absolute bottom-1/4 right-1/4 w-1/3 h-1/3 bg-accent-tertiary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div> */}
+          {/* <div className="absolute top-3/4 left-1/2 w-1/4 h-1/4 bg-accent-secondary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div> */}
           {/* <div className="absolute w-full h-full bg-[url('/images/noise-pattern.png')] bg-repeat opacity-5 mix-blend-overlay"></div> */}
         </div>
         
@@ -605,8 +605,8 @@ export default function Home() {
             </div>
             
             {/* Shadow overlays to indicate more content */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10"></div>
+            {/* <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10"></div> */}
+            {/* <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10"></div> */}
           </div>
           
           <div className="flex justify-center mt-12">

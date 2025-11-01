@@ -8,6 +8,7 @@ const envSchema = z.object({
   SHOPIFY_REVALIDATION_SECRET: z.string(),
   SHOPIFY_STOREFRONT_ACCESS_TOKEN: z.string(),
   SHOPIFY_STORE_DOMAIN: z.string(),
+  SITE_THEME: z.enum(['default', 'christmas']).default('default'),
   
   // Email configuration
   EMAIL_HOST: z.string().optional(),
