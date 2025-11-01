@@ -38,9 +38,9 @@ html {
   height: 100%;
   pointer-events: none;
   background-image: 
-    radial-gradient(circle at center, white 1px, transparent 1px),
-    radial-gradient(circle at center, white 1.5px, transparent 1.5px),
-    radial-gradient(circle at center, white 0.5px, transparent 0.5px);
+    radial-gradient(circle at center, white 5px, transparent 5px),
+    radial-gradient(circle at center, white 3px, transparent 3px),
+    radial-gradient(circle at center, white 1.5px, transparent 1.5px);
   background-size: 100px 100px, 150px 150px, 75px 75px;
   background-position: 0 0, 50px 50px, 25px 25px;
   animation: snowfall 20s linear infinite;
@@ -77,7 +77,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-image: radial-gradient(circle at center, white 1px, transparent 1px),
+  background-image: radial-gradient(circle at center, white 2px, transparent 2px),
                     radial-gradient(circle at center, white 1px, transparent 1px);
   background-size: 100px 100px, 150px 150px;
   background-position: 0 0, 50px 50px;
