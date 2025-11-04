@@ -21,8 +21,8 @@ export default function ContactUsPage() {
         </p>
       </div>
 
-      {/* Main content area with more breathing room */}
-      <div className="grid gap-8 md:grid-cols-5 relative">
+      {/* Main content area with more breathing room MOVE TO cols 5 when email added */}
+      <div className="grid gap-8 md:grid-cols-1 relative">
         {/* Left side - Streamlined contact info */}
         <div className="md:col-span-2 glass-card p-6 border border-accent-primary/20 shadow-neon hover:shadow-neon-purple transition-all duration-300 transform hover:translate-y-[-2px]">
           <h2 className="text-xl font-bold mb-4 text-gradient-purple">Get In Touch</h2>
@@ -105,24 +105,23 @@ export default function ContactUsPage() {
         </div>
 
         {/* Right side - Streamlined contact form */}
-        <div className="md:col-span-3 glass-card p-6 border border-accent-primary/20 shadow-neon hover:shadow-neon-purple transition-all duration-300 transform hover:translate-y-[-2px] relative overflow-hidden">
-          {/* Subtle decorative element */}
+        {/* <div className="md:col-span-3 glass-card p-6 border border-accent-primary/20 shadow-neon hover:shadow-neon-purple transition-all duration-300 transform hover:translate-y-[-2px] relative overflow-hidden">
           <div className="absolute -right-20 -top-20 w-40 h-40 bg-accent-secondary/10 rounded-full blur-2xl"></div>
           <div className="absolute -left-20 -bottom-20 w-40 h-40 bg-accent-primary/10 rounded-full blur-2xl"></div>
           
           <h2 className="text-xl font-bold mb-5 text-gradient-purple">Send a Message</h2>
           
-          {/* Using the new ContactForm component */}
+
           <ContactForm />
           
-          {/* Response time indicator - more compact */}
+
           <div className="mt-4 pt-3 border-t border-white/10 flex items-center text-white/60 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-accent-green" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
             </svg>
             <span>We typically respond within 24 hours</span>
           </div>
-        </div>
+        </div> */}
       </div>
       
       {/* FAQ section - more compact */}
