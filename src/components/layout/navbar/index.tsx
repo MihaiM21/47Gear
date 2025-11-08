@@ -77,14 +77,14 @@ export async function Navbar() {
               Contact Us
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link
+            {/* <Link
               href="/profile"
               className="group relative px-3 py-2 text-sm font-medium text-white transition-all duration-300"
               prefetch={false}
             >
               Account
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            </Link> */}
           </div>
           {/* <div className="ml-6">
             <Search />
