@@ -117,7 +117,7 @@ export default function AboutUsPage() {
         </div>
         
         {/* Team Section */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">Meet Our Team</h2>
           <div className="grid gap-8 md:grid-cols-3">
             <div className="glass-card hover:shadow-glow-purple group transition-all duration-300 p-6 text-center">
@@ -165,7 +165,7 @@ export default function AboutUsPage() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

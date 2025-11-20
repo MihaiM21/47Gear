@@ -182,7 +182,7 @@ export default function Home() {
       </section>
       
       {/* Product Categories Section */}
-      <section className="w-full py-16 md:py-24 bg-black relative overflow-hidden">
+      <section className="w-full py-16 md:py-24 relative overflow-hidden">
         {/* Abstract background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-accent-primary/5 blur-[80px]"></div>
@@ -337,7 +337,7 @@ export default function Home() {
         </div>
       </section>
       {/* Content Creators Showcase Section */}
-      <section className="w-full py-16 md:py-24 bg-gradient-to-b from-gaming-900 to-black overflow-hidden relative">
+      <section className="w-full py-16 md:py-24  overflow-hidden relative">
         {/* Enhanced background elements */}
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute top-1/4 left-1/4 w-1/2 h-1/3 bg-accent-primary/10 rounded-full blur-[100px] animate-pulse"></div>
@@ -609,17 +609,6 @@ export default function Home() {
             {/* <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10"></div> */}
           </div>
           
-          <div className="flex justify-center mt-12">
-            <Link 
-              href="/creators"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-accent-primary to-accent-secondary hover:from-accent-primary/90 hover:to-accent-secondary/90 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-neon-purple hover:scale-105"
-            >
-              <span>Meet All Our Creators</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
-          </div>
         </div>
       </section>
       
