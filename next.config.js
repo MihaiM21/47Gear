@@ -10,11 +10,21 @@ module.exports = {
       },
     ],
   },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
+  // Removed ignoreBuildErrors for production safety
+  // Fix any TypeScript errors before deploying
+  poweredByHeader: false, // Remove X-Powered-By header for security
+  compress: true, // Enable gzip compression
+  reactStrictMode: true, // Enable React strict mode for better error detection
+  
+  // Enable standalone output for Docker deployment
+  output: 'standalone',
+  
+  // Optimize for production
+  swcMinify: true,
+  
+  // Configure experimental features for better performance
+  experimental: {
+    // Optimize package imports
+    optimizePackageImports: ['@headlessui/react', '@heroicons/react'],
   },
 };

@@ -71,7 +71,7 @@ export default function Home() {
                 <div className="relative w-[400px] h-[400px] float-animation">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Image
-                      src="/images/mousepad_01.png"
+                      src="/images/mousepad_1x1.png"
                       alt="Main Product"
                       width={410}
                       height={410}

@@ -17,14 +17,14 @@ function SubmitButton({
   selectedVariantId: string | undefined;
 }) {
   const buttonClasses =
-    "relative flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-[#4A2B74] to-[#8A63FF] p-4 tracking-wide text-white font-medium shadow-glow-sm transition-all duration-300 overflow-hidden";
-  const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
-  const hoverClasses = "hover:shadow-glow-purple hover:scale-[1.02] transform";
+    "relative flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-[length:200%_100%] p-4 tracking-wide text-white font-semibold shadow-lg transition-all duration-500 overflow-hidden group";
+  const disabledClasses = "cursor-not-allowed opacity-50 hover:opacity-50";
+  const hoverClasses = "hover:shadow-neon-purple hover:scale-[1.02] hover:bg-[position:100%_0] active:scale-[0.98]";
 
   if (!availableForSale) {
     return (
       <button disabled className={clsx(buttonClasses, disabledClasses)}>
-        <span className="relative z-10 uppercase tracking-wider">Out of Stock</span>
+        <span className="relative z-10 text-sm uppercase tracking-widest">Out of Stock</span>
       </button>
     );
   }
@@ -36,11 +36,8 @@ function SubmitButton({
         disabled
         className={clsx(buttonClasses, disabledClasses)}
       >
-        <div className="absolute left-0 ml-4 flex items-center justify-center rounded-full bg-white/10 p-1">
-          <PlusIcon className="h-5 w-5 text-white" />
-        </div>
-        <span className="relative z-10 uppercase tracking-wider">Select an Option</span>
-        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <PlusIcon className="h-5 w-5 text-white" />
+        <span className="relative z-10 text-sm uppercase tracking-widest">Select an Option</span>
       </button>
     );
   }
@@ -48,13 +45,11 @@ function SubmitButton({
   return (
     <button
       aria-label="Add to cart"
-      className={clsx(buttonClasses, hoverClasses, "group")}
+      className={clsx(buttonClasses, hoverClasses)}
     >
-      <div className="absolute left-0 ml-4 flex items-center justify-center rounded-full bg-white/10 p-1">
-        <PlusIcon className="h-5 w-5 text-white" />
-      </div>
-      <span className="relative z-10 uppercase tracking-wider">Add To Cart</span>
-      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-500"></div>
+      <PlusIcon className="h-5 w-5 text-white relative z-10 group-hover:rotate-90 transition-transform duration-300" />
+      <span className="relative z-10 text-sm uppercase tracking-widest">Add To Cart</span>
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none shine-effect"></div>
     </button>
   );

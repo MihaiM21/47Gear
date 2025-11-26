@@ -75,26 +75,32 @@ export default function CartModal() {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] dark:border-neutral-700 dark:bg-black/80 dark:text-white">
-              <div className="flex items-center justify-between">
-                <p className="text-lg font-semibold">My Cart</p>
-                <button aria-label="Close cart" onClick={closeCart}>
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-accent-primary/20 bg-gradient-to-b from-black/95 via-gaming-900/95 to-black/95 backdrop-blur-2xl p-6 text-white shadow-2xl md:w-[420px]">
+              <div className="flex items-center justify-between mb-6 pb-4 border-b border-accent-primary/20">
+                <p className="text-xl font-bold bg-gradient-to-r from-white to-accent-secondary bg-clip-text text-transparent">My Cart</p>
+                <button aria-label="Close cart" onClick={closeCart} className="p-2 rounded-lg hover:bg-accent-primary/20 transition-colors duration-200">
                   <CloseCart />
                 </button>
               </div>
 
               {!cart || cart.lines.length === 0 ? (
-                <div className="align-center flex h-full flex-col justify-center">
-                  <div>
-                    <p className="mt-6 text-center text-2xl font-bold text-neutral-500">
-                      Your Cart is Empty.
-                    </p>
-                    <div className="justify-center flex mt-2 ">
-                      <ShoppingCartIcon className="h-16 text-neutral-500" />
-                    </div>
+                <div className="flex h-full flex-col items-center justify-center">
+                  <div className="relative">
+                    <div className="absolute inset-0 animate-pulse rounded-full bg-accent-primary/20 blur-2xl"></div>
+                    <ShoppingCartIcon className="relative h-24 w-24 text-accent-primary/50 mb-6" />
                   </div>
-                  
-                  
+                  <h3 className="text-2xl font-bold mb-2 text-white">Your Cart is Empty</h3>
+                  <p className="text-gaming-300 text-center mb-6 max-w-xs">Start adding items to see them here</p>
+                  <Link 
+                    href="/search" 
+                    onClick={closeCart}
+                    className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent-primary to-accent-secondary px-6 py-3 text-sm font-medium text-white shadow-lg transition-all duration-300 hover:shadow-neon-purple hover:scale-105"
+                  >
+                    Start Shopping
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
                 </div>
               ) : (
                 <div className="flex h-full flex-col justify-between overflow-hidden p-1">
@@ -126,7 +132,7 @@ export default function CartModal() {
                         return (
                           <li
                             key={i}
-                            className="lex w-full flex-col border-b border-neutral-300 dark:border-neutral-700 pb-2"
+                            className="lex w-full flex-col border-b border-neutral-300 dark:border-neutral-700 pb-6"
                           >
                             <div className="relative flex w-full flex-row justify-between px-1 py-4">
                               

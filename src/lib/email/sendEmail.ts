@@ -57,16 +57,22 @@ export async function sendContactEmail(data: ContactFormData) {
       throw new Error('Email configuration is not complete. Please check environment variables.');
     }
 
-    console.log('Initializing email transport with host:', process.env.EMAIL_HOST);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Initializing email transport with host:', process.env.EMAIL_HOST);
+    }
     
     // Create appropriate transporter
     const transporter = createTransporter();
 
     // Try to verify connection configuration
     try {
-      console.log('Verifying email transporter connection...');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Verifying email transporter connection...');
+      }
       await transporter.verify();
-      console.log('Email server connection established successfully');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Email server connection established successfully');
+      }
     } catch (verifyError) {
       console.error('Email verification failed:', verifyError);
       // Continue anyway - some providers don't support verification
@@ -76,7 +82,9 @@ export async function sendContactEmail(data: ContactFormData) {
     const from = process.env.EMAIL_FROM || process.env.EMAIL_USER;
     const to = process.env.EMAIL_TO || process.env.EMAIL_USER;
 
-    console.log(`Preparing to send email from ${from} to ${to}`);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`Preparing to send email from ${from} to ${to}`);
+    }
 
     // Email content
     const mailOptions = {
@@ -103,12 +111,16 @@ Consent to marketing: ${data.consent ? 'Yes' : 'No'}
     };
 
     // Send email
-    console.log('Sending email...');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Sending email...');
+    }
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Email sent successfully:', info.messageId);
+    }
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error sending email:', error instanceof Error ? error.message : 'Unknown error');
     throw error;
   }
 }

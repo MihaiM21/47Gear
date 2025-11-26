@@ -77,7 +77,7 @@ export async function updateItemQuantity(
 
     revalidateTag(TAGS.cart);
   } catch (error) {
-    console.error(error);
+    console.error('Error updating item quantity:', error instanceof Error ? error.message : 'Unknown error');
     return "Error updating item quantity";
   }
 }
