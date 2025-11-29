@@ -28,39 +28,55 @@ export default async function CategoryPage({
     .join(' ');
 
   return (
-    <div className="space-y-8">
-      {/* Header section */}
-      <div className="relative">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-gradient-purple">
-          {formattedCollectionName}
-        </h1>
-        <div className="h-1 w-24 bg-gradient-to-r from-accent-primary to-purple-600 rounded-full mb-6"></div>
-        
-        <p className="text-white/80 mb-6 max-w-2xl">
-          Explore our premium {formattedCollectionName.toLowerCase()} collection, designed for 
-          performance and precision. Each product is carefully crafted for serious gamers.
-        </p>
+    <div className="relative">
+      {/* Premium background effects */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-accent-primary/20 rounded-full blur-[120px] animate-floatingOrbs"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-secondary/20 rounded-full blur-[120px] animate-floatingOrbs" style={{ animationDelay: '2s' }}></div>
       </div>
-
-      {/* Products grid */}
-      {products.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-20 glass-card">
-          <div className="rounded-full bg-accent-primary/20 p-6 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-primary h-8 w-8">
-              <path d="M9.5 4h5L17 7h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3l2.5-3z"></path>
-              <circle cx="12" cy="13" r="3"></circle>
-            </svg>
+    
+      <div className="space-y-8 px-4">
+        {/* Enhanced header section */}
+        <div className="relative py-12 px-6 rounded-2xl bg-gradient-to-br from-gaming-800/40 to-accent-primary/10 backdrop-blur-sm border border-accent-primary/20 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-accent-primary/5 to-transparent"></div>
+          <div className="relative z-10">
+            <h1 className="text-4xl md:text-6xl font-black mb-4 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-clip-text text-transparent animate-premiumFadeInUp">
+              {formattedCollectionName}
+            </h1>
+            <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mb-6 shimmer"></div>
+            
+            <p className="text-white/70 text-lg mb-0 max-w-2xl leading-relaxed">
+              Explore our premium {formattedCollectionName.toLowerCase()} collection, designed for 
+              performance and precision. Each product is carefully crafted for serious gamers.
+            </p>
           </div>
-          <h3 className="text-xl font-bold text-white">No products found</h3>
-          <p className="text-white/70 mt-2">We couldn't find any products in this collection</p>
         </div>
-      ) : (
-        <div className="relative">
-          <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProductGridItems products={products} />
-          </Grid>
-        </div>
-      )}
+
+        {/* Products grid */}
+        {products.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-24 px-4">
+            <div className="relative group">
+              <div className="relative rounded-full bg-accent-primary/20 p-8 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-primary">
+                  <path d="M20 7h-3a2 2 0 0 1-2-2V2"></path>
+                  <path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"></path>
+                  <path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-white via-accent-secondary to-white bg-clip-text text-transparent">
+              No products found
+            </h3>
+            <p className="text-white/60 text-lg mb-8">We couldn't find any products in this collection</p>
+          </div>
+        ) : (
+          <div className="relative px-4">
+            <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ProductGridItems products={products} />
+            </Grid>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

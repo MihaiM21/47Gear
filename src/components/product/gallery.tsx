@@ -23,12 +23,12 @@ export default function Gallery({
 
   return (
     <form>
-      <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-gaming-900/30">
         {images[imageIndex] && (
           <Image
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain p-8"
             fill
-            sizes="(min-width: 1024px) 66vw, 100vw"
+            sizes="(min-width: 1024px) 60vw, 100vw"
             src={images[imageIndex]?.src as string}
             alt={images[imageIndex]?.altText as string}
             priority={true}
@@ -36,8 +36,8 @@ export default function Gallery({
         )}
 
         {images.length > 1 ? (
-          <div className="absolute bottom-[15%] flex w-full justify-center">
-            <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur dark:border-black dark:bg-neutral-900/80">
+          <div className="absolute bottom-6 flex w-full justify-center">
+            <div className="flex h-12 items-center rounded-full border border-white/10 bg-black/60 backdrop-blur-xl px-2">
               <button
                 formAction={() => {
                   const newState = updateImage(previousImageIndex.toString());
@@ -46,9 +46,9 @@ export default function Gallery({
                 aria-label="Previous product image"
                 className={buttonClassName}
               >
-                <ArrowLeftIcon className="h-5" />
+                <ArrowLeftIcon className="h-5 text-white" />
               </button>
-              <div className="mx-1 h-6 w-px bg-neutral-500"></div>
+              <div className="mx-2 h-6 w-px bg-white/20"></div>
               <button
                 formAction={() => {
                   const newState = updateImage(nextImageIndex.toString());
@@ -57,25 +57,27 @@ export default function Gallery({
                 aria-label="Next product image"
                 className={buttonClassName}
               >
-                <ArrowRightIcon className="h-5" />
+                <ArrowRightIcon className="h-5 text-white" />
               </button>
             </div>
           </div>
         ) : null}
       </div>
       {images.length > 1 ? (
-        <ul className="my-12 flex items-center justify-center gap-2 overflow-auto py-1 lg:mb-0">
+        <ul className="mt-6 flex items-center gap-3 overflow-auto">
           {images.map((image, index) => {
             const isActive = index === imageIndex;
             return (
-              <li key={image.src} className="h-20 w-20">
+              <li key={image.src} className="flex-shrink-0">
                 <button
                   formAction={() => {
                     const newState = updateImage(index.toString());
                     updateURL(newState);
                   }}
                   aria-label="Select product image"
-                  className="h-full w-full"
+                  className={`block h-20 w-20 overflow-hidden rounded-lg border-2 transition-all duration-300 ${
+                    isActive ? 'border-accent-secondary scale-105' : 'border-white/10 hover:border-white/30'
+                  }`}
                 >
                   <GridTileImage
                     alt={image.altText}

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function AboutUsPage() {
   return (
-    <div className="relative mx-auto max-w-screen-lg px-4 py-16 overflow-hidden">
+    <div className="relative mt-12 mx-auto max-w-screen-lg px-4 py-16 overflow-hidden">
       
       <div className="relative z-10">
         {/* Hero Section */}
@@ -19,7 +19,7 @@ export default function AboutUsPage() {
             <div className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-accent-primary to-transparent"></div>
           </div>
           <p className="mt-6 text-lg text-white/90 max-w-2xl mx-auto animate-fade-in-up">
-            Your premium gaming gear destination, crafted for gamers by gamers
+            Destinația ta pentru echipament premium. Creat de gameri, pentru gameri
           </p>
         </div>
 
@@ -29,12 +29,11 @@ export default function AboutUsPage() {
           <div className="relative glass-card hover:shadow-glow-purple transition-all duration-500 p-8">
             <div className="absolute top-0 right-0 h-20 w-20 bg-accent-primary/10 rounded-full blur-2xl"></div>
             <p className="text-white/90 text-lg leading-relaxed">
-              Founded in 2025. Driven by passion.
-              Born from the experience of professional gamers, 47Gear started with one idea to create peripherals that truly understand the needs of players.
+              Fondat în 2025. Motivat de pasiune. Născut din experiența gaming-ului competitiv, 47Gear a pornit cu o singură idee: să creăm periferice care înțeleg cu adevărat nevoile jucătorilor.
               
             </p>
             <p className="text-white/90 text-lg leading-relaxed mt-4">
-              What began with a single mousepad has evolved into a trusted name in premium gaming gear, known for quality, precision, and performance.
+              Ceea ce a început cu un singur mousepad a evoluat într-un brand de încredere în lumea echipamentelor premium, recunoscut pentru calitate, precizie și performanță.
             </p>
           </div>
         </div>
@@ -47,12 +46,11 @@ export default function AboutUsPage() {
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-primary">
                 <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
               </svg>
-              Our Mission
+              Misiunea Noastră
             </h2>
             <p className="text-white/90 relative z-10">
-              Gear that gives you the edge.
-              We&apos;re dedicated to creating gaming equipment that combines precision, durability, and comfort. Because in every match, every 
-              move matters and the right gear makes all the difference.
+              Avantajul decisiv în joc. Ne dedicăm creării de echipament care îmbină precizia, durabilitatea și confortul.
+               Pentru că știm că în fiecare meci contează orice mișcare, iar echipamentul potrivit face diferența dintre victorie și înfrângere.
             </p>
           </div>
 
@@ -64,19 +62,18 @@ export default function AboutUsPage() {
                 <path d="M12 16v-4"></path>
                 <path d="M12 8h.01"></path>
               </svg>
-              Our Vision
+              Viziunea Noastră
             </h2>
             <p className="text-white/90 relative z-10">
-              Empowering every gamer.
-              We believe every player deserves access to professional-grade equipment that enhances skill and confidence.
-              Through innovation and community, 47Gear continues to push gaming forward one product at a time.
+              Susținem fiecare gamer. Credem că orice jucător merită acces la echipamente de nivel profesional care să-i amplifice skill-ul și încrederea.
+               Prin inovație și focus pe comunitate, 47Gear duce experiența de gaming la următorul nivel, produs cu produs.
             </p>
           </div>
         </div>
 
         {/* Why Choose Us */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">Why Choose 47Gear?</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">De ce să alegi 47Gear?</h2>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="glass-card hover:shadow-glow-purple hover:translate-y-[-8px] transition-all duration-300 p-6 text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-purple-700 shadow-glow-sm mx-auto">
@@ -84,9 +81,9 @@ export default function AboutUsPage() {
                   <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Competitive Pricing</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Raport Calitate-Preț</h3>
               <p className="text-white/80">
-                Premium quality gear at affordable prices. We believe top-tier gaming shouldn&apos;t break the bank.
+                Echipament premium la prețuri accesibile. Credem că un setup de gaming de top nu ar trebui să-ți golească portofelul.
               </p>
             </div>
             
@@ -96,9 +93,9 @@ export default function AboutUsPage() {
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Quality Assurance</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Calitate Garantată</h3>
               <p className="text-white/80">
-                Every product is rigorously tested for durability and performance in real gaming scenarios.
+                Fiecare produs este testat riguros pentru durabilitate și performanță în scenarii reale de joc, nu doar în laborator.
               </p>
             </div>
             
@@ -108,9 +105,9 @@ export default function AboutUsPage() {
                   <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Customer Support</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Asistență 24/7</h3>
               <p className="text-white/80">
-                24/7 support from fellow gamers who understand your needs and speak your language.
+                Asistență 24/7 oferită de alți gameri care îți înțeleg nevoile și vorbesc aceeași limbă cu tine.
               </p>
             </div>
           </div>

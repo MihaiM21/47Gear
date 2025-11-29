@@ -100,6 +100,7 @@ export type ShopifyCollection = {
   description: string;
   seo: SEO;
   updatedAt: string;
+  image?: Image;
 };
 
 export type Collection = ShopifyCollection & {

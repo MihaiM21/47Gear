@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ContactUsPage() {
   return (
-    <div className="mx-auto max-w-screen-lg px-4 py-10">
+    <div className="mx-auto mt-20 max-w-screen-lg px-4 py-10">
       {/* Streamlined header with gradient effect */}
       <div className="mb-10 text-center relative">
         <div className="absolute -z-10 inset-0 bg-gradient-to-r from-accent-primary/20 via-accent-secondary/10 to-accent-primary/20 blur-xl opacity-30 rounded-full"></div>

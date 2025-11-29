@@ -10,7 +10,7 @@ export default function SearchLayout({
 }) {
   return (
     <>
-      <div className="relative">
+      <div className="relative mt-12">
         {/* Background elements */}
         <div className="absolute inset-0 bg-gradient-to-b from-accent-primary/5 via-black/80 to-black -z-10"></div>
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-radial from-accent-primary/10 to-transparent opacity-50 -z-10"></div>

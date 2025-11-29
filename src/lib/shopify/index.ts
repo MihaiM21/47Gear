@@ -53,6 +53,7 @@ import {
   ShopifyUpdateCartOperation,
 } from "./types";
 import { getPageQuery, getPagesQuery } from "./queries/page";
+import { url } from "inspector";
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
   ? ensureStartWith(process.env.SHOPIFY_STORE_DOMAIN, "https://")
@@ -68,12 +69,14 @@ export async function shopifyFetch<T>({
   query,
   tags,
   variables,
+  revalidate = 300, // Default: revalidate every 5 minutes
 }: {
   cache?: RequestCache;
   headers?: HeadersInit;
   query: string;
   tags?: string[];
   variables?: ExtractVariables<T>;
+  revalidate?: number | false;
 }): Promise<{ status: number; body: T } | never> {
   try {
     const result = await fetch(endpoint, {
@@ -88,7 +91,10 @@ export async function shopifyFetch<T>({
         ...(variables && { variables }),
       }),
       cache,
-      ...(tags && { next: { tags } }),
+      next: { 
+        ...(tags && { tags }),
+        ...(revalidate !== false && { revalidate })
+      },
     });
 
     const body = await result.json();
@@ -175,6 +181,7 @@ export async function getMenu(handle: string): Promise<Menu[]> {
     variables: {
       handle,
     },
+    revalidate: 600, // Revalidate menu every 10 minutes
   });
 
   return (
@@ -205,6 +212,7 @@ export async function getProducts({
       reverse,
       sortKey,
     },
+    revalidate: 180, // Revalidate products every 3 minutes
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
@@ -241,6 +249,7 @@ export async function getCollections(): Promise<Collection[]> {
   const res = await shopifyFetch<ShopifyCollectionsOperation>({
     query: getCollectionsQuery,
     tags: [TAGS.collections],
+    revalidate: 300, // Revalidate collections every 5 minutes
   });
 
   const shopifyCollections = removeEdgesAndNodes(res?.body?.data?.collections);
@@ -282,10 +291,13 @@ export async function getCollectionProducts({
       reverse,
       sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
     },
+    revalidate: 180, // Revalidate collection products every 3 minutes
   });
 
   if (!res.body.data.collection) {
-    console.log(`No collection found for \`${collection}\``);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`No collection found for \`${collection}\``);
+    }
     return [];
   }
 
@@ -301,6 +313,7 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
     variables: {
       handle,
     },
+    revalidate: 180, // Revalidate individual products every 3 minutes
   });
   return reshapeProduct(res.body.data.product, false);
 }
@@ -314,6 +327,7 @@ export async function getProductRecommendations(
     variables: {
       productId,
     },
+    revalidate: 300, // Revalidate recommendations every 5 minutes
   });
 
   return reshapeProducts(res.body.data.productRecommendations);
@@ -412,8 +426,9 @@ export async function addToCart(
 export async function getPage(handle: string): Promise<Page> {
   const res = await shopifyFetch<ShopifyPageOperation>({
     query: getPageQuery,
-    cache: "no-store",
+    cache: "force-cache",
     variables: { handle },
+    revalidate: 600, // Revalidate pages every 10 minutes
   });
 
   return res.body.data.pageByHandle;
@@ -422,7 +437,8 @@ export async function getPage(handle: string): Promise<Page> {
 export async function getPages(): Promise<Page[]> {
   const res = await shopifyFetch<ShopifyPagesOperation>({
     query: getPagesQuery,
-    cache: "no-store",
+    cache: "force-cache",
+    revalidate: 600, // Revalidate pages list every 10 minutes
   });
 
   return removeEdgesAndNodes(res.body.data.pages);
