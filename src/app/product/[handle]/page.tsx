@@ -285,6 +285,7 @@ async function RelatedPRoducts({ id }: { id: string }) {
                     title: product.title,
                     amount: product.priceRange.maxVariantPrice.amount,
                     currencyCode: product.priceRange.maxVariantPrice.currencyCode,
+                    availableForSale: product.availableForSale,
                   }}
                   src={product.featuredImage?.url}
                   fill

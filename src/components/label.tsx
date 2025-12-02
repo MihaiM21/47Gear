@@ -6,11 +6,13 @@ export default function Label({
   amount,
   currencyCode,
   position = "bottom",
+  availableForSale = false,
 }: {
   title: string;
   amount: string;
   currencyCode: string;
   position?: "bottom" | "center";
+  availableForSale?: boolean;
 }) {
   return (
     <div
@@ -36,12 +38,22 @@ export default function Label({
             </span>
             <span className="text-xs text-gaming-300 font-medium">{currencyCode}</span>
           </div>
-          <div className="inline-flex items-center gap-1 text-accent-green text-xs font-medium">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            In Stock
-          </div>
+          {availableForSale && (
+            <div className="inline-flex items-center gap-1 text-accent-green text-xs font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              In Stock
+            </div>
+          )}
+          {!availableForSale && (
+            <div className="inline-flex items-center gap-1 text-red-500 text-xs font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Out of Stock
+            </div>
+          )}
         </div>
       </div>
     </div>
