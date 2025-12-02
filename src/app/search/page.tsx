@@ -64,8 +64,8 @@ export default async function SearchPage({
                   <circle cx="12" cy="13" r="3"></circle>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white">No products found</h3>
-              <p className="text-white/70 mt-2">Try adjusting your search or filters</p>
+              <h3 className="text-xl font-bold text-white">Nu s-au găsit produse</h3>
+              <p className="text-white/70 mt-2">Incearca sa ajustezi cautarea sau filtrele</p>
             </div>
           )}
         </div>

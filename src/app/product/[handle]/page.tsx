@@ -102,11 +102,11 @@ function ProductSpecs() {
     <div className="border-t border-white/5 pt-16 pb-24">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-          Engineered for Champions
+          Creat Pentru Campioni
         </h2>
         <p className="text-lg text-white/60 leading-relaxed">
-          Every mousepad is crafted with precision materials and attention to detail, 
-          delivering the performance edge you need to dominate the competition.
+          Fiecare mousepad este creat cu materiale de precizie și atenție la detalii, 
+          oferind avantajul de performanță de care ai nevoie pentru a domina competiția.
         </p>
       </div>
 
@@ -127,10 +127,10 @@ function ProductSpecs() {
               </div>
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-white mb-3">Premium Surface</h3>
+          <h3 className="text-2xl font-bold text-white mb-3">Suprafață Premium</h3>
           <p className="text-white/60 leading-relaxed">
-            High-grade micro-textured fabric provides the perfect balance of speed and control. 
-            Optimized for both optical and laser sensors, ensuring pixel-perfect tracking.
+            Material de înaltă calitate cu micro-textură oferă echilibrul perfect între viteză și control. 
+            Optimizat pentru senzori optici și laser, asigurând tracking perfect la nivel de pixel.
           </p>
         </div>
 
@@ -149,17 +149,17 @@ function ProductSpecs() {
               </div>
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-white mb-3">Anti-Slip Base</h3>
+          <h3 className="text-2xl font-bold text-white mb-3">Bază Antiderapantă</h3>
           <p className="text-white/60 leading-relaxed">
-            Natural rubber base keeps your mousepad firmly in place during intense gaming sessions. 
-            No sliding, no distractions—just pure performance.
+            Baza din cauciuc natural ține mousepad-ul ferm pe loc în timpul sesiunilor intense de gaming. 
+            Fără alunecare, fără distracții—doar performanță pură.
           </p>
         </div>
       </div>
 
       {/* Specifications */}
       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:p-12">
-        <h3 className="text-2xl font-bold text-white mb-8 text-center">Technical Specifications</h3>
+        <h3 className="text-2xl font-bold text-white mb-8 text-center">Specificații Tehnice</h3>
         
         <div className="grid md:grid-cols-3 gap-8">
           {/* Size */}
@@ -170,7 +170,7 @@ function ProductSpecs() {
               </svg>
             </div>
             <div>
-              <div className="text-sm text-white/50 mb-1">Dimensions</div>
+              <div className="text-sm text-white/50 mb-1">Dimensiuni</div>
               <div className="text-lg font-semibold text-white">900 × 400mm</div>
             </div>
           </div>
@@ -183,7 +183,7 @@ function ProductSpecs() {
               </svg>
             </div>
             <div>
-              <div className="text-sm text-white/50 mb-1">Thickness</div>
+              <div className="text-sm text-white/50 mb-1">Grosime</div>
               <div className="text-lg font-semibold text-white">3mm</div>
             </div>
           </div>
@@ -197,7 +197,7 @@ function ProductSpecs() {
             </div>
             <div>
               <div className="text-sm text-white/50 mb-1">Material</div>
-              <div className="text-lg font-semibold text-white">Micro-Textured Cloth</div>
+              <div className="text-lg font-semibold text-white">Material Textil cu Micro-Textură</div>
             </div>
           </div>
         </div>
@@ -212,8 +212,8 @@ function ProductSpecs() {
                 </svg>
               </div>
               <div>
-                <div className="text-white font-medium mb-1">Stitched Edges</div>
-                <div className="text-sm text-white/50">Reinforced borders prevent fraying and ensure long-lasting durability</div>
+                <div className="text-white font-medium mb-1">Margini Cusute</div>
+                <div className="text-sm text-white/50">Margini întărite previn despărțirea firelor și asigură durabilitate de lungă durată</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -223,8 +223,8 @@ function ProductSpecs() {
                 </svg>
               </div>
               <div>
-                <div className="text-white font-medium mb-1">Machine Washable</div>
-                <div className="text-sm text-white/50">Easy to clean and maintain for consistent performance</div>
+                <div className="text-white font-medium mb-1">Spălabil la Mașină</div>
+                <div className="text-sm text-white/50">Ușor de curățat și întreținut pentru performanță constantă</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -234,8 +234,8 @@ function ProductSpecs() {
                 </svg>
               </div>
               <div>
-                <div className="text-white font-medium mb-1">Universal Compatibility</div>
-                <div className="text-sm text-white/50">Works perfectly with all mouse types and sensors</div>
+                <div className="text-white font-medium mb-1">Compatibilitate Universală</div>
+                <div className="text-sm text-white/50">Funcționează perfect cu toate tipurile de mouse și senzori</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -245,8 +245,8 @@ function ProductSpecs() {
                 </svg>
               </div>
               <div>
-                <div className="text-white font-medium mb-1">Eco-Friendly Materials</div>
-                <div className="text-sm text-white/50">Sustainable production process with non-toxic materials</div>
+                <div className="text-white font-medium mb-1">Materiale Ecologice</div>
+                <div className="text-sm text-white/50">Proces de producție sustenabil cu materiale netoxice</div>
               </div>
             </div>
           </div>
@@ -264,8 +264,8 @@ async function RelatedPRoducts({ id }: { id: string }) {
   return (
     <div className="border-t border-white/5 pt-16">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">You May Also Like</h2>
-        <p className="text-white/60 text-lg">Explore similar products chosen for you</p>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">Ar Putea Să-ți Placă</h2>
+        <p className="text-white/60 text-lg">Explorează produse similare alese pentru tine</p>
       </div>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {relatedProducts.map((product) => (

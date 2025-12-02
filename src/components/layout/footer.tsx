@@ -1,5 +1,6 @@
 import { getMenu } from "@/lib/shopify";
 import { Menu } from "@/lib/shopify/types";
+import Image from "next/image";
 import Link from "next/link";
 import LogoSquare from "@/components/logo-square";
 
@@ -63,6 +64,28 @@ export default async function Footer() {
                 <li><Link href="/privacy-policy" className="text-sm text-white/50 hover:text-white transition-colors">Privacy</Link></li>
                 <li><Link href="/terms-of-service" className="text-sm text-white/50 hover:text-white transition-colors">Terms</Link></li>
               </ul>
+            </div>
+
+            {/* ANPC */}
+            <div className="md:col-span-2">
+              <Link href="https://anpc.ro/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white mb-4 inline-block">
+                <Image
+                  src="/images/anpc/anpc1.png"
+                  alt="ANPC Logo"
+                  width={150}
+                  height={50}
+                  className="mb-4"
+                />
+              </Link>
+              <Link href="https://anpc.ro/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white mb-4 inline-block">
+                <Image
+                  src="/images/anpc/anpc2.png"
+                  alt="ANPC Logo"
+                  width={150}
+                  height={50}
+                  className="mb-4"
+                />
+              </Link>
             </div>
           </div>
 

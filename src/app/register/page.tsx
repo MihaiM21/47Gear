@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CUSTOMER_CREATE, CUSTOMER_ACCESS_TOKEN_CREATE } from '@/lib/shopify/mutations/customer';
 import { getShopifyUrl } from '@/lib/shopify';
-import LogoSquare from '@/components/logo-square';
 import LoadingDots from '@/components/loading-dots';
 
 export default function RegisterPage() {
@@ -18,10 +17,17 @@ export default function RegisterPage() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!acceptTerms) {
+      setError('Please accept the terms and conditions');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -90,104 +96,134 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="mx-8 max-w-2xl lg:mx-auto">
-      <div className="flex flex-col items-center space-y-10 pt-16 pb-16 md:pt-24">
-        <div className="flex flex-col items-center space-y-6">
-          <LogoSquare />
-          <h1 className="text-4xl font-bold tracking-tight">Create an account</h1>
-          <p className="text-lg text-neutral-500">
-            Join us for a better shopping experience
-          </p>
+    <div className="min-h-screen bg-black text-white flex items-center justify-center py-12 px-6">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-12">
+          <div className="inline-block px-3 py-1 bg-accent-primary/10 border border-accent-primary/20 rounded-full mb-6">
+            <span className="text-xs font-medium text-accent-secondary tracking-wider uppercase">Join Us</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
+            Create Account
+          </h1>
+          <p className="text-white/60 text-lg">Start your premium experience</p>
         </div>
-        <div className="w-full max-w-md">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+
+        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 backdrop-blur-sm">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-              <div className="relative rounded border border-red-500 bg-red-50 px-4 py-3 text-sm text-red-500">
+              <div className="rounded-xl bg-red-500/10 border border-red-500/20 px-4 py-3 text-sm text-red-400">
                 {error}
               </div>
             )}
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-primary">
-                    First name
-                  </label>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
-                    placeholder="John"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-primary">
-                    Last name
-                  </label>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-primary">
-                  Email
+                <label htmlFor="firstName" className="block text-sm text-white/80 mb-2">
+                  First Name
                 </label>
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="firstName"
+                  name="firstName"
+                  type="text"
                   required
-                  value={formData.email}
+                  value={formData.firstName}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
-                  placeholder="you@example.com"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/40 focus:border-accent-secondary focus:outline-none transition-colors"
+                  placeholder="John"
                 />
               </div>
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-primary">
-                  Password
+                <label htmlFor="lastName" className="block text-sm text-white/80 mb-2">
+                  Last Name
                 </label>
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
+                  id="lastName"
+                  name="lastName"
+                  type="text"
                   required
-                  value={formData.password}
+                  value={formData.lastName}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
-                  placeholder="••••••••"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/40 focus:border-accent-secondary focus:outline-none transition-colors"
+                  placeholder="Doe"
                 />
               </div>
             </div>
-            <div className="flex flex-col space-y-4">
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full rounded-md bg-gradient-to-r from-accent-primary to-accent-secondary px-4 py-2 text-center font-medium text-white text-sm shadow-neon hover:shadow-neon-purple transition-all duration-300 hover:translate-y-[-1px] relative overflow-hidden shine-effect`}
-              >
-                {loading ? <LoadingDots className="bg-white" /> : 'Create account'}
-              </button>
-              <Link
-                href="/login"
-                className="text-center text-sm font-medium text-primary underline underline-offset-4 hover:text-gray-700"
-              >
-                Already have an account? Sign in
-              </Link>
+
+            <div>
+              <label htmlFor="email" className="block text-sm text-white/80 mb-2">
+                Email Address
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/40 focus:border-accent-secondary focus:outline-none transition-colors"
+                placeholder="your@email.com"
+              />
             </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm text-white/80 mb-2">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/40 focus:border-accent-secondary focus:outline-none transition-colors"
+                placeholder="••••••••"
+              />
+              <p className="mt-2 text-xs text-white/50">Minimum 8 characters</p>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="acceptTerms"
+                checked={acceptTerms}
+                onChange={(e) => setAcceptTerms(e.target.checked)}
+                className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-accent-secondary focus:ring-accent-secondary focus:ring-offset-0"
+              />
+              <label htmlFor="acceptTerms" className="text-sm text-white/60">
+                I agree to the{' '}
+                <Link href="/terms-of-service" className="text-accent-secondary hover:text-accent-primary transition-colors">
+                  Terms of Service
+                </Link>{' '}
+                and{' '}
+                <Link href="/privacy-policy" className="text-accent-secondary hover:text-accent-primary transition-colors">
+                  Privacy Policy
+                </Link>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? <LoadingDots className="bg-black" /> : 'Create Account'}
+            </button>
           </form>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-white/60">
+            Already have an account?{' '}
+            <Link
+              href="/login"
+              className="text-accent-secondary hover:text-accent-primary transition-colors font-medium"
+            >
+              Sign in
+            </Link>
+          </p>
         </div>
       </div>
     </div>

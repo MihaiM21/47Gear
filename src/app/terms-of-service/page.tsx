@@ -12,46 +12,46 @@ export default function TermsOfServicePage() {
       <div className="mb-8 text-center relative">
         <div className="absolute -z-10 inset-0 bg-gradient-to-r from-accent-primary/20 via-accent-secondary/10 to-accent-primary/20 blur-xl opacity-30 rounded-full"></div>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-1 animate-gradient">
-          Terms of <span className="text-accent-yellow">Service</span>
+          Termeni și <span className="text-accent-yellow">Condiții</span>
         </h1>
         <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mx-auto my-4"></div>
         <p className="mt-3 text-base text-white/80 max-w-xl mx-auto">
-          Last updated: October 21, 2025
+          Ultima actualizare: 21 Octombrie 2025
         </p>
       </div>
 
       {/* Main content */}
       <div className="glass-card p-6 border border-accent-primary/20 shadow-neon mb-8">
         <div className="prose prose-invert prose-headings:text-accent-secondary prose-a:text-accent-secondary max-w-none">
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Welcome to 47Gear</h2>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Bun venit la 47Gear</h2>
           <p className="text-white/80 text-sm mb-4">
-            These terms and conditions outline the rules and regulations for the use of 47Gear's website and services. By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use 47Gear's website if you do not accept all of the terms and conditions stated on this page.
+            Acești termeni și condiții prezintă regulile și reglementările pentru utilizarea site-ului și serviciilor 47Gear. Accesând acest site, presupunem că acceptați în totalitate acești termeni și condiții. Nu continuați să utilizați site-ul 47Gear dacă nu acceptați toți termenii și condițiile menționate pe această pagină.
           </p>
           <p className="text-white/80 text-sm mb-6">
-            The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves.
+            Următoarea terminologie se aplică acestor Termeni și Condiții, Declarației de Confidențialitate și Notei de Declină are a Răspunderii: "Client", "Dumneavoastră" se referă la dvs., persoana care accsează acest site și acceptă termenii și condițiile Companiei. "Compania", "Noi" se referă la compania noastră. "Părțile" se referă atât la Client, cât și la noi.
           </p>
 
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">License to Use Website</h2>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Licența de Utilizare a Site-ului</h2>
           <p className="text-white/80 text-sm mb-4">
-            Unless otherwise stated, 47Gear and/or its licensors own the intellectual property rights for all material on 47Gear's website. All intellectual property rights are reserved. You may view and/or print pages from the website for your own personal use subject to restrictions set in these terms and conditions.
+            Cu excepția cazului în care se menționează altfel, 47Gear și/sau licențiatorii săi dețin drepturile de proprietate intelectuală pentru tot materialul de pe site-ul 47Gear. Toate drepturile de proprietate intelectuală sunt rezervate. Puteți vizualiza și/sau tipări pagini de pe site pentru uz personal, sub rezerva restricțiilor stabilite în acești termeni și condiții.
           </p>
-          <p className="text-white/80 text-sm mb-2">You must not:</p>
+          <p className="text-white/80 text-sm mb-2">Nu aveți voie să:</p>
           <ul className="list-disc pl-5 space-y-1 mb-6">
-            <li className="text-white/80 text-sm">Republish material from this website</li>
-            <li className="text-white/80 text-sm">Sell, rent or sub-license material from this website</li>
-            <li className="text-white/80 text-sm">Reproduce, duplicate or copy material from this website</li>
-            <li className="text-white/80 text-sm">Redistribute content from 47Gear (unless content is specifically made for redistribution)</li>
+            <li className="text-white/80 text-sm">Republicați material de pe acest site</li>
+            <li className="text-white/80 text-sm">Vândeți, închiriați sau sublicențiați material de pe acest site</li>
+            <li className="text-white/80 text-sm">Reproduceți, duplicați sau copiați material de pe acest site</li>
+            <li className="text-white/80 text-sm">Redistribuiți conținut de la 47Gear (cu excepția cazului în care conținutul este creat special pentru redistribuire)</li>
           </ul>
 
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">User Account</h2>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Cont de Utilizator</h2>
           <p className="text-white/80 text-sm mb-4">
-            When you create an account with us, you guarantee that the information you provide is accurate, complete, and current at all times. Inaccurate, incomplete, or obsolete information may result in the immediate termination of your account on the Service.
+            Când creați un cont la noi, garantați că informațiile pe care le furnizați sunt corecte, complete și actuale în permanență. Informațiile incorecte, incomplete sau învechite pot duce la încheierea imediatlă a contului dvs. pe Serviciu.
           </p>
           <p className="text-white/80 text-sm mb-4">
-            You are responsible for maintaining the confidentiality of your account and password, including but not limited to the restriction of access to your computer and/or account. You agree to accept responsibility for any and all activities or actions that occur under your account and/or password.
+            Sunteți responsabil pentru menținerea confidențialității contului și parolei dvs., inclusiv, dar fără a se limita la, restricționarea accesului la computerul și/sau contul dvs. Sunteți de acord să acceptați responsabilitatea pentru toate activitățile sau acțiunile care au loc sub contul și/sau parola dvs.
           </p>
           <p className="text-white/80 text-sm mb-6">
-            We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders at our sole discretion.
+            Ne rezervăm dreptul de a refuza serviciul, de a încheia conturi, de a elimina sau edita conținut sau de a anula comenzi la propria noastră discrteție.
           </p>
 
           <h2 className="text-xl font-bold text-gradient-purple mb-4">Products & Services</h2>
@@ -121,16 +121,16 @@ export default function TermsOfServicePage() {
             By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the website and services.
           </p>
 
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Contact Us</h2>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Contactează-ne</h2>
           <p className="text-white/80 text-sm mb-4">
-            If you have any questions about these Terms, please contact us at:
+            Dacă aveți întrebări despre acești Termeni, vă rugăm să ne contactați la:
           </p>
           <div className="glass-card p-4 inline-block bg-black/40 border border-accent-primary/20">
             <p className="text-white/90 text-sm">47Gear</p>
             <p className="text-white/90 text-sm">123 Gaming Street</p>
             <p className="text-white/90 text-sm">Tech City, GR 12345</p>
             <p className="text-white/90 text-sm">Email: legal@47gear.com</p>
-            <p className="text-white/90 text-sm">Phone: +1 (800) 47-GEAR</p>
+            <p className="text-white/90 text-sm">Telefon: +1 (800) 47-GEAR</p>
           </div>
         </div>
       </div>
@@ -138,24 +138,24 @@ export default function TermsOfServicePage() {
       {/* Call to action section */}
       <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
         <div className="glass-card p-4 border border-accent-primary/20 flex-1 w-full text-center">
-          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Have Questions?</h3>
-          <p className="text-white/70 text-sm mb-3">Our support team is here to help with any questions about our terms.</p>
+          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Ai Întrebări?</h3>
+          <p className="text-white/70 text-sm mb-3">Echipa noastră de suport este aici pentru a te ajuta cu orice întrebări despre termenii noștri.</p>
           <a 
             href="/contact-us" 
             className="inline-block px-4 py-2 text-sm rounded-md bg-accent-primary/80 hover:bg-accent-primary transition-colors duration-300 text-white"
           >
-            Contact Support
+            Contactează Suport
           </a>
         </div>
         
         <div className="glass-card p-4 border border-accent-primary/20 flex-1 w-full text-center">
-          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Privacy Policy</h3>
-          <p className="text-white/70 text-sm mb-3">Learn how we protect and manage your personal data.</p>
+          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Politica de Confidențialitate</h3>
+          <p className="text-white/70 text-sm mb-3">Află cum protejăm și gestionăm datele tale personale.</p>
           <a 
             href="/privacy-policy" 
             className="inline-block px-4 py-2 text-sm rounded-md bg-accent-primary/80 hover:bg-accent-primary transition-colors duration-300 text-white"
           >
-            View Privacy Policy
+            Vezi Politica de Confidențialitate
           </a>
         </div>
       </div>

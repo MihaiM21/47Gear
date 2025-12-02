@@ -12,36 +12,36 @@ export default function PrivacyPolicyPage() {
       <div className="mb-8 text-center relative">
         <div className="absolute -z-10 inset-0 bg-gradient-to-r from-accent-primary/20 via-accent-secondary/10 to-accent-primary/20 blur-xl opacity-30 rounded-full"></div>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-1 animate-gradient">
-          Privacy <span className="text-accent-yellow">Policy</span>
+          Politica de <span className="text-accent-yellow">Confidențialitate</span>
         </h1>
         <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mx-auto my-4"></div>
         <p className="mt-3 text-base text-white/80 max-w-xl mx-auto">
-          Last updated: October 21, 2025
+          Ultima actualizare: 21 Octombrie 2025
         </p>
       </div>
 
       {/* Main content */}
       <div className="glass-card p-6 border border-accent-primary/20 shadow-neon mb-8">
         <div className="prose prose-invert prose-headings:text-accent-secondary prose-a:text-accent-secondary max-w-none">
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Introduction</h2>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Introducere</h2>
           <p className="text-white/80 text-sm mb-4">
-            At 47Gear, we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you visit our website or make purchases.
+            La 47Gear, respectăm confidențialitatea dvs. și ne angajăm să protejăm datele dvs. personale. Această politică de confidențialitate explică cum colectăm, utilizăm și protejăm informațiile dvs. atunci când vizitați site-ul nostru sau faceți achiziții.
           </p>
           <p className="text-white/80 text-sm mb-6">
-            Please read this privacy policy carefully. If you do not agree with our policies and practices, you may choose not to use our website. By accessing or using our website, you agree to this privacy policy.
+            Vă rugăm să citiți cu atenție această politică de confidențialitate. Dacă nu sunteți de acord cu politicile și practicile noastre, puteți alege să nu utilizați site-ul nostru. Accesând sau utilizând site-ul nostru, sunteți de acord cu această politică de confidențialitate.
           </p>
 
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Information We Collect</h2>
-          <p className="text-white/80 text-sm mb-2">We collect several types of information from and about users of our website, including:</p>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Informațiile Pe Care Le Colectăm</h2>
+          <p className="text-white/80 text-sm mb-2">Colectăm mai multe tipuri de informații de la și despre utilizatorii site-ului nostru, inclusiv:</p>
           <ul className="list-disc pl-5 space-y-1 mb-6">
             <li className="text-white/80 text-sm">
-              <span className="text-accent-secondary">Personal information:</span> Name, email address, postal address, phone number, and payment information when you create an account or place an order.
+              <span className="text-accent-secondary">Informații personale:</span> Nume, adresă de email, adresă poștală, număr de telefon și informații de plată atunci când creați un cont sau plasați o comandă.
             </li>
             <li className="text-white/80 text-sm">
-              <span className="text-accent-secondary">Usage information:</span> How you interact with our website, products you view, search terms, and browsing patterns.
+              <span className="text-accent-secondary">Informații de utilizare:</span> Cum interacționați cu site-ul nostru, produsele pe care le vizualizați, termenii de căutare și tiparele de navigare.
             </li>
             <li className="text-white/80 text-sm">
-              <span className="text-accent-secondary">Technical information:</span> IP address, browser type, device information, and cookies.
+              <span className="text-accent-secondary">Informații tehnice:</span> Adresă IP, tip de browser, informații despre dispozitiv și cookie-uri.
             </li>
           </ul>
 
@@ -102,16 +102,16 @@ export default function PrivacyPolicyPage() {
             We encourage you to review this policy periodically to stay informed about how we protect your information.
           </p>
 
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Contact Us</h2>
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Contactează-ne</h2>
           <p className="text-white/80 text-sm mb-4">
-            If you have any questions or concerns about this privacy policy or our data practices, please contact us at:
+            Dacă aveți întrebări sau preocupări cu privire la această politică de confidențialitate sau practicile noastre de date, vă rugăm să ne contactați la:
           </p>
           <div className="glass-card p-4 inline-block bg-black/40 border border-accent-primary/20">
             <p className="text-white/90 text-sm">47Gear</p>
             <p className="text-white/90 text-sm">123 Gaming Street</p>
             <p className="text-white/90 text-sm">Tech City, GR 12345</p>
             <p className="text-white/90 text-sm">Email: privacy@47gear.com</p>
-            <p className="text-white/90 text-sm">Phone: +1 (800) 47-GEAR</p>
+            <p className="text-white/90 text-sm">Telefon: +1 (800) 47-GEAR</p>
           </div>
         </div>
       </div>
@@ -119,24 +119,24 @@ export default function PrivacyPolicyPage() {
       {/* Call to action section */}
       <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
         <div className="glass-card p-4 border border-accent-primary/20 flex-1 w-full text-center">
-          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Have Questions?</h3>
-          <p className="text-white/70 text-sm mb-3">Our support team is here to help with any privacy concerns.</p>
+          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Ai Întrebări?</h3>
+          <p className="text-white/70 text-sm mb-3">Echipa noastră de suport este aici pentru a te ajuta cu orice preocupări de confidențialitate.</p>
           <a 
             href="/contact-us" 
             className="inline-block px-4 py-2 text-sm rounded-md bg-accent-primary/80 hover:bg-accent-primary transition-colors duration-300 text-white"
           >
-            Contact Support
+            Contactează Suport
           </a>
         </div>
         
         <div className="glass-card p-4 border border-accent-primary/20 flex-1 w-full text-center">
-          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Terms of Service</h3>
-          <p className="text-white/70 text-sm mb-3">Learn about the terms governing your use of our services.</p>
+          <h3 className="text-lg font-semibold text-accent-secondary mb-2">Termeni și Condiții</h3>
+          <p className="text-white/70 text-sm mb-3">Află despre termenii care guvernează utilizarea serviciilor noastre.</p>
           <a 
             href="/terms-of-service" 
             className="inline-block px-4 py-2 text-sm rounded-md bg-accent-primary/80 hover:bg-accent-primary transition-colors duration-300 text-white"
           >
-            View Terms
+            Vezi Termenii
           </a>
         </div>
       </div>

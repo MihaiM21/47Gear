@@ -188,7 +188,7 @@ export default async function Home() {
                           {info?.description || collection.description}
                         </p>
                         <div className="inline-flex items-center text-white text-sm font-medium group-hover:translate-x-2 transition-transform">
-                          <span>Explore</span>
+                          <span>Explorează</span>
                           <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
@@ -206,7 +206,7 @@ export default async function Home() {
                 className="inline-flex items-center px-8 py-4 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all duration-300 group"
                 prefetch={false}
               >
-                <span className="mr-2">View All Products</span>
+                <span className="mr-2">Vezi Toate Produsele</span>
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -220,7 +220,7 @@ export default async function Home() {
       <section className="py-16 bg-black">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="text-center mb-12">
-            <p className="text-white/40 text-sm uppercase tracking-wider mb-6">Trusted by thousands of gamers worldwide</p>
+            <p className="text-white/40 text-sm uppercase tracking-wider mb-6">Încrederea a mii de gameri din întreaga lume</p>
             <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
               <div className="text-white/60 text-lg font-bold">Team Alpha</div>
               <div className="text-white/60 text-lg font-bold">ProLeague</div>

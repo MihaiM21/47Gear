@@ -20,7 +20,7 @@ export function ProductDescription({ product }: { product: Product }) {
               currencyCode={product.priceRange.maxVariantPrice.currencyCode}
             />
           </div>
-          <span className="text-sm text-white/40">Free shipping</span>
+          {/* <span className="text-sm text-white/40">Free shipping</span> */}
         </div>
       </div>
 

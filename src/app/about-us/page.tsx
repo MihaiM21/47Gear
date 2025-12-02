@@ -14,7 +14,7 @@ export default function AboutUsPage() {
         <div className="mb-16 text-center">
           <div className="relative inline-block">
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight animate-gradient">
-              About <span className="text-gradient-purple">47Gear</span>
+              Despre <span className="text-gradient-purple">47Gear</span>
             </h1>
             <div className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-accent-primary to-transparent"></div>
           </div>
@@ -25,7 +25,7 @@ export default function AboutUsPage() {
 
         {/* Our Story */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">Our Story</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">Povestea Noastră</h2>
           <div className="relative glass-card hover:shadow-glow-purple transition-all duration-500 p-8">
             <div className="absolute top-0 right-0 h-20 w-20 bg-accent-primary/10 rounded-full blur-2xl"></div>
             <p className="text-white/90 text-lg leading-relaxed">
@@ -73,7 +73,7 @@ export default function AboutUsPage() {
 
         {/* Why Choose Us */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">De ce să alegi 47Gear?</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">De Ce Să Alegi 47Gear?</h2>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="glass-card hover:shadow-glow-purple hover:translate-y-[-8px] transition-all duration-300 p-6 text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-purple-700 shadow-glow-sm mx-auto">

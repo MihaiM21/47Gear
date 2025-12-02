@@ -46,8 +46,8 @@ export default async function CategoryPage({
             <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mb-6 shimmer"></div>
             
             <p className="text-white/70 text-lg mb-0 max-w-2xl leading-relaxed">
-              Explore our premium {formattedCollectionName.toLowerCase()} collection, designed for 
-              performance and precision. Each product is carefully crafted for serious gamers.
+              Explorează colecția noastră premium {formattedCollectionName.toLowerCase()}, creată pentru 
+              performanță și precizie. Fiecare produs este creat cu grijă pentru gamerii seriosati.
             </p>
           </div>
         </div>
@@ -65,9 +65,9 @@ export default async function CategoryPage({
               </div>
             </div>
             <h3 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-white via-accent-secondary to-white bg-clip-text text-transparent">
-              No products found
+              Nu s-au găsit produse
             </h3>
-            <p className="text-white/60 text-lg mb-8">We couldn't find any products in this collection</p>
+            <p className="text-white/60 text-lg mb-8">Nu am putut găsi niciun produs în această colecție</p>
           </div>
         ) : (
           <div className="relative px-4">
