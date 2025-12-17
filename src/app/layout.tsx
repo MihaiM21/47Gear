@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { CartProvider } from "@/components/cart/cart-context";
+import WhatsAppFloat from "@/components/whatsapp-float";
 import { cookies } from "next/headers";
 import { getCart } from "@/lib/shopify";
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <WhatsAppFloat />
         </CartProvider>
       </body>
     </html>
