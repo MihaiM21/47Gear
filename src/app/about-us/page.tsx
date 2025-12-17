@@ -19,7 +19,7 @@ export default function AboutUsPage() {
             <div className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-accent-primary to-transparent"></div>
           </div>
           <p className="mt-6 text-lg text-white/90 max-w-2xl mx-auto animate-fade-in-up">
-            Destinația ta pentru echipament premium. Creat de gameri, pentru gameri
+            Destinația ta pentru echipament premium. Creat de gameri, pentru gameri.
           </p>
         </div>
 
@@ -29,8 +29,7 @@ export default function AboutUsPage() {
           <div className="relative glass-card hover:shadow-glow-purple transition-all duration-500 p-8">
             <div className="absolute top-0 right-0 h-20 w-20 bg-accent-primary/10 rounded-full blur-2xl"></div>
             <p className="text-white/90 text-lg leading-relaxed">
-              Fondat în 2025. Motivat de pasiune. Născut din experiența gaming-ului competitiv, 47Gear a pornit cu o singură idee: să creăm periferice care înțeleg cu adevărat nevoile jucătorilor.
-              
+              47Gear s-a născut în 2025 dintr-un vis și din pasiunea pentru gamingul competitiv. Am pornit cu ideea unui mousepad făcut exact cum mi-l doream: stabil, confortabil, cu control bun și o calitate care rezistă în timp. Așa au apărut primele noastre trei modele de mousepaduri. Suntem la început de drum, dar construim 47Gear pas cu pas, pe bune.              
             </p>
             <p className="text-white/90 text-lg leading-relaxed mt-4">
               Ceea ce a început cu un singur mousepad a evoluat într-un brand de încredere în lumea echipamentelor premium, recunoscut pentru calitate, precizie și performanță.
@@ -49,8 +48,7 @@ export default function AboutUsPage() {
               Misiunea Noastră
             </h2>
             <p className="text-white/90 relative z-10">
-              Avantajul decisiv în joc. Ne dedicăm creării de echipament care îmbină precizia, durabilitatea și confortul.
-               Pentru că știm că în fiecare meci contează orice mișcare, iar echipamentul potrivit face diferența dintre victorie și înfrângere.
+              Ne dedicăm creării de echipament care îmbină precizia, durabilitatea și confortul. Pentru că știm că în fiecare meci contează orice mișcare, iar echipamentul potrivit face diferența.
             </p>
           </div>
 
@@ -83,7 +81,7 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gradient-purple">Raport Calitate-Preț</h3>
               <p className="text-white/80">
-                Echipament premium la prețuri accesibile. Credem că un setup de gaming de top nu ar trebui să-ți golească portofelul.
+                Echipament premium, la preț cinstit. Noi, la 47Gear, credem că un setup de gaming premium nu e un moft, ci o necesitate pentru orice gamer care ia jocul în serios.
               </p>
             </div>
             
