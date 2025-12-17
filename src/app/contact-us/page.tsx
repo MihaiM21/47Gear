@@ -56,7 +56,7 @@ export default function ContactUsPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Email</h3>
-                    <p className="text-white/60 hover:text-accent-secondary transition-colors">support@47gear.com</p>
+                    <p className="text-white/60 hover:text-accent-secondary transition-colors">contact@47gear.ro</p>
                   </div>
                 </div>
                 
