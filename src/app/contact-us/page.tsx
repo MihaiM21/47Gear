@@ -31,7 +31,7 @@ export default function ContactUsPage() {
               <h2 className="text-2xl font-bold mb-6 text-white">Contactează-ne</h2>
               
               <p className="text-white/60 mb-8">
-                Echipa noastră de suport este gata să te asiste cu nevoile tale de echipament gaming.
+                Echipa noastră de suport este gata să te asiste.
               </p>
               
               <div className="space-y-6">
@@ -43,7 +43,7 @@ export default function ContactUsPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Telefon</h3>
-                    <p className="text-white/60 hover:text-accent-secondary transition-colors">+1 (800) 47-GEAR</p>
+                    <p className="text-white/60 hover:text-accent-secondary transition-colors">0766 053 447</p>
                   </div>
                 </div>
                 
