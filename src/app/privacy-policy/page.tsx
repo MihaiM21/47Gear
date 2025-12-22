@@ -9,110 +9,136 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="mx-auto max-w-screen-lg px-4 py-10">
       {/* Header with gradient effect */}
-      <div className="mb-8 text-center relative">
+      <div className="mb-8 pt-20 text-center relative">
         <div className="absolute -z-10 inset-0 bg-gradient-to-r from-accent-primary/20 via-accent-secondary/10 to-accent-primary/20 blur-xl opacity-30 rounded-full"></div>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-1 animate-gradient">
-          Politica de <span className="text-accent-yellow">Confidențialitate</span>
+          Privacy Policy 
         </h1>
+        <h4>
+          <span className="text-accent-yellow">(Politica de Confidențialitate)</span>
+        </h4>
         <div className="h-1 w-32 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full mx-auto my-4"></div>
         <p className="mt-3 text-base text-white/80 max-w-xl mx-auto">
-          Ultima actualizare: 21 Octombrie 2025
+          Ultima actualizare: 18.11.2025
         </p>
       </div>
 
       {/* Main content */}
       <div className="glass-card p-6 border border-accent-primary/20 shadow-neon mb-8">
         <div className="prose prose-invert prose-headings:text-accent-secondary prose-a:text-accent-secondary max-w-none">
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Introducere</h2>
-          <p className="text-white/80 text-sm mb-4">
-            La 47Gear, respectăm confidențialitatea dvs. și ne angajăm să protejăm datele dvs. personale. Această politică de confidențialitate explică cum colectăm, utilizăm și protejăm informațiile dvs. atunci când vizitați site-ul nostru sau faceți achiziții.
-          </p>
-          <p className="text-white/80 text-sm mb-6">
-            Vă rugăm să citiți cu atenție această politică de confidențialitate. Dacă nu sunteți de acord cu politicile și practicile noastre, puteți alege să nu utilizați site-ul nostru. Accesând sau utilizând site-ul nostru, sunteți de acord cu această politică de confidențialitate.
-          </p>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Informațiile Pe Care Le Colectăm</h2>
-          <p className="text-white/80 text-sm mb-2">Colectăm mai multe tipuri de informații de la și despre utilizatorii site-ului nostru, inclusiv:</p>
-          <ul className="list-disc pl-5 space-y-1 mb-6">
-            <li className="text-white/80 text-sm">
-              <span className="text-accent-secondary">Informații personale:</span> Nume, adresă de email, adresă poștală, număr de telefon și informații de plată atunci când creați un cont sau plasați o comandă.
-            </li>
-            <li className="text-white/80 text-sm">
-              <span className="text-accent-secondary">Informații de utilizare:</span> Cum interacționați cu site-ul nostru, produsele pe care le vizualizați, termenii de căutare și tiparele de navigare.
-            </li>
-            <li className="text-white/80 text-sm">
-              <span className="text-accent-secondary">Informații tehnice:</span> Adresă IP, tip de browser, informații despre dispozitiv și cookie-uri.
-            </li>
-          </ul>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">How We Use Your Information</h2>
-          <p className="text-white/80 text-sm mb-2">We use the information we collect to:</p>
-          <ul className="list-disc pl-5 space-y-1 mb-6">
-            <li className="text-white/80 text-sm">Process and fulfill your orders</li>
-            <li className="text-white/80 text-sm">Provide customer support and respond to inquiries</li>
-            <li className="text-white/80 text-sm">Improve our website and product offerings</li>
-            <li className="text-white/80 text-sm">Personalize your shopping experience</li>
-            <li className="text-white/80 text-sm">Send marketing communications (if you've opted in)</li>
-            <li className="text-white/80 text-sm">Protect against fraudulent transactions</li>
-          </ul>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Cookies and Tracking Technologies</h2>
-          <p className="text-white/80 text-sm mb-4">
-            We use cookies and similar tracking technologies to collect information about your browsing activities. These tools help us analyze website traffic, personalize content, and understand how visitors use our site.
-          </p>
-          <p className="text-white/80 text-sm mb-6">
-            You can set your browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. However, some parts of the site may become inaccessible or not function properly if you disable cookies.
-          </p>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Data Security</h2>
-          <p className="text-white/80 text-sm mb-4">
-            We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.
-          </p>
-          <p className="text-white/80 text-sm mb-6">
-            While we use commercially reasonable efforts to protect your information, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
-          </p>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Third-Party Services</h2>
-          <p className="text-white/80 text-sm mb-4">
-            We may share your information with third-party service providers who perform services on our behalf, such as payment processing, shipping, and marketing services. These providers have access to personal information needed to perform their functions but are prohibited from using it for other purposes.
-          </p>
-          <p className="text-white/80 text-sm mb-6">
-            Our website may include links to third-party websites. These sites have their own privacy policies, and we are not responsible for their content or practices.
-          </p>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Your Rights</h2>
-          <p className="text-white/80 text-sm mb-2">Depending on your location, you may have rights regarding your personal data, including:</p>
-          <ul className="list-disc pl-5 space-y-1 mb-6">
-            <li className="text-white/80 text-sm">Accessing your personal data</li>
-            <li className="text-white/80 text-sm">Correcting inaccurate information</li>
-            <li className="text-white/80 text-sm">Deleting your personal data</li>
-            <li className="text-white/80 text-sm">Restricting or objecting to processing</li>
-            <li className="text-white/80 text-sm">Data portability</li>
-            <li className="text-white/80 text-sm">Withdrawing consent</li>
-          </ul>
-          <p className="text-white/80 text-sm mb-6">
-            To exercise these rights, please contact us using the information provided in the "Contact Us" section.
-          </p>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Changes to Our Privacy Policy</h2>
-          <p className="text-white/80 text-sm mb-4">
-            We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date.
-          </p>
-          <p className="text-white/80 text-sm mb-6">
-            We encourage you to review this policy periodically to stay informed about how we protect your information.
-          </p>
-
-          <h2 className="text-xl font-bold text-gradient-purple mb-4">Contactează-ne</h2>
-          <p className="text-white/80 text-sm mb-4">
-            Dacă aveți întrebări sau preocupări cu privire la această politică de confidențialitate sau practicile noastre de date, vă rugăm să ne contactați la:
-          </p>
-          <div className="glass-card p-4 inline-block bg-black/40 border border-accent-primary/20">
-            <p className="text-white/90 text-sm">47Gear</p>
-            <p className="text-white/90 text-sm">123 Gaming Street</p>
-            <p className="text-white/90 text-sm">Tech City, GR 12345</p>
-            <p className="text-white/90 text-sm">Email: privacy@47gear.com</p>
-            <p className="text-white/90 text-sm">Telefon: +1 (800) 47-GEAR</p>
+          
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Cine suntem</h2>
+          <div className="glass-card p-4 bg-black/40 border border-accent-primary/20 mb-6">
+            <p className="text-white/90 text-sm mb-1"><strong>47GEAR S.R.L.</strong></p>
+            <p className="text-white/80 text-sm mb-1">Sediu: Jud. Timiș, Mun. Timișoara, Bulevardul G-ral Ion Dragalina, Nr. 19, Etaj Parter, Ap. SAD 3</p>
+            <p className="text-white/80 text-sm mb-1">CUI: 52528638</p>
+            <p className="text-white/80 text-sm mb-1">Nr. ONRC: J2025071076004</p>
+            <p className="text-white/80 text-sm mb-1">EUID: ROONRC.J2025071076004</p>
+            <p className="text-white/80 text-sm mb-1">Contact: <a href="mailto:contact@47gear.ro" className="text-accent-secondary hover:text-accent-primary">contact@47gear.ro</a></p>
+            <p className="text-white/80 text-sm">Telefon: 0766053447</p>
           </div>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Ce date prelucrăm</h2>
+          <p className="text-white/80 text-sm mb-2">În funcție de cum folosești site-ul, putem prelucra:</p>
+          <ul className="list-disc pl-5 space-y-2 mb-6">
+            <li className="text-white/80 text-sm">
+              <strong>Date de identificare & contact:</strong> nume, prenume, e-mail, telefon
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Date pentru livrare/facturare:</strong> adresă livrare, adresă facturare, localitate, județ, cod poștal
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Date despre comenzi:</strong> produse, cantități, preț, istoric comenzi, facturi
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Date despre plăți:</strong> confirmări de plată și status tranzacții (nu stocăm date complete de card)
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Date tehnice:</strong> IP, device, browser, cookie-uri, pagini accesate
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Comunicări:</strong> mesaje trimise către noi, solicitări, reclamații, retururi/garanții
+            </li>
+          </ul>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">De ce folosim datele (scopuri) și baza legală</h2>
+          <p className="text-white/80 text-sm mb-2">Prelucrăm datele pentru:</p>
+          <ul className="list-disc pl-5 space-y-2 mb-6">
+            <li className="text-white/80 text-sm">
+              <strong>Crearea și administrarea contului</strong> (dacă există), plasarea și gestionarea comenzilor – pentru executarea contractului
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Livrare, retur, garanție, suport clienți</strong> – pentru executarea contractului și/sau interes legitim
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Facturare și evidențe contabile/fiscale</strong> – obligație legală
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Prevenirea fraudelor și securitatea site-ului</strong> – interes legitim
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Marketing (newsletter / oferte)</strong> – consimțământ (te poți dezabona oricând)
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Statistici și îmbunătățirea experienței pe site</strong> – interes legitim și/sau consimțământ, în funcție de cookie-urile folosite
+            </li>
+          </ul>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Plăți și platformă (Shopify)</h2>
+          <p className="text-white/80 text-sm mb-4">
+            Folosim Shopify pentru funcționarea magazinului online și procesarea plăților (în calitate de furnizor/împuternicit, după caz). Datele necesare plății sunt prelucrate prin Shopify conform setărilor și fluxurilor de checkout.
+          </p>
+          <p className="text-white/80 text-sm mb-6">
+            Este posibil ca anumite date să fie prelucrate sau stocate și în afara Spațiului Economic European, în funcție de infrastructura furnizorilor utilizați; în aceste situații se aplică garanții legale pentru transferuri.
+          </p>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Cookie-uri</h2>
+          <p className="text-white/80 text-sm mb-2">Folosim cookie-uri:</p>
+          <ul className="list-disc pl-5 space-y-2 mb-4">
+            <li className="text-white/80 text-sm">
+              <strong>Necesare</strong> (funcționare site, coș, securitate) – active implicit
+            </li>
+            <li className="text-white/80 text-sm">
+              <strong>Statistice/marketing</strong> – active doar dacă îți dai acordul din bannerul de cookie-uri (unde poți modifica opțiunile)
+            </li>
+          </ul>
+          <p className="text-white/80 text-sm mb-6">
+            Poți gestiona cookie-urile și din setările browserului tău.
+          </p>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Cui divulgăm datele</h2>
+          <p className="text-white/80 text-sm mb-2">Putem partaja datele strict cât e necesar cu:</p>
+          <ul className="list-disc pl-5 space-y-2 mb-6">
+            <li className="text-white/80 text-sm">furnizori de livrare/curierat – [nume curier]</li>
+            <li className="text-white/80 text-sm">Shopify (platformă + procesare plăți)</li>
+            <li className="text-white/80 text-sm">furnizori IT (hosting, mentenanță, e-mail)</li>
+            <li className="text-white/80 text-sm">servicii de marketing/analiză (doar dacă ai consimțit, când e cazul)</li>
+            <li className="text-white/80 text-sm">autorități publice, când legea ne obligă</li>
+          </ul>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Cât timp păstrăm datele</h2>
+          <p className="text-white/80 text-sm mb-2">Păstrăm datele:</p>
+          <ul className="list-disc pl-5 space-y-2 mb-6">
+            <li className="text-white/80 text-sm">cât e necesar pentru comenzi, livrare, retururi și garanții</li>
+            <li className="text-white/80 text-sm">conform termenelor legale pentru documente financiar-contabile</li>
+            <li className="text-white/80 text-sm">pentru marketing: până îți retragi consimțământul (dezabonare)</li>
+          </ul>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Drepturile tale</h2>
+          <p className="text-white/80 text-sm mb-6">
+            Ai drepturile prevăzute de legislația privind protecția datelor: acces, rectificare, ștergere, restricționare, opoziție, portabilitate, retragerea consimțământului (pentru marketing) și dreptul de a depune plângere la autoritatea competentă.
+          </p>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Securitate</h2>
+          <p className="text-white/80 text-sm mb-6">
+            Aplicăm măsuri rezonabile de securitate pentru a proteja datele (control acces, backup, protecții tehnice, proceduri interne).
+          </p>
+
+          <h2 className="text-xl font-bold text-gradient-purple mb-4">Modificări</h2>
+          <p className="text-white/80 text-sm mb-6">
+            Putem actualiza această politică. Versiunea în vigoare este cea publicată pe site, cu data ultimei actualizări.
+          </p>
+
         </div>
       </div>
 
