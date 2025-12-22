@@ -102,11 +102,11 @@ function ProductSpecs() {
     <div className="border-t border-white/5 pt-16 pb-24">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-          Creat Pentru Campioni
+          Creat pentru performanță
         </h2>
         <p className="text-lg text-white/60 leading-relaxed">
-          Fiecare mousepad este creat cu materiale de precizie și atenție la detalii, 
-          oferind avantajul de performanță de care ai nevoie pentru a domina competiția.
+          Fiecare mousepad este creat cu materiale premium și atenție la detalii,
+           oferind avantajul de performanță de care ai nevoie.
         </p>
       </div>
 
@@ -264,7 +264,7 @@ async function RelatedPRoducts({ id }: { id: string }) {
   return (
     <div className="border-t border-white/5 pt-16">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">Ar Putea Să-ți Placă</h2>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">Ar putea să-ți placă</h2>
         <p className="text-white/60 text-lg">Explorează produse similare alese pentru tine</p>
       </div>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

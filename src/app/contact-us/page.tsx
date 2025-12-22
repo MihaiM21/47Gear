@@ -114,7 +114,7 @@ export default function ContactUsPage() {
 
             {/* Business Hours */}
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
-              <h2 className="text-2xl font-bold mb-6 text-white">Program de Lucru</h2>
+              <h2 className="text-2xl font-bold mb-6 text-white">Program de lucru telefonic</h2>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-white/60">Luni - Vineri</span>

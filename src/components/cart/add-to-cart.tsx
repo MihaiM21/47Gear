@@ -49,7 +49,7 @@ function SubmitButton({
     >
       <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-500"></div>
       <PlusIcon className="h-5 w-5 text-white relative z-10 group-hover:rotate-90 transition-transform duration-300" />
-      <span className="relative z-10 text-sm uppercase tracking-widest">Add To Cart</span>
+      <span className="relative z-10 text-sm uppercase tracking-widest">Adauga in cos</span>
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none shine-effect"></div>
     </button>
   );

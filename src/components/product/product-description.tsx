@@ -33,7 +33,7 @@ export function ProductDescription({ product }: { product: Product }) {
       {/* Description */}
       {product.descriptionHtml ? (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-white/80 uppercase tracking-wider">Product Details</h3>
+          <h3 className="text-sm font-semibold text-white/80 uppercase tracking-wider">Detalii produs</h3>
           <Prose
             className="text-base leading-relaxed text-white/60"
             html={product.descriptionHtml}
@@ -50,12 +50,12 @@ export function ProductDescription({ product }: { product: Product }) {
       {/* Features */}
       <div className="grid grid-cols-2 gap-4 pt-4">
         <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
-          <div className="text-xs text-white/50 mb-1">Quality</div>
-          <div className="text-sm font-medium text-white">Premium Materials</div>
+          <div className="text-xs text-white/50 mb-1">Calitate</div>
+          <div className="text-sm font-medium text-white">Materiale Premium</div>
         </div>
         <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
-          <div className="text-xs text-white/50 mb-1">Warranty</div>
-          <div className="text-sm font-medium text-white">1 Year Coverage</div>
+          <div className="text-xs text-white/50 mb-1">Garantie</div>
+          <div className="text-sm font-medium text-white">2 ani</div>
         </div>
       </div>
     </div>

@@ -35,7 +35,7 @@ export async function Navbar() {
                 className="text-sm font-medium text-white/80 hover:text-white transition-colors"
                 prefetch={false}
               >
-                Products
+                Shop
               </Link>
               <Link
                 href="/about-us"
@@ -55,13 +55,14 @@ export async function Navbar() {
           </div>
 
           {/* Right Side - Cart & Account */}
+          
           <div className="flex justify-end md:w-1/4 items-center gap-4">
             <Link
               href="/profile"
               className="hidden md:block text-sm font-medium text-white/80 hover:text-white transition-colors"
               prefetch={false}
             >
-              Account
+              My Account
             </Link>
             <CartModal />
           </div>

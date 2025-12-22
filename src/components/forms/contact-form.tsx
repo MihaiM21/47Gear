@@ -86,7 +86,7 @@ export default function ContactForm({ className }: ContactFormProps) {
       <div className="grid md:grid-cols-2 gap-4">
         <div className="space-y-1">
           <label htmlFor="name" className="block text-xs font-medium text-accent-secondary">
-            Your Name
+            Numele tau
           </label>
           <input
             type="text"
@@ -95,13 +95,13 @@ export default function ContactForm({ className }: ContactFormProps) {
             onChange={handleChange}
             required
             className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-            placeholder="John Doe"
+            placeholder="Ion Popescu"
           />
         </div>
         
         <div className="space-y-1">
           <label htmlFor="email" className="block text-xs font-medium text-accent-secondary">
-            Email Address
+            Adresa de email
           </label>
           <input
             type="email"
@@ -110,14 +110,14 @@ export default function ContactForm({ className }: ContactFormProps) {
             onChange={handleChange}
             required
             className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-            placeholder="you@example.com"
+            placeholder="ion.popescu@exemplu.com"
           />
         </div>
       </div>
       
       <div className="space-y-1">
         <label htmlFor="subject" className="block text-xs font-medium text-accent-secondary">
-          Subject
+          Subiect
         </label>
         <input
           type="text"
@@ -126,13 +126,13 @@ export default function ContactForm({ className }: ContactFormProps) {
           onChange={handleChange}
           required
           className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-          placeholder="How can we help you?"
+          placeholder="Cum te putem ajuta?"
         />
       </div>
       
       <div className="space-y-1">
         <label htmlFor="message" className="block text-xs font-medium text-accent-secondary">
-          Your Message
+          Mesajul tau
         </label>
         <textarea
           id="message"
@@ -141,7 +141,7 @@ export default function ContactForm({ className }: ContactFormProps) {
           onChange={handleChange}
           required
           className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-          placeholder="Tell us what's on your mind..."
+          placeholder="Spune-ne cu ce te putem ajuta..."
         ></textarea>
       </div>
       
@@ -154,7 +154,7 @@ export default function ContactForm({ className }: ContactFormProps) {
           className="h-4 w-4 rounded border-accent-primary/50 bg-black text-accent-secondary focus:ring-accent-secondary/30"
         />
         <label htmlFor="consent" className="text-xs text-white/70">
-          I agree to receive gaming updates and promotional emails
+          Sunt de acord ca 47Gear să îmi folosească datele pentru a răspunde la solicitarea mea conform <a href="/privacy-policy" className="underline hover:text-accent-secondary">Politicii de Confidențialitate</a>.
         </label>
       </div>
       
