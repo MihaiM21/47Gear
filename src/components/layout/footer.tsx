@@ -79,7 +79,7 @@ export default async function Footer() {
                   className="mb-4"
                 />
               </Link>
-              <Link href="https://anpc.ro/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white mb-4 inline-block">
+              <Link href="https://reclamatiisal.anpc.ro/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white mb-4 inline-block">
                 <Image
                   src="/images/anpc/anpc2.png"
                   alt="ANPC Logo"
