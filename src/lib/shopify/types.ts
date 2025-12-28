@@ -259,3 +259,23 @@ export type ShopifyPagesOperation = {
     pages: Connection<Page>;
   };
 };
+
+// Review Types
+export type ProductReview = {
+  id: string;
+  title: string;
+  content: string;
+  rating: number;
+  createdAt: string;
+  author: {
+    name: string;
+    email?: string;
+  };
+  verifiedBuyer: boolean;
+};
+
+export type ProductReviews = {
+  reviews: ProductReview[];
+  averageRating: number;
+  totalReviews: number;
+};

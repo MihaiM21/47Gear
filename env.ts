@@ -5,7 +5,7 @@ const envSchema = z.object({
   TWITTER_CREATOR: z.string(),
   TWITTER_SITE: z.string(),
   SITE_NAME: z.string(),
-  SHOPIFY_REVALIDATION_SECRET: z.string(),
+  SHOPIFY_REVALIDATION_SECRET: z.string().min(10, "Revalidation secret should be at least 10 characters"),
   SHOPIFY_STOREFRONT_ACCESS_TOKEN: z.string(),
   SHOPIFY_STORE_DOMAIN: z.string(),
   SITE_THEME: z.enum(['default', 'christmas']).default('default'),
@@ -17,6 +17,16 @@ const envSchema = z.object({
   EMAIL_PASS: z.string().optional(),
   EMAIL_FROM: z.string().optional(),
   EMAIL_TO: z.string().optional(),
+  
+  // WhatsApp configuration
+  WHATSAPP_PHONE_NUMBER: z.string().optional(),
+  NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER: z.string().optional(),
+  
+  // Google Analytics (optional)
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),
+  
+  // Site URL for production
+  NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
 });
 
 envSchema.parse(process.env);

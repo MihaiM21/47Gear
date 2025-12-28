@@ -7,10 +7,7 @@ import {
   GET_CUSTOMER_ORDERS, 
   GET_CUSTOMER,
   CUSTOMER_UPDATE,
-  CUSTOMER_ADDRESS_CREATE,
-  CUSTOMER_ADDRESS_UPDATE,
-  CUSTOMER_ADDRESS_DELETE,
-  CUSTOMER_DEFAULT_ADDRESS_UPDATE
+  CUSTOMER_ADDRESS_UPDATE
 } from '@/lib/shopify/queries/profile';
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
@@ -152,10 +149,8 @@ export default function ProfilePage() {
     email: '',
     phone: ''
   });
-  const [addresses, setAddresses] = useState<Address[]>([]);
-  const [defaultAddressId, setDefaultAddressId] = useState<string>('');
-  const [isAddingAddress, setIsAddingAddress] = useState(false);
-  const [editingAddressId, setEditingAddressId] = useState<string | null>(null);
+  const [address, setAddress] = useState<Address | null>(null);
+  const [isEditingAddress, setIsEditingAddress] = useState(false);
   const [addressForm, setAddressForm] = useState({
     firstName: '',
     lastName: '',
@@ -202,14 +197,9 @@ export default function ProfilePage() {
           const customerInfo = customerData.customer;
           setCustomer(customerInfo);
           
-          // Set addresses
-          if (customerInfo.addresses?.edges) {
-            setAddresses(customerInfo.addresses.edges.map((edge: any) => edge.node));
-          }
-          
-          // Set default address ID
+          // Set address from default address
           if (customerInfo.defaultAddress) {
-            setDefaultAddressId(customerInfo.defaultAddress.id);
+            setAddress(customerInfo.defaultAddress);
           }
           
           // Set edit form initial values
@@ -295,58 +285,12 @@ export default function ProfilePage() {
     }
   };
 
-  const handleAddAddress = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSaving(true);
-
-    const customerAccessToken = localStorage.getItem('customerAccessToken');
-    if (!customerAccessToken) return;
-
-    try {
-      const response = await fetch('/api/graphql/storefront', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query: CUSTOMER_ADDRESS_CREATE,
-          variables: {
-            customerAccessToken,
-            address: {
-              firstName: addressForm.firstName,
-              lastName: addressForm.lastName,
-              company: addressForm.company || null,
-              address1: addressForm.address1,
-              address2: addressForm.address2 || null,
-              city: addressForm.city,
-              province: addressForm.province || null,
-              country: addressForm.country,
-              zip: addressForm.zip,
-              phone: addressForm.phone || null
-            }
-          }
-        })
-      });
-
-      const result = await response.json();
-      
-      if (result.data?.customerAddressCreate?.customerUserErrors?.length > 0) {
-        alert(result.data.customerAddressCreate.customerUserErrors[0].message);
-      } else {
-        // Refresh to get new addresses
-        window.location.reload();
-        setIsAddingAddress(false);
-        resetAddressForm();
-      }
-    } catch (error) {
-      console.error('Error adding address:', error);
-      alert('Failed to add address');
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
   const handleUpdateAddress = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingAddressId) return;
+    if (!address?.id) {
+      alert('No address to update. Please refresh the page.');
+      return;
+    }
     setIsSaving(true);
 
     const customerAccessToken = localStorage.getItem('customerAccessToken');
@@ -360,7 +304,7 @@ export default function ProfilePage() {
           query: CUSTOMER_ADDRESS_UPDATE,
           variables: {
             customerAccessToken,
-            id: editingAddressId,
+            id: address.id,
             address: {
               firstName: addressForm.firstName,
               lastName: addressForm.lastName,
@@ -382,8 +326,21 @@ export default function ProfilePage() {
       if (result.data?.customerAddressUpdate?.customerUserErrors?.length > 0) {
         alert(result.data.customerAddressUpdate.customerUserErrors[0].message);
       } else {
-        window.location.reload();
-        setEditingAddressId(null);
+        // Update local state
+        setAddress({
+          ...address,
+          firstName: addressForm.firstName,
+          lastName: addressForm.lastName,
+          company: addressForm.company || undefined,
+          address1: addressForm.address1,
+          address2: addressForm.address2 || undefined,
+          city: addressForm.city,
+          province: addressForm.province || undefined,
+          country: addressForm.country,
+          zip: addressForm.zip,
+          phone: addressForm.phone || undefined
+        });
+        setIsEditingAddress(false);
         resetAddressForm();
       }
     } catch (error) {
@@ -394,70 +351,9 @@ export default function ProfilePage() {
     }
   };
 
-  const handleDeleteAddress = async (addressId: string) => {
-    if (!confirm('Are you sure you want to delete this address?')) return;
-    
-    const customerAccessToken = localStorage.getItem('customerAccessToken');
-    if (!customerAccessToken) return;
-    
-    try {
-      const response = await fetch('/api/graphql/storefront', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query: CUSTOMER_ADDRESS_DELETE,
-          variables: {
-            customerAccessToken,
-            id: addressId
-          }
-        })
-      });
-
-      const result = await response.json();
-      
-      if (result.data?.customerAddressDelete?.customerUserErrors?.length > 0) {
-        alert(result.data.customerAddressDelete.customerUserErrors[0].message);
-      } else {
-        window.location.reload();
-      }
-    } catch (error) {
-      console.error('Error deleting address:', error);
-      alert('Failed to delete address');
-    }
-  };
-
-  const handleSetDefaultAddress = async (addressId: string) => {
-    const customerAccessToken = localStorage.getItem('customerAccessToken');
-    if (!customerAccessToken) return;
-    
-    try {
-      const response = await fetch('/api/graphql/storefront', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query: CUSTOMER_DEFAULT_ADDRESS_UPDATE,
-          variables: {
-            customerAccessToken,
-            addressId: addressId
-          }
-        })
-      });
-
-      const result = await response.json();
-      
-      if (result.data?.customerDefaultAddressUpdate?.customerUserErrors?.length > 0) {
-        alert(result.data.customerDefaultAddressUpdate.customerUserErrors[0].message);
-      } else {
-        setDefaultAddressId(addressId);
-      }
-    } catch (error) {
-      console.error('Error setting default address:', error);
-      alert('Failed to set default address');
-    }
-  };
-
-  const startEditingAddress = (address: Address) => {
-    setEditingAddressId(address.id);
+  const startEditingAddress = () => {
+    if (!address) return;
+    setIsEditingAddress(true);
     setAddressForm({
       firstName: address.firstName,
       lastName: address.lastName,
@@ -978,85 +874,37 @@ export default function ProfilePage() {
 
         {activeTab === 'addresses' && (
           <div className="w-full">
-            {!isAddingAddress && !editingAddressId && (
-              <>
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-bold text-white">Saved Addresses</h3>
-                  <button 
-                    onClick={() => setIsAddingAddress(true)}
-                    className="px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all duration-300"
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-2xl font-bold text-white">Delivery Address</h3>
+                {!isEditingAddress && address && (
+                  <button
+                    onClick={startEditingAddress}
+                    className="px-4 py-2 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium"
                   >
-                    Add New Address
+                    Edit
                   </button>
-                </div>
+                )}
+              </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  {addresses.map((address) => (
-                    <div key={address.id} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
-                      <div className="flex items-start justify-between mb-4">
-                        {address.id === defaultAddressId ? (
-                          <span className="px-3 py-1 bg-accent-secondary/10 text-accent-secondary text-xs font-medium rounded-full border border-accent-secondary/20">
-                            Default
-                          </span>
-                        ) : (
-                          <button
-                            onClick={() => handleSetDefaultAddress(address.id)}
-                            className="px-3 py-1 bg-white/5 text-white/60 text-xs font-medium rounded-full border border-white/10 hover:border-accent-secondary/20 hover:text-accent-secondary transition-all"
-                          >
-                            Set as Default
-                          </button>
-                        )}
-                      </div>
-                      <div className="space-y-2 text-white/80">
-                        <p className="font-medium text-white">{address.firstName} {address.lastName}</p>
-                        {address.company && <p>{address.company}</p>}
-                        <p>{address.address1}</p>
-                        {address.address2 && <p>{address.address2}</p>}
-                        <p>{address.city}{address.province && `, ${address.province}`} {address.zip}</p>
-                        <p>{address.country}</p>
-                        {address.phone && <p>{address.phone}</p>}
-                      </div>
-                      <div className="mt-6 flex gap-3">
-                        <button 
-                          onClick={() => startEditingAddress(address)}
-                          className="flex-1 px-4 py-2 border border-white/20 text-white rounded-lg hover:bg-white/5 transition-all duration-300 text-sm font-medium"
-                        >
-                          Edit
-                        </button>
-                        <button 
-                          onClick={() => handleDeleteAddress(address.id)}
-                          className="flex-1 px-4 py-2 border border-red-500/20 text-red-400 rounded-lg hover:bg-red-500/5 transition-all duration-300 text-sm font-medium"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-
-                  {addresses.length === 0 && (
-                    <div className="col-span-2 text-center py-12">
-                      <p className="text-white/60 mb-6">No addresses saved yet</p>
-                      <button
-                        onClick={() => setIsAddingAddress(true)}
-                        className="inline-flex items-center px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all duration-300"
-                      >
-                        Add Your First Address
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </>
-            )}
-
-            {(isAddingAddress || editingAddressId) && (
-              <div className="w-full">
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-white">
-                    {isAddingAddress ? 'Add New Address' : 'Edit Address'}
-                  </h3>
-                </div>
-
-                <form onSubmit={isAddingAddress ? handleAddAddress : handleUpdateAddress} className="space-y-6">
+              {!isEditingAddress ? (
+                address ? (
+                  <div className="space-y-2 text-white/80">
+                    <p className="font-medium text-white text-lg">{address.firstName} {address.lastName}</p>
+                    {address.company && <p>{address.company}</p>}
+                    <p>{address.address1}</p>
+                    {address.address2 && <p>{address.address2}</p>}
+                    <p>{address.city}{address.province && `, ${address.province}`} {address.zip}</p>
+                    <p>{address.country}</p>
+                    {address.phone && <p className="mt-4">Phone: {address.phone}</p>}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <p className="text-white/60">No address on file</p>
+                  </div>
+                )
+              ) : (
+                <form onSubmit={handleUpdateAddress} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm text-white/80 mb-2">First Name</label>
@@ -1182,13 +1030,12 @@ export default function ProfilePage() {
                       disabled={isSaving}
                       className="px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSaving ? 'Saving...' : isAddingAddress ? 'Add Address' : 'Update Address'}
+                      {isSaving ? 'Saving...' : 'Save Address'}
                     </button>
                     <button
                       type="button"
                       onClick={() => {
-                        setIsAddingAddress(false);
-                        setEditingAddressId(null);
+                        setIsEditingAddress(false);
                         resetAddressForm();
                       }}
                       className="px-8 py-3 border border-white/20 text-white rounded-full font-medium hover:bg-white/5 transition-all duration-300"
@@ -1197,8 +1044,8 @@ export default function ProfilePage() {
                     </button>
                   </div>
                 </form>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         )}
       </div>

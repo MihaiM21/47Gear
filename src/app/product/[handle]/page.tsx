@@ -1,8 +1,8 @@
-
 import { GridTileImage } from "@/components/grid/tile";
 import Gallery from "@/components/product/gallery";
 import { ProductProvider } from "@/components/product/product-context";
 import { ProductDescription } from "@/components/product/product-description";
+import { ReviewsSection } from "@/components/product/reviews-section-wrapper";
 import { HIDDEN_PRODUCT_TAG } from "@/lib/constants";
 import { getProduct, getProductRecommendations } from "@/lib/shopify";
 import { Image } from "@/lib/shopify/types";
@@ -89,6 +89,9 @@ export default async function ProductPage({
 
         {/* Product Specifications & Features */}
         <ProductSpecs />
+
+        {/* Reviews Section */}
+        <ReviewsSection productId={product.id} />
 
         {/* Related Products */}
         <RelatedPRoducts id={product.id} />

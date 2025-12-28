@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getCollections } from "@/lib/shopify";
+import TrustBadges from "@/components/trust-badges";
+import ReviewsSection from "@/components/reviews-section";
+import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 
 export const metadata = {
   description:
-    "47Gear - Premium gaming mousepads for professional gamers and enthusiasts.",
+    "47Gear - Premium gaming mousepads for professional gamers and enthusiasts. Experience unmatched precision, comfort, and durability.",
   openGraph: {
     type: "website",
   },
@@ -13,8 +16,21 @@ export const metadata = {
 export default async function Home() {
   const collections = await getCollections();
   
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+  
   return (
     <main className="flex-1 text-white">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+
       {/* Hero Section - Centered Minimalist */}
       <section className="relative h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gaming-900 to-black">
@@ -216,17 +232,59 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Trust Badges */}
+      {/* <TrustBadges /> */}
+
+      {/* Reviews Section */}
+      <ReviewsSection />
+
       {/* Social Proof Section */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-black/50 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="text-center mb-12">
-            <p className="text-white/40 text-sm uppercase tracking-wider mb-6">Încrederea a mii de gameri din întreaga lume</p>
+            <p className="text-white/40 text-sm uppercase tracking-wider mb-8">De încredere pentru gameri profesioniști</p>
             <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
               <div className="text-white/60 text-lg font-bold">Team Alpha</div>
               <div className="text-white/60 text-lg font-bold">ProLeague</div>
               <div className="text-white/60 text-lg font-bold">GameCore</div>
               <div className="text-white/60 text-lg font-bold">NexusGG</div>
               <div className="text-white/60 text-lg font-bold">EpicPlay</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 md:py-32 bg-gradient-to-br from-accent-secondary/10 via-black to-accent-primary/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(138,99,255,0.08),transparent_60%)]" />
+        
+        <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+              Pregătit să-ți Îmbunătățești<br />
+              <span className="bg-gradient-to-r from-accent-secondary to-accent-primary bg-clip-text text-transparent">Performanța?</span>
+            </h2>
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+              Alătură-te miilor de gameri care au ales 47Gear pentru precizie și confort de neegalat.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+              <Link
+                href="/search"
+                className="group inline-flex items-center justify-center px-10 py-5 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all duration-300 hover:scale-[1.02] text-lg shadow-[0_8px_30px_rgba(255,255,255,0.3)]"
+                prefetch={false}
+              >
+                <span>Începe Acum</span>
+                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white rounded-full font-medium hover:bg-white/5 transition-all duration-300 text-lg backdrop-blur-sm"
+                prefetch={false}
+              >
+                Contactează-ne
+              </Link>
             </div>
           </div>
         </div>
