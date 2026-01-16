@@ -7,9 +7,11 @@ import { ProductReviews } from "./product-reviews";
 
 interface ReviewsSectionProps {
   productId: string;
+  productName?: string;
+  productHandle?: string;
 }
 
-export function ReviewsSection({ productId }: ReviewsSectionProps) {
+export function ReviewsSection({ productId, productName, productHandle }: ReviewsSectionProps) {
   const [reviewsData, setReviewsData] = useState<ProductReviewsType>({
     reviews: [],
     averageRating: 0,
@@ -77,6 +79,8 @@ export function ReviewsSection({ productId }: ReviewsSectionProps) {
         <div className="mb-12">
           <ReviewForm
             productId={productId}
+            productName={productName}
+            productHandle={productHandle}
             onReviewSubmitted={handleReviewSubmitted}
           />
         </div>

@@ -1,55 +1,6 @@
-import { ProductReview, ProductReviews } from "@/lib/shopify/types";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+import { ProductReview } from "@/lib/shopify/types";
 import { NextRequest, NextResponse } from "next/server";
-import { join } from "path";
-
-const REVIEWS_DIR = join(process.cwd(), "data", "reviews");
-
-// Ensure reviews directory exists
-if (!existsSync(REVIEWS_DIR)) {
-  mkdirSync(REVIEWS_DIR, { recursive: true });
-}
-
-function getReviewsFilePath(productId: string): string {
-  // Sanitize product ID for use in filename
-  const sanitizedId = productId.replace(/[^a-zA-Z0-9_-]/g, "_");
-  return join(REVIEWS_DIR, `${sanitizedId}.json`);
-}
-
-function getProductReviews(productId: string): ProductReviews {
-  const filePath = getReviewsFilePath(productId);
-  
-  if (!existsSync(filePath)) {
-    return {
-      reviews: [],
-      averageRating: 0,
-      totalReviews: 0,
-    };
-  }
-
-  try {
-    const data = readFileSync(filePath, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error reading reviews:", error);
-    return {
-      reviews: [],
-      averageRating: 0,
-      totalReviews: 0,
-    };
-  }
-}
-
-function saveProductReviews(productId: string, reviews: ProductReviews): void {
-  const filePath = getReviewsFilePath(productId);
-  writeFileSync(filePath, JSON.stringify(reviews, null, 2));
-}
-
-function calculateAverageRating(reviews: ProductReview[]): number {
-  if (reviews.length === 0) return 0;
-  const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
-  return Math.round((sum / reviews.length) * 10) / 10; // Round to 1 decimal
-}
+import { getProductReviews, createReview } from "@/lib/models/review";
 
 // GET /api/reviews?productId=xxx
 export async function GET(request: NextRequest) {
@@ -64,7 +15,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const reviews = getProductReviews(productId);
+    const reviews = await getProductReviews(productId);
     return NextResponse.json(reviews);
   } catch (error) {
     console.error("Error fetching reviews:", error);
@@ -79,10 +30,63 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { productId, rating, title, content, author } = body;
+    const { productId, productName, productHandle, rating, title, content, author, customerAccessToken } = body;
+
+    // Validate customer authentication
+    if (!customerAccessToken) {
+      return NextResponse.json(
+        { error: "Authentication required. Please log in to submit a review." },
+        { status: 401 }
+      );
+    }
+
+    // Verify token and get customer info from Shopify
+    let verifiedCustomerName = author;
+    try {
+      const shopifyResponse = await fetch(
+        `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2023-01/graphql.json`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
+          },
+          body: JSON.stringify({
+            query: `
+              query getCustomer($customerAccessToken: String!) {
+                customer(customerAccessToken: $customerAccessToken) {
+                  firstName
+                  lastName
+                  email
+                }
+              }
+            `,
+            variables: { customerAccessToken },
+          }),
+        }
+      );
+
+      const { data } = await shopifyResponse.json();
+
+      if (!data?.customer) {
+        return NextResponse.json(
+          { error: "Invalid or expired session. Please log in again." },
+          { status: 401 }
+        );
+      }
+
+      // Use verified customer name from Shopify
+      verifiedCustomerName = `${data.customer.firstName} ${data.customer.lastName}`.trim();
+    } catch (err) {
+      console.error('Error verifying customer token:', err);
+      return NextResponse.json(
+        { error: "Failed to verify authentication" },
+        { status: 401 }
+      );
+    }
 
     // Validation
-    if (!productId || !rating || !title || !content || !author) {
+    if (!productId || !rating || !title || !content) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -96,9 +100,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get existing reviews
-    const productReviews = getProductReviews(productId);
-
     // Create new review
     const newReview: ProductReview = {
       id: `review_${Date.now()}`,
@@ -107,25 +108,31 @@ export async function POST(request: NextRequest) {
       rating,
       createdAt: new Date().toISOString(),
       author: {
-        name: author,
+        name: verifiedCustomerName,
       },
-      verifiedBuyer: false, // Could integrate with order history later
+      verifiedBuyer: true, // Always true since we verified the token
+      productName,
+      productHandle,
     };
 
-    // Add new review to the beginning of array
-    productReviews.reviews.unshift(newReview);
-    productReviews.totalReviews = productReviews.reviews.length;
-    productReviews.averageRating = calculateAverageRating(productReviews.reviews);
+    // Save to MongoDB
+    await createReview({
+      ...newReview,
+      productId,
+      productName,
+      productHandle,
+      featured: false,
+    });
 
-    // Save updated reviews
-    saveProductReviews(productId, productReviews);
+    // Get updated statistics
+    const updatedReviews = await getProductReviews(productId);
 
     return NextResponse.json(
       { 
         success: true, 
         review: newReview,
-        averageRating: productReviews.averageRating,
-        totalReviews: productReviews.totalReviews
+        averageRating: updatedReviews.averageRating,
+        totalReviews: updatedReviews.totalReviews
       },
       { status: 201 }
     );

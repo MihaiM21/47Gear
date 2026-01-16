@@ -52,8 +52,8 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 >
                   <XMarkIcon className="h-6" />
                 </button> */}
-                <div className="mb-4 mt-20 w-full">
-                  <Search />
+                <div className="mb-4 mt-24 w-full">
+                  {/* <Search /> */}
                 </div>
                 <ul className="flex w-full flex-col">
                   <li className=" py-2 text-xl text-white transition-colors hover:text-accent-primary">

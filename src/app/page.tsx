@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCollections } from "@/lib/shopify";
 import TrustBadges from "@/components/trust-badges";
-import ReviewsSection from "@/components/reviews-section";
+import FeaturedReviewsSection from "@/components/featured-reviews-section";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 
 export const metadata = {
@@ -235,8 +235,8 @@ export default async function Home() {
       {/* Trust Badges */}
       {/* <TrustBadges /> */}
 
-      {/* Reviews Section */}
-      <ReviewsSection />
+      {/* Featured Reviews Section */}
+      <FeaturedReviewsSection />
 
       {/* Social Proof Section */}
       <section className="py-16 bg-black/50 border-t border-white/5">

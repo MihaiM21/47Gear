@@ -2,6 +2,7 @@ import { GridTileImage } from "@/components/grid/tile";
 import Gallery from "@/components/product/gallery";
 import { ProductProvider } from "@/components/product/product-context";
 import { ProductDescription } from "@/components/product/product-description";
+import { ProductStory } from "@/components/product/product-story";
 import { ReviewsSection } from "@/components/product/reviews-section-wrapper";
 import { HIDDEN_PRODUCT_TAG } from "@/lib/constants";
 import { getProduct, getProductRecommendations } from "@/lib/shopify";
@@ -90,11 +91,20 @@ export default async function ProductPage({
         {/* Product Specifications & Features */}
         <ProductSpecs />
 
+        {/* Product Story */}
+        <div className="mb-24">
+          <ProductStory productHandle={product.handle} />
+        </div>
+
         {/* Reviews Section */}
-        <ReviewsSection productId={product.id} />
+        <ReviewsSection 
+          productId={product.id}
+          productName={product.title}
+          productHandle={product.handle}
+        />
 
         {/* Related Products */}
-        <RelatedPRoducts id={product.id} />
+        {/* <RelatedPRoducts id={product.id} /> */}
       </div>
     </ProductProvider>
   );

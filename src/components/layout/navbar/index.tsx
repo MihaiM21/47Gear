@@ -17,7 +17,7 @@ export async function Navbar() {
         </div>
         <div className="flex w-full items-center">
           {/* Logo */}
-          <div className="flex w-full md:w-1/4">
+          <div className="flex w-full md:w-1/4 justify-center md:justify-start">
             <Link
               href={"/"}
               prefetch={true}

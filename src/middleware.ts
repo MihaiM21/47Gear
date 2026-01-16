@@ -51,16 +51,21 @@ export function middleware(request: NextRequest) {
              request.headers.get('x-real-ip') || 
              'unknown';
   const isApiRoute = request.nextUrl.pathname.startsWith('/api/');
+  const isAdminRoute = request.nextUrl.pathname.startsWith('/api/admin') || 
+                       request.nextUrl.pathname.startsWith('/management-portal');
   
-  // Apply rate limiting
-  if (!rateLimit(ip, isApiRoute)) {
-    return new NextResponse('Too Many Requests', {
-      status: 429,
-      headers: {
-        'Retry-After': '60',
-        'Content-Type': 'application/json',
-      },
-    });
+  // Skip rate limiting for admin routes (they have their own auth protection)
+  if (!isAdminRoute) {
+    // Apply rate limiting
+    if (!rateLimit(ip, isApiRoute)) {
+      return new NextResponse('Too Many Requests', {
+        status: 429,
+        headers: {
+          'Retry-After': '60',
+          'Content-Type': 'application/json',
+        },
+      });
+    }
   }
 
   // Security Headers

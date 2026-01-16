@@ -7,6 +7,7 @@ export default function robots() {
     rules: [
       {
         userAgent: "*",
+        disallow: ["/management-portal", "/api/admin"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

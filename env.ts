@@ -27,6 +27,9 @@ const envSchema = z.object({
   
   // Site URL for production
   NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+  
+  // MongoDB configuration (required for data storage)
+  MONGODB_URI: z.string().min(1, "MongoDB URI is required"),
 });
 
 envSchema.parse(process.env);

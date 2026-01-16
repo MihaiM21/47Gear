@@ -272,6 +272,9 @@ export type ProductReview = {
     email?: string;
   };
   verifiedBuyer: boolean;
+  featured?: boolean;
+  productName?: string;
+  productHandle?: string;
 };
 
 export type ProductReviews = {
