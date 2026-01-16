@@ -33,16 +33,66 @@ export default async function Home() {
 
       {/* Hero Section - Centered Minimalist */}
       <section className="relative h-screen flex items-end overflow-hidden">
+        {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gaming-900 to-black">
-          {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(138,99,255,0.08),transparent_60%)]" /> */}
-          {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(74,43,116,0.06),transparent_50%)]" /> */}
-          <Image
-            src="/images/all_mousepads2.png"
-            alt="Gaming Mousepad"
-            fill
-            className="object-cover opacity-100"
-            priority
-          />
+          {/* Animated gradient orbs */}
+          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+          <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-accent-primary/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '2s' }} />
+          
+          {/* Animated grid overlay */}
+          <div className="absolute inset-0 opacity-10 animate-grid-move" style={{
+            backgroundImage: 'linear-gradient(rgba(138, 99, 255, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(138, 99, 255, 0.3) 1px, transparent 1px)',
+            backgroundSize: '100px 100px'
+          }} />
+          
+          {/* Floating geometric shapes */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-accent-secondary/40 rounded-full animate-float" style={{ animationDuration: '6s' }} />
+          <div className="absolute top-3/4 left-1/3 w-3 h-3 bg-accent-primary/40 rounded-full animate-float" style={{ animationDuration: '8s', animationDelay: '1s' }} />
+          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-accent-secondary/40 rounded-full animate-float" style={{ animationDuration: '7s', animationDelay: '2s' }} />
+          <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-accent-primary/40 rounded-full animate-float" style={{ animationDuration: '9s', animationDelay: '3s' }} />
+        </div>
+
+        {/* Floating Mousepad Slideshow */}
+        <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+          <div className="relative w-full max-w-4xl h-[600px]">
+            {/* Image 1 */}
+            <div className="absolute inset-0 flex items-center justify-center animate-slideshow-fade opacity-0" style={{ animationDelay: '0s' }}>
+              <div className="relative w-[700px] h-[300px] animate-float-slow transform hover:scale-105 transition-transform duration-500 rounded-3xl overflow-hidden">
+                <Image
+                  src="/images/mousepads/desk1.png"
+                  alt="Gaming Mousepad"
+                  fill
+                  className="object-cover drop-shadow-2xl opacity-80"
+                  priority
+                />
+              </div>
+            </div>
+            
+            {/* Image 2 */}
+            <div className="absolute inset-0 flex items-center justify-center animate-slideshow-fade opacity-0" style={{ animationDelay: '5s' }}>
+              <div className="relative w-[700px] h-[300px] animate-float-slow transform hover:scale-105 transition-transform duration-500 rounded-3xl overflow-hidden" style={{ animationDelay: '0.5s' }}>
+                <Image
+                  src="/images/mousepads/desk2.png"
+                  alt="Gaming Mousepad"
+                  fill
+                  className="object-cover drop-shadow-2xl opacity-80"
+                />
+              </div>
+            </div>
+            
+            {/* Image 3 */}
+            <div className="absolute inset-0 flex items-center justify-center animate-slideshow-fade opacity-0" style={{ animationDelay: '10s' }}>
+              <div className="relative w-[700px] h-[300px] animate-float-slow transform hover:scale-105 transition-transform duration-500 rounded-3xl overflow-hidden" style={{ animationDelay: '1s' }}>
+                <Image
+                  src="/images/mousepads/desk3.png"
+                  alt="Gaming Mousepad"
+                  fill
+                  className="object-cover drop-shadow-2xl opacity-80"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="container mx-auto px-6 md:px-12 lg:px-20 pb-16 md:pb-20 relative z-10 w-full">
@@ -146,7 +196,7 @@ export default async function Home() {
       </section>
 
       {/* Collections Section */}
-      <section className="py-24 md:py-32 bg-gaming-900/30 relative">
+      {/* <section className="py-24 md:py-32 bg-gaming-900/30 relative">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 space-y-4">
@@ -230,7 +280,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Trust Badges */}
       {/* <TrustBadges /> */}
@@ -238,21 +288,7 @@ export default async function Home() {
       {/* Featured Reviews Section */}
       <FeaturedReviewsSection />
 
-      {/* Social Proof Section */}
-      <section className="py-16 bg-black/50 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
-          <div className="text-center mb-12">
-            <p className="text-white/40 text-sm uppercase tracking-wider mb-8">De încredere pentru gameri profesioniști</p>
-            <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
-              <div className="text-white/60 text-lg font-bold">Team Alpha</div>
-              <div className="text-white/60 text-lg font-bold">ProLeague</div>
-              <div className="text-white/60 text-lg font-bold">GameCore</div>
-              <div className="text-white/60 text-lg font-bold">NexusGG</div>
-              <div className="text-white/60 text-lg font-bold">EpicPlay</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 bg-gradient-to-br from-accent-secondary/10 via-black to-accent-primary/10 relative overflow-hidden">
@@ -285,6 +321,21 @@ export default async function Home() {
               >
                 Contactează-ne
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Social Proof Section */}
+      <section className="py-16 bg-black/50 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+          <div className="text-center mb-12">
+            <p className="text-white/40 text-sm uppercase tracking-wider mb-8">De încredere pentru gameri profesioniști</p>
+            <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
+              <div className="text-white/60 text-lg font-bold">Team Alpha</div>
+              <div className="text-white/60 text-lg font-bold">ProLeague</div>
+              <div className="text-white/60 text-lg font-bold">GameCore</div>
+              <div className="text-white/60 text-lg font-bold">NexusGG</div>
+              <div className="text-white/60 text-lg font-bold">EpicPlay</div>
             </div>
           </div>
         </div>

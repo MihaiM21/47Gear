@@ -706,3 +706,76 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
+
+/* Hero section animations */
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100px); }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px); 
+    opacity: 0.4; 
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: translateY(-40px) translateX(-10px); 
+    opacity: 0.8; 
+  }
+  75% { 
+    transform: translateY(-20px) translateX(10px); 
+    opacity: 0.6; 
+  }
+}
+
+.animate-grid-move {
+  animation: gridMove 20s linear infinite;
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { 
+    transform: translateY(0px) rotate(-2deg); 
+  }
+  50% { 
+    transform: translateY(-30px) rotate(2deg); 
+  }
+}
+
+@keyframes slideshowFade {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  6.67% { 
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+  }
+  33.33% { 
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+  }
+  40% { 
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  100% { 
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-slideshow-fade {
+  animation: slideshowFade 15s ease-in-out infinite;
+}
