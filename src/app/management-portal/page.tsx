@@ -6,7 +6,175 @@ import LoadingDots from '@/components/loading-dots';
 import AdminReviewsManager from '@/components/admin/reviews-manager';
 import ProductStoriesManager from '@/components/admin/product-stories-manager';
 
-type TabType = 'reviews' | 'stories';
+type TabType = 'reviews' | 'stories' | 'cache';
+
+// Cache Manager Component
+function CacheManager() {
+  const [revalidating, setRevalidating] = useState(false);
+  const [message, setMessage] = useState('');
+  const [lastRevalidated, setLastRevalidated] = useState<Date | null>(null);
+
+  const handleRevalidate = async (tags: string[]) => {
+    setRevalidating(true);
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/admin/revalidate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tags }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(`✅ Successfully revalidated: ${data.revalidated.join(', ')}`);
+        setLastRevalidated(new Date());
+      } else {
+        setMessage(`❌ Error: ${data.error}`);
+      }
+    } catch (error) {
+      setMessage('❌ Failed to revalidate cache');
+    } finally {
+      setRevalidating(false);
+    }
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="bg-gaming-800/50 backdrop-blur-sm rounded-xl p-8 border border-accent-primary/20">
+        <h2 className="text-2xl font-bold text-white mb-2">Cache Manager</h2>
+        <p className="text-gaming-300 mb-8">
+          Manually refresh cached data from Shopify. Use this when you update products or collections and want to see changes immediately.
+        </p>
+
+        {message && (
+          <div className={`mb-6 p-4 rounded-lg ${
+            message.includes('✅') 
+              ? 'bg-accent-green/10 border border-accent-green/30 text-accent-green' 
+              : 'bg-accent-red/10 border border-accent-red/30 text-accent-red'
+          }`}>
+            {message}
+          </div>
+        )}
+
+        {lastRevalidated && (
+          <div className="mb-6 text-sm text-gaming-300">
+            Last revalidated: {lastRevalidated.toLocaleString()}
+          </div>
+        )}
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Products Card */}
+          <div className="bg-gaming-900/50 rounded-lg p-6 border border-accent-primary/10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-accent-secondary/20 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-accent-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Products</h3>
+                <p className="text-xs text-gaming-400">Refresh all product data</p>
+              </div>
+            </div>
+            <p className="text-sm text-gaming-300 mb-4">
+              Updates product titles, prices, descriptions, images, and availability.
+            </p>
+            <button
+              onClick={() => handleRevalidate(['products'])}
+              disabled={revalidating}
+              className="w-full bg-gradient-to-r from-accent-primary to-accent-secondary text-white py-2 px-4 rounded-lg hover:shadow-neon-purple transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-medium"
+            >
+              {revalidating ? <LoadingDots className="bg-white" /> : '🔄 Refresh Products'}
+            </button>
+          </div>
+
+          {/* Collections Card */}
+          <div className="bg-gaming-900/50 rounded-lg p-6 border border-accent-primary/10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-accent-secondary/20 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-accent-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Collections</h3>
+                <p className="text-xs text-gaming-400">Refresh collection data</p>
+              </div>
+            </div>
+            <p className="text-sm text-gaming-300 mb-4">
+              Updates collection names, descriptions, and product listings.
+            </p>
+            <button
+              onClick={() => handleRevalidate(['collections'])}
+              disabled={revalidating}
+              className="w-full bg-gradient-to-r from-accent-primary to-accent-secondary text-white py-2 px-4 rounded-lg hover:shadow-neon-purple transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-medium"
+            >
+              {revalidating ? <LoadingDots className="bg-white" /> : '🔄 Refresh Collections'}
+            </button>
+          </div>
+
+          {/* Everything Card */}
+          <div className="md:col-span-2 bg-gaming-900/50 rounded-lg p-6 border border-accent-yellow/20">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-accent-yellow/20 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-accent-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Refresh Everything</h3>
+                <p className="text-xs text-gaming-400">Nuclear option: refresh all cached data</p>
+              </div>
+            </div>
+            <p className="text-sm text-gaming-300 mb-4">
+              Revalidates all products and collections. Use this after making multiple changes in Shopify.
+            </p>
+            <button
+              onClick={() => handleRevalidate(['products', 'collections'])}
+              disabled={revalidating}
+              className="w-full bg-gradient-to-r from-accent-yellow to-accent-red text-white py-3 px-4 rounded-lg hover:shadow-neon-yellow transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-semibold"
+            >
+              {revalidating ? <LoadingDots className="bg-white" /> : '⚡ Refresh Everything'}
+            </button>
+          </div>
+        </div>
+
+        {/* Info section */}
+        <div className="mt-8 p-4 bg-accent-secondary/10 border border-accent-secondary/20 rounded-lg">
+          <h4 className="text-sm font-semibold text-accent-secondary mb-2">ℹ️ About Cache Refresh</h4>
+          <ul className="text-xs text-gaming-300 space-y-1">
+            <li>• <strong>Automatic:</strong> Cache refreshes automatically every 3-5 minutes</li>
+            <li>• <strong>Webhooks:</strong> Set up Shopify webhooks for instant updates (see SHOPIFY_WEBHOOK_SETUP.md)</li>
+            <li>• <strong>Manual:</strong> Use these buttons when you need immediate results</li>
+            <li>• <strong>No harm:</strong> Safe to use anytime - won't break anything!</li>
+          </ul>
+        </div>
+
+        {/* Webhook status */}
+        <div className="mt-6 p-4 bg-gaming-900/50 border border-accent-primary/10 rounded-lg">
+          <h4 className="text-sm font-semibold text-white mb-3">🔗 Webhook Setup Status</h4>
+          <p className="text-sm text-gaming-300 mb-3">
+            For automatic instant updates, configure Shopify webhooks:
+          </p>
+          <div className="space-y-2 text-xs text-gaming-400">
+            <div className="flex items-center gap-2">
+              <span className="text-accent-yellow">⚠️</span>
+              <span>Webhook URL: <code className="bg-gaming-800 px-2 py-1 rounded">https://your-domain.com/api/revalidate?secret=your-secret</code></span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent-secondary">📖</span>
+              <span>See <strong>SHOPIFY_WEBHOOK_SETUP.md</strong> for step-by-step instructions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function AdminPage() {
   const router = useRouter();
@@ -165,7 +333,7 @@ export default function AdminPage() {
       {/* Header with logout */}
       <div className="bg-gaming-800/80 backdrop-blur-xl shadow-elegant border-b border-accent-primary/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mt-20">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-lg flex items-center justify-center shadow-neon-purple">
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,12 +383,31 @@ export default function AdminPage() {
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-secondary"></div>
               )}
             </button>
+            <button
+              onClick={() => setActiveTab('cache')}
+              className={`px-6 py-3 font-medium transition-all relative ${
+                activeTab === 'cache'
+                  ? 'text-accent-secondary'
+                  : 'text-gaming-400 hover:text-gaming-200'
+              }`}
+            >
+              Cache Manager
+              {activeTab === 'cache' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-secondary"></div>
+              )}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Content based on active tab */}
-      {activeTab === 'reviews' ? <AdminReviewsManager /> : <ProductStoriesManager />}
+      {activeTab === 'reviews' ? (
+        <AdminReviewsManager />
+      ) : activeTab === 'stories' ? (
+        <ProductStoriesManager />
+      ) : (
+        <CacheManager />
+      )}
     </div>
   );
 }

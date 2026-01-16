@@ -106,7 +106,7 @@ export default function LoginPage() {
                 <span className="text-xs font-medium text-accent-secondary tracking-wider uppercase">Account Access</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
-                Welcome Back
+                Login
               </h1>
               <p className="text-white/60 text-lg">Sign in to continue your journey</p>
             </div>

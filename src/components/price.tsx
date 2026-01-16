@@ -12,7 +12,7 @@ const Price = ({
   currencyCodeClassName?: string;
 } & React.ComponentProps<"p">) => (
   <p suppressHydrationWarning={true} className={clsx("font-bold text-white", className)}>
-    <span className="text-2xl bg-gradient-to-r from-accent-secondary to-accent-primary bg-clip-text text-transparent">
+    <span className="text-2xl text-gaming-300">
       {`${new Intl.NumberFormat(undefined, {
         style: "currency",
         currency: currencyCode,

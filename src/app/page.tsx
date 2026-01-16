@@ -63,6 +63,7 @@ export default async function Home() {
                   src="/images/mousepads/desk1.png"
                   alt="Gaming Mousepad"
                   fill
+                  sizes="(max-width: 768px) 100vw, 700px"
                   className="object-cover drop-shadow-2xl opacity-80"
                   priority
                 />
@@ -76,6 +77,7 @@ export default async function Home() {
                   src="/images/mousepads/desk2.png"
                   alt="Gaming Mousepad"
                   fill
+                  sizes="(max-width: 768px) 100vw, 700px"
                   className="object-cover drop-shadow-2xl opacity-80"
                 />
               </div>
@@ -88,6 +90,7 @@ export default async function Home() {
                   src="/images/mousepads/desk3.png"
                   alt="Gaming Mousepad"
                   fill
+                  sizes="(max-width: 768px) 100vw, 700px"
                   className="object-cover drop-shadow-2xl opacity-80"
                 />
               </div>

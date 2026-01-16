@@ -23,13 +23,13 @@ export default function Label({
         }
       )}
     >
-      <div className="flex w-full flex-col gap-2 p-4 text-sm font-medium text-white backdrop-blur-sm">
-        <h3 className="line-clamp-2 text-base font-bold text-white group-hover:text-accent-secondary transition-colors duration-300 leading-snug">
+      <div className="rounded-3xl flex w-full flex-col gap-2 p-4 text-sm font-medium text-white backdrop-blur-sm">
+        <h3 className="line-clamp-2 text-xl font-bold text-white group-hover:text-accent-secondary transition-colors duration-300 leading-snug">
           {title}
         </h3>
         <div className="flex items-center justify-between">
           <div className="inline-flex items-baseline gap-1">
-            <span className="text-2xl font-bold bg-gradient-to-r from-accent-secondary to-accent-primary bg-clip-text text-transparent">
+            <span className="text-l font-bold text-white">
               {new Intl.NumberFormat(undefined, {
                 style: "currency",
                 currency: currencyCode,

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-[calc(100vh-200px)] items-center justify-center px-4 py-16">
+    <div className="flex min-h-[calc(100vh-200px)] items-center justify-center px-4 py-16 mt-8">
       <div className="relative w-full max-w-2xl">
         {/* Background effects */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -34,11 +34,10 @@ export default function NotFound() {
           {/* Error message */}
           <div className="mb-8 space-y-3">
             <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Oops! Page Not Found
+              Oops! Pagina nu a fost găsită
             </h2>
             <p className="text-gaming-300 text-base md:text-lg max-w-md mx-auto">
-              The page you're looking for seems to have disappeared into the void. 
-              Maybe it was carried away by a gaming mouse?
+              Pagina pe care o căutați nu există.
             </p>
           </div>
 
@@ -82,7 +81,7 @@ export default function NotFound() {
                   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                 />
               </svg>
-              Back to Home
+              Home
             </Link>
 
             <Link
@@ -109,22 +108,9 @@ export default function NotFound() {
 
           {/* Popular links */}
           <div className="mt-12 pt-8 border-t border-white/10">
-            <p className="text-sm text-gaming-400 mb-4">Looking for something specific?</p>
+            <p className="text-sm text-gaming-400 mb-4">Cauți ceva anume?</p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link
-                href="/search/gaming-collection"
-                className="text-sm text-accent-secondary hover:text-accent-primary transition-colors duration-200 hover:underline"
-              >
-                Gaming Mousepads
-              </Link>
-              <span className="text-gaming-600">•</span>
-              <Link
-                href="/search/desk-collection"
-                className="text-sm text-accent-secondary hover:text-accent-primary transition-colors duration-200 hover:underline"
-              >
-                Desk Pads
-              </Link>
-              <span className="text-gaming-600">•</span>
+              
               <Link
                 href="/about-us"
                 className="text-sm text-accent-secondary hover:text-accent-primary transition-colors duration-200 hover:underline"

@@ -2,7 +2,7 @@
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { GridTileImage } from "../grid/tile";
+import { useState } from "react";
 import { useProduct, useUpdateURL } from "./product-context";
 
 export default function Gallery({
@@ -13,6 +13,7 @@ export default function Gallery({
   const { state, updateImage } = useProduct();
   const updateURL = useUpdateURL();
   const imageIndex = state.image ? parseInt(state.image) : 0;
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
   const previousImageIndex =
@@ -23,23 +24,39 @@ export default function Gallery({
 
   return (
     <form>
-      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-gaming-900/30">
+      {/* Main Image - Adapts to image aspect ratio */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gaming-900/30">
         {images[imageIndex] && (
-          <Image
-            className="h-full w-full object-contain p-8"
-            fill
-            sizes="(min-width: 1024px) 60vw, 100vw"
-            src={images[imageIndex]?.src as string}
-            alt={images[imageIndex]?.altText as string}
-            priority={true}
-          />
+          <>
+            <Image
+              className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              fill
+              sizes="(min-width: 1024px) 60vw, 100vw"
+              src={images[imageIndex]?.src as string}
+              alt={images[imageIndex]?.altText as string}
+              priority={true}
+              onLoad={() => setImageLoaded(true)}
+              style={{
+                objectFit: 'contain',
+                padding: '2rem',
+              }}
+            />
+            {/* Loading skeleton */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 border-4 border-accent-secondary/30 border-t-accent-secondary rounded-full animate-spin"></div>
+              </div>
+            )}
+          </>
         )}
 
+        {/* Navigation Controls */}
         {images.length > 1 ? (
-          <div className="absolute bottom-6 flex w-full justify-center">
+          <div className="absolute bottom-6 flex w-full justify-center z-10">
             <div className="flex h-12 items-center rounded-full border border-white/10 bg-black/60 backdrop-blur-xl px-2">
               <button
                 formAction={() => {
+                  setImageLoaded(false);
                   const newState = updateImage(previousImageIndex.toString());
                   updateURL(newState);
                 }}
@@ -51,6 +68,7 @@ export default function Gallery({
               <div className="mx-2 h-6 w-px bg-white/20"></div>
               <button
                 formAction={() => {
+                  setImageLoaded(false);
                   const newState = updateImage(nextImageIndex.toString());
                   updateURL(newState);
                 }}
@@ -62,35 +80,51 @@ export default function Gallery({
             </div>
           </div>
         ) : null}
+
+        {/* Image counter */}
+        {images.length > 1 && (
+          <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-xl px-3 py-1 rounded-full border border-white/10 text-sm text-white">
+            {imageIndex + 1} / {images.length}
+          </div>
+        )}
       </div>
+
+      {/* Thumbnail Gallery */}
       {images.length > 1 ? (
-        <ul className="mt-6 flex items-center gap-3 overflow-auto">
-          {images.map((image, index) => {
-            const isActive = index === imageIndex;
-            return (
-              <li key={image.src} className="flex-shrink-0">
+        <div className="mt-6 relative">
+          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-accent-primary/50 scrollbar-track-gaming-900/30">
+            {images.map((image, index) => {
+              const isActive = index === imageIndex;
+              return (
                 <button
+                  key={image.src}
                   formAction={() => {
+                    setImageLoaded(false);
                     const newState = updateImage(index.toString());
                     updateURL(newState);
                   }}
-                  aria-label="Select product image"
-                  className={`block h-20 w-20 overflow-hidden rounded-lg border-2 transition-all duration-300 ${
-                    isActive ? 'border-accent-secondary scale-105' : 'border-white/10 hover:border-white/30'
+                  aria-label={`View image ${index + 1}`}
+                  className={`relative flex-shrink-0 h-20 w-20 overflow-hidden rounded-lg border-2 transition-all duration-300 ${
+                    isActive 
+                      ? 'border-accent-secondary scale-105 ring-2 ring-accent-secondary/50' 
+                      : 'border-white/10 hover:border-accent-primary/50 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <GridTileImage
-                    alt={image.altText}
+                  <Image
                     src={image.src}
-                    active={isActive}
-                    width={80}
-                    height={80}
+                    alt={image.altText}
+                    fill
+                    sizes="80px"
+                    className="object-cover"
                   />
+                  {isActive && (
+                    <div className="absolute inset-0 bg-accent-secondary/10"></div>
+                  )}
                 </button>
-              </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </div>
+        </div>
       ) : null}
     </form>
   );

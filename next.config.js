@@ -19,9 +19,6 @@ module.exports = {
   // Enable standalone output for Docker deployment
   output: 'standalone',
   
-  // Optimize for production
-  swcMinify: true,
-  
   // Configure experimental features for better performance
   experimental: {
     // Optimize package imports

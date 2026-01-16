@@ -60,7 +60,7 @@ export function GridTileImage({
       </div> */}
       
       {label ? (
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent py-4 px-4 z-20 transform transition-transform duration-500 translate-y-0">
+        <div className="rounded-3xl absolute bottom-0 left-0 right-0 bg-none py-4 px-4 z-20 transform transition-transform duration-500 translate-y-0">
           <Label
             title={label.title}
             amount={label.amount}

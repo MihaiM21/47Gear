@@ -71,6 +71,11 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       Contact Us
                     </Link>
                   </li>
+                  <li className="py-2 text-xl text-white transition-colors hover:text-accent-primary">
+                    <Link href="/profile" prefetch={false} onClick={closeMobileMenu} className="justify-center flex mr-2">
+                      My Account
+                    </Link>
+                  </li>
                   {menu.length > 0 ? 
                     menu.map((item: Menu) => (
                       <li
