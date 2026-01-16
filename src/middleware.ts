@@ -7,8 +7,8 @@ const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 // Rate limiting configuration
 const RATE_LIMIT = {
   windowMs: 60 * 1000, // 1 minute
-  maxRequests: 60, // max requests per window
-  apiMaxRequests: 20, // stricter limit for API routes
+  maxRequests: 100, // max requests per window
+  apiMaxRequests: 50, // stricter limit for API routes
 };
 
 function rateLimit(ip: string, isApiRoute: boolean): boolean {
@@ -53,9 +53,11 @@ export function middleware(request: NextRequest) {
   const isApiRoute = request.nextUrl.pathname.startsWith('/api/');
   const isAdminRoute = request.nextUrl.pathname.startsWith('/api/admin') || 
                        request.nextUrl.pathname.startsWith('/management-portal');
+  const isPublicApiRoute = request.nextUrl.pathname.startsWith('/api/product-stories') ||
+                           request.nextUrl.pathname.startsWith('/api/reviews/featured');
   
-  // Skip rate limiting for admin routes (they have their own auth protection)
-  if (!isAdminRoute) {
+  // Skip rate limiting for admin routes and public read-only API routes
+  if (!isAdminRoute && !isPublicApiRoute) {
     // Apply rate limiting
     if (!rateLimit(ip, isApiRoute)) {
       return new NextResponse('Too Many Requests', {
