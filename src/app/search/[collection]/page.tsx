@@ -37,7 +37,7 @@ export default async function CategoryPage({
     
       <div className="space-y-8 px-4">
         {/* Enhanced header section */}
-        <div className="relative py-12 px-6 rounded-2xl bg-gradient-to-br from-gaming-800/40 to-accent-primary/10 backdrop-blur-sm border border-accent-primary/20 overflow-hidden">
+        {/* <div className="relative py-12 px-6 rounded-2xl bg-gradient-to-br from-gaming-800/40 to-accent-primary/10 backdrop-blur-sm border border-accent-primary/20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-accent-primary/5 to-transparent"></div>
           <div className="relative z-10">
             <h1 className="text-4xl md:text-6xl font-black mb-4 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-clip-text text-transparent animate-premiumFadeInUp">
@@ -50,7 +50,7 @@ export default async function CategoryPage({
               performanță și precizie. Fiecare produs este creat cu grijă pentru gamerii seriosati.
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Products grid */}
         {products.length === 0 ? (
