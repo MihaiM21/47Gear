@@ -6,6 +6,8 @@ A high-performance Next.js 15 e-commerce store integrated with Shopify, built fo
 
 - **Next.js 15** with App Router and React Server Components
 - **Shopify Storefront API** integration with automatic revalidation
+- **Product Reviews System** with customer ratings and feedback
+- **Admin Panel** for managing and moderating reviews
 - **Auto-Refresh Data** - Products update every 3 minutes, no manual refresh needed
 - **Webhook Support** - Instant updates when you change products in Shopify
 - **TypeScript** for type safety
@@ -43,6 +45,11 @@ A high-performance Next.js 15 e-commerce store integrated with Shopify, built fo
    **Email (Optional):**
    - Configure SMTP settings if you want contact form functionality
    - Leave empty to disable email features
+
+   **Admin Panel:**
+   - `ADMIN_USERNAME` - Admin username (default: admin)
+   - `ADMIN_PASSWORD` - Admin password (default: admin123)
+   - `ADMIN_SESSION_SECRET` - Session secret (generate with: `openssl rand -base64 32`)
 
 ## 🔧 Installation
 
@@ -242,6 +249,10 @@ For best performance, configure a CDN:
 
 ### Before Production Deployment
 
+- [ ] Change default admin credentials in `.env`
+- [ ] Generate secure `ADMIN_SESSION_SECRET`
+- [ ] Configure all environment variables properly
+
 - [ ] Review and test all environment variables
 - [ ] Enable HTTPS (required for production)
 - [ ] Configure proper DNS records
@@ -277,7 +288,27 @@ For best performance, configure a CDN:
 | `EMAIL_PASS` | No | SMTP password | `password` |
 | `EMAIL_FROM` | No | From email | `noreply@example.com` |
 | `EMAIL_TO` | No | Contact recipient | `contact@example.com` |
+| `ADMIN_USERNAME` | No | Admin username | `admin` |
+| `ADMIN_PASSWORD` | No | Admin password | `admin123` |
+| `ADMIN_SESSION_SECRET` | No | Admin session secret | Random string |
 | `NODE_ENV` | Yes | Environment | `production` |
+
+## 👤 Admin Portal
+
+Access the secure admin portal at `/management-portal` to manage product reviews.
+
+**Default credentials:**
+- Username: `admin`
+- Password: `admin123`
+
+⚠️ **Change these immediately in production!**
+
+**Security:** The admin portal is hidden from search engines and uses an obscure URL for additional security.
+
+For detailed documentation, see:
+- [ADMIN_ACCESS.md](ADMIN_ACCESS.md) - Secure access guide
+- [ADMIN_QUICK_START.md](ADMIN_QUICK_START.md) - Quick setup guide
+- [ADMIN_PANEL.md](ADMIN_PANEL.md) - Complete documentation
 
 ## 🐛 Troubleshooting
 
