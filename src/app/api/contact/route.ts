@@ -8,7 +8,9 @@ const contactFormSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   subject: z.string().min(3, "Subject must be at least 3 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
-  consent: z.boolean().optional(),
+  consent: z.boolean().refine((val) => val === true, {
+    message: "You must accept the privacy policy to submit this form",
+  }),
 });
 
 export async function POST(request: NextRequest) {

@@ -151,10 +151,11 @@ export default function ContactForm({ className }: ContactFormProps) {
           id="consent"
           checked={formData.consent}
           onChange={handleCheckboxChange}
+          required
           className="h-4 w-4 rounded border-accent-primary/50 bg-black text-accent-secondary focus:ring-accent-secondary/30"
         />
         <label htmlFor="consent" className="text-xs text-white/70">
-          Sunt de acord ca 47Gear să îmi folosească datele pentru a răspunde la solicitarea mea conform <a href="/privacy-policy" className="underline hover:text-accent-secondary">Politicii de Confidențialitate</a>.
+          Sunt de acord ca 47Gear să îmi folosească datele pentru a răspunde la solicitarea mea conform <a href="/privacy-policy" className="underline hover:text-accent-secondary">Politicii de Confidențialitate</a>. *
         </label>
       </div>
       
