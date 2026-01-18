@@ -77,7 +77,7 @@ export default function CartModal() {
           >
             <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-accent-primary/20 bg-gradient-to-b from-black/95 via-gaming-900/95 to-black/95 backdrop-blur-2xl p-6 text-white shadow-2xl md:w-[420px]">
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-accent-primary/20">
-                <p className="text-xl font-bold bg-gradient-to-r from-white to-accent-secondary bg-clip-text text-transparent">My Cart</p>
+                <p className="text-xl font-bold text-gaming-300">My Cart</p>
                 <button aria-label="Close cart" onClick={closeCart} className="p-2 rounded-lg hover:bg-accent-primary/20 transition-colors duration-200">
                   <CloseCart />
                 </button>
@@ -210,7 +210,7 @@ export default function CartModal() {
                   </ul>
                   <div className="py-4 text-sm text-gaming-300">
                     <div className="mb-3 flex items-center justify-between border-b border-gaming-700 pb-3">
-                      <p>Taxes</p>
+                      <p>Taxe</p>
                       <Price
                         className="text-right text-base text-white"
                         amount={cart.cost.totalTaxAmount.amount}
@@ -218,8 +218,8 @@ export default function CartModal() {
                       />
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-gaming-700 pb-3 pt-1">
-                      <p>Shipping</p>
-                      <p className="text-right text-gaming-200">Calculated at checkout</p>
+                      <p>Transport</p>
+                      <p className="text-right text-gaming-200">Calculat la checkout</p>
                     </div>
                     <div className="mb-6 flex items-center justify-between border-b border-gaming-700 pb-3 pt-1">
                       <p className="font-bold text-white">Total</p>
@@ -252,7 +252,7 @@ function CheckoutButton() {
       type="submit"
       disabled={pending}
     >
-      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Proceed to </span><span className="text-white">Checkout</span></>}
+      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Checkout</span></>}
     </button>
   );
 }

@@ -550,7 +550,7 @@ export default function ProfilePage() {
                   : 'text-white/50 hover:text-white/80'
               )}
             >
-              Orders
+              Comenzi
               {activeTab === 'orders' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-secondary to-accent-primary" />
               )}
@@ -564,7 +564,7 @@ export default function ProfilePage() {
                   : 'text-white/50 hover:text-white/80'
               )}
             >
-              Account Details
+              Detaliile contului
               {activeTab === 'details' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-secondary to-accent-primary" />
               )}
@@ -578,7 +578,7 @@ export default function ProfilePage() {
                   : 'text-white/50 hover:text-white/80'
               )}
             >
-              Addresses
+              Adresa
               {activeTab === 'addresses' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-secondary to-accent-primary" />
               )}
@@ -695,7 +695,7 @@ export default function ProfilePage() {
           <div className="w-full">
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-2xl font-bold text-white">Personal Information</h3>
+                <h3 className="text-2xl font-bold text-white">Informatii personale</h3>
                 <button
                   onClick={() => setIsEditingDetails(!isEditingDetails)}
                   className="px-4 py-2 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium"
@@ -707,7 +707,7 @@ export default function ProfilePage() {
               {!isEditingDetails ? (
                 <div className="space-y-6">
                   <div>
-                    <label className="text-sm text-white/50 uppercase tracking-wider">Full Name</label>
+                    <label className="text-sm text-white/50 uppercase tracking-wider">Nume complet</label>
                     <p className="text-lg text-white mt-1">{customer?.firstName} {customer?.lastName}</p>
                   </div>
                   <div className="h-px bg-white/5" />
@@ -720,24 +720,24 @@ export default function ProfilePage() {
                 <form onSubmit={handleUpdateProfile} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm text-white/80 mb-2">First Name</label>
+                      <label className="block text-sm text-white/80 mb-2">Prenume</label>
                       <input
                         type="text"
                         value={editForm.firstName}
                         onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-accent-secondary focus:outline-none transition-colors"
-                        placeholder="First name"
+                        placeholder="Prenume"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/80 mb-2">Last Name</label>
+                      <label className="block text-sm text-white/80 mb-2">Nume de familie</label>
                       <input
                         type="text"
                         value={editForm.lastName}
                         onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-accent-secondary focus:outline-none transition-colors"
-                        placeholder="Last name"
+                        placeholder="Nume de familie"
                         required
                       />
                     </div>
@@ -876,7 +876,7 @@ export default function ProfilePage() {
           <div className="w-full">
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-2xl font-bold text-white">Delivery Address</h3>
+                <h3 className="text-2xl font-bold text-white">Adresa de livrare</h3>
                 {!isEditingAddress && address && (
                   <button
                     onClick={startEditingAddress}

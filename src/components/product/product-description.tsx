@@ -33,7 +33,7 @@ export function ProductDescription({ product }: { product: Product }) {
       {/* Description */}
       {product.descriptionHtml ? (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-white/80 uppercase tracking-wider">Detalii produs</h3>
+          {/* <h3 className="text-sm font-semibold text-white/80 uppercase tracking-wider">Detalii produs</h3> */}
           <Prose
             className="text-base leading-relaxed text-white/60"
             html={product.descriptionHtml}
