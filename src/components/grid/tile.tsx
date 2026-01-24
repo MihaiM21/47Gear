@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Label from "../label";
+import { getOptimizedShopifyImage, getShopifyImageBlurDataURL } from "@/lib/shopify/image-optimizer";
 
 export function GridTileImage({
   isInteractive = true,
@@ -18,6 +19,15 @@ export function GridTileImage({
     availableForSale?: boolean;
   };
 } & React.ComponentProps<typeof Image>) {
+  // Optimize the image URL if it's from Shopify
+  const optimizedSrc = typeof props.src === 'string' && props.src.includes('cdn.shopify.com')
+    ? getOptimizedShopifyImage(props.src, { width: 600, format: 'webp' })
+    : props.src;
+
+  const blurDataURL = typeof props.src === 'string' && props.src.includes('cdn.shopify.com')
+    ? getShopifyImageBlurDataURL(props.src)
+    : undefined;
+
   return (
     <div
       className={clsx(
@@ -44,7 +54,11 @@ export function GridTileImage({
                 isInteractive,
             })}
             {...props}
+            src={optimizedSrc}
             alt={props.alt || "Product image"}
+            quality={80}
+            placeholder={blurDataURL ? "blur" : undefined}
+            blurDataURL={blurDataURL}
           />
         </div>
       ) : null}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ContactFormProps {
   className?: string;
@@ -12,7 +12,10 @@ export default function ContactForm({ className }: ContactFormProps) {
     email: '',
     subject: '',
     message: '',
-    consent: false
+    consent: false,
+    // Anti-spam fields (hidden)
+    website: '', // Honeypot field
+    timingToken: '', // Timing verification
   });
   
   const [formStatus, setFormStatus] = useState<{
@@ -22,6 +25,12 @@ export default function ContactForm({ className }: ContactFormProps) {
     type: 'idle',
     message: '',
   });
+
+  // Generate timing token on component mount
+  useEffect(() => {
+    const token = Buffer.from(Date.now().toString()).toString('base64');
+    setFormData((prev) => ({ ...prev, timingToken: token }));
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -43,6 +52,19 @@ export default function ContactForm({ className }: ContactFormProps) {
     });
     
     try {
+      // Log form data in development
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Submitting form data:', {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          messageLength: formData.message.length,
+          consent: formData.consent,
+          website: formData.website,
+          hasTimingToken: !!formData.timingToken,
+        });
+      }
+      
       // Send form data to API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -55,6 +77,11 @@ export default function ContactForm({ className }: ContactFormProps) {
       const data = await response.json();
       
       if (!response.ok) {
+        // Handle validation errors specifically
+        if (data.errors && Array.isArray(data.errors)) {
+          const errorMessages = data.errors.map((err: any) => `${err.field}: ${err.message}`).join(', ');
+          throw new Error(errorMessages);
+        }
         throw new Error(data.message || 'Failed to send message');
       }
       
@@ -64,13 +91,16 @@ export default function ContactForm({ className }: ContactFormProps) {
         message: 'Your message has been sent successfully! We will get back to you soon.',
       });
       
-      // Reset form
+      // Reset form (but keep the timing token)
+      const newToken = Buffer.from(Date.now().toString()).toString('base64');
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: '',
-        consent: false
+        consent: false,
+        website: '',
+        timingToken: newToken,
       });
     } catch (error) {
       // Error state
@@ -80,7 +110,27 @@ export default function ContactForm({ className }: ContactFormProps) {
       });
     }
   };
-
+{/* Honeypot field - hidden from users but visible to bots */}
+      <input
+        type="text"
+        name="website"
+        id="website"
+        value={formData.website}
+        onChange={handleChange}
+        autoComplete="off"
+        tabIndex={-1}
+        className="absolute left-[-9999px] w-1 h-1 opacity-0"
+        aria-hidden="true"
+      />
+      
+      {/* Hidden timing token */}
+      <input
+        type="hidden"
+        name="timingToken"
+        value={formData.timingToken}
+      />
+      
+      
   return (
     <form onSubmit={handleSubmit} className={`space-y-4 relative z-10 ${className}`}>
       <div className="grid md:grid-cols-2 gap-4">
@@ -131,18 +181,29 @@ export default function ContactForm({ className }: ContactFormProps) {
       </div>
       
       <div className="space-y-1">
-        <label htmlFor="message" className="block text-xs font-medium text-accent-secondary">
-          Mesajul tau
-        </label>
+        <div className="flex justify-between items-center">
+          <label htmlFor="message" className="block text-xs font-medium text-accent-secondary">
+            Mesajul tau
+          </label>
+          <span className={`text-xs ${formData.message.length < 10 ? 'text-red-400' : 'text-white/50'}`}>
+            {formData.message.length}/10 caractere
+          </span>
+        </div>
         <textarea
           id="message"
           rows={4}
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full rounded-md border border-accent-primary/30 bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300"
-          placeholder="Spune-ne cu ce te putem ajuta..."
+          minLength={10}
+          className={`w-full rounded-md border ${formData.message.length > 0 && formData.message.length < 10 ? 'border-red-500/50' : 'border-accent-primary/30'} bg-black/70 px-3 py-2 text-white text-sm focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/20 transition-all duration-300`}
+          placeholder="Spune-ne cu ce te putem ajuta... (minim 10 caractere)"
         ></textarea>
+        {formData.message.length > 0 && formData.message.length < 10 && (
+          <p className="text-xs text-red-400">
+            Mai sunt necesare {10 - formData.message.length} caractere
+          </p>
+        )}
       </div>
       
       <div className="flex items-center space-x-2">

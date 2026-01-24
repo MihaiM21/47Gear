@@ -6,15 +6,22 @@ type Route = {
   lastModified: string;
 };
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
 
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routesMap = [""].map((route) => ({
-    url: `${baseUrl}${route}`,
+  // Static routes with priority and change frequency
+  const staticRoutes = [
+    { url: `${baseUrl}`, priority: 1.0, changeFrequency: 'daily' as const },
+    { url: `${baseUrl}/search`, priority: 0.9, changeFrequency: 'daily' as const },
+    { url: `${baseUrl}/about-us`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/contact-us`, priority: 0.6, changeFrequency: 'monthly' as const },
+  ].map((route) => ({
+    ...route,
     lastModified: new Date().toISOString(),
   }));
 
@@ -22,6 +29,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     collections.map((collection) => ({
       url: `${baseUrl}${collection.path}`,
       lastModified: collection.updatedAt,
+      priority: 0.8,
+      changeFrequency: 'weekly' as const,
     }))
   );
 
@@ -29,6 +38,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     products.map((product) => ({
       url: `${baseUrl}/product/${product.handle}`,
       lastModified: product.updatedAt,
+      priority: 0.7,
+      changeFrequency: 'weekly' as const,
     }))
   );
 
@@ -36,6 +47,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     pages.map((page) => ({
       url: `${baseUrl}/${page.handle}`,
       lastModified: page.updatedAt,
+      priority: 0.5,
+      changeFrequency: 'monthly' as const,
     }))
   );
 
@@ -49,5 +62,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     throw JSON.stringify(error, null, 2);
   }
 
-  return [...routesMap, ...fetchedRoutes];
+  return [...staticRoutes, ...fetchedRoutes];
 }

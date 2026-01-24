@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { analyzeRequestPattern, detectAutomation, checkIPReputation } from './lib/fingerprinting';
+import { isSuspiciousUserAgent } from './lib/bot-detection';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+// Blocked IPs/clients (temporary - for production use a database)
+const blockedClients = new Set<string>();
 
 // Rate limiting configuration
 const RATE_LIMIT = {
@@ -50,11 +55,86 @@ export function middleware(request: NextRequest) {
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 
              request.headers.get('x-real-ip') || 
              'unknown';
+  
+  // Skip bot detection for localhost/development
+  const isLocalhost = ip === 'unknown' || ip === '::1' || ip === '127.0.0.1' || ip.startsWith('::ffff:127.0.0.1');
+  
   const isApiRoute = request.nextUrl.pathname.startsWith('/api/');
   const isAdminRoute = request.nextUrl.pathname.startsWith('/api/admin') || 
                        request.nextUrl.pathname.startsWith('/management-portal');
   const isPublicApiRoute = request.nextUrl.pathname.startsWith('/api/product-stories') ||
                            request.nextUrl.pathname.startsWith('/api/reviews/featured');
+
+  // Check if client is blocked (skip for localhost)
+  if (!isLocalhost && blockedClients.has(ip)) {
+    return new NextResponse('Access Denied', {
+      status: 403,
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    });
+  }
+
+  // Perform advanced bot detection on sensitive routes (skip for localhost)
+  if (!isLocalhost && isApiRoute && !isPublicApiRoute) {
+    // Check IP reputation
+    const ipCheck = checkIPReputation(ip);
+    if (!ipCheck.safe) {
+      console.warn('Suspicious IP detected:', { ip, reason: ipCheck.reason });
+      // Don't block immediately, but increase suspicion
+    }
+
+    // Detect automation
+    const automationCheck = detectAutomation(request);
+    if (automationCheck.isAutomated && automationCheck.confidence >= 70) {
+      console.warn('Automated tool detected:', {
+        ip,
+        indicators: automationCheck.indicators,
+        confidence: automationCheck.confidence,
+      });
+      
+      // Block high-confidence automation attempts on sensitive endpoints
+      if (request.method === 'POST' && automationCheck.confidence >= 80) {
+        return new NextResponse('Forbidden', {
+          status: 403,
+          headers: {
+            'Content-Type': 'text/plain',
+          },
+        });
+      }
+    }
+
+    // Analyze request patterns
+    const patternAnalysis = analyzeRequestPattern(request);
+    if (patternAnalysis.suspicious && patternAnalysis.suspicionScore >= 80) {
+      console.error('Highly suspicious pattern detected:', {
+        ip,
+        fingerprint: patternAnalysis.fingerprint.id,
+        score: patternAnalysis.suspicionScore,
+        reasons: patternAnalysis.reasons,
+      });
+      
+      // Temporarily block this client
+      blockedClients.add(ip);
+      setTimeout(() => blockedClients.delete(ip), 3600000); // Unblock after 1 hour
+      
+      return new NextResponse('Too Many Suspicious Requests', {
+        status: 429,
+        headers: {
+          'Retry-After': '3600',
+          'Content-Type': 'text/plain',
+        },
+      });
+    }
+
+    // Check for suspicious user agents
+    const userAgent = request.headers.get('user-agent');
+    if (isSuspiciousUserAgent(userAgent) && request.method === 'POST') {
+      console.warn('Suspicious user agent on POST request:', { ip, userAgent });
+      // Increase rate limit strictness for suspicious user agents
+      RATE_LIMIT.apiMaxRequests = Math.max(10, RATE_LIMIT.apiMaxRequests / 2);
+    }
+  }
   
   // Skip rate limiting for admin routes and public read-only API routes
   if (!isAdminRoute && !isPublicApiRoute) {

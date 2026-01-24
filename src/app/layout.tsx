@@ -13,27 +13,44 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "47Gear - Premium Gaming Mousepads",
-    template: "%s "
+    default: "47Gear - Mousepad-uri Gaming Premium | Magazin Online România",
+    template: "%s | 47Gear"
   },
-  description: "Experience unmatched control with premium gaming mousepads engineered for champions. Precision, comfort, and durability for professional gamers.",
-  keywords: ["gaming mousepads", "gaming gear", "esports equipment", "pro gaming", "mousepad", "gaming accessories"],
+  description: "Cumpără mousepad-uri gaming premium în România. Livrare rapidă, control perfect, durabilitate maximă. Mousepad-uri profesionale pentru gaming competitiv. Comanda acum!",
+  keywords: [
+    "mousepad gaming", "mousepad gaming romania", "mousepad profesional", "mousepad gaming mare",
+    "mouse pad gaming", "pad gaming", "mousepad xxl", "mousepad rgb",
+    "mousepad esports", "mousepad gamer", "accesorii gaming", "echipament gaming",
+    "mousepad rapid", "mousepad control", "mousepad mare gaming", "cel mai bun mousepad",
+    "mousepad gaming ieftin", "mousepad calitate", "mousepad rezistent"
+  ],
   authors: [{ name: "47Gear" }],
   creator: "47Gear",
   publisher: "47Gear",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  },
   openGraph: {
     type: "website",
     locale: "ro_RO",
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     siteName: "47Gear",
-    title: "47Gear - Premium Gaming Mousepads",
-    description: "Experience unmatched control with premium gaming mousepads engineered for champions.",
+    title: "47Gear - Mousepad-uri Gaming Premium România",
+    description: "Magazin online mousepad-uri gaming în România. Control perfect, durabilitate maximă, livrare rapidă. Echipament premium pentru gameri profesioniști.",
+    images: [
+      {
+        url: '/images/mousepads/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mousepad-uri Gaming Premium 47Gear',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "47Gear - Premium Gaming Mousepads",
-    description: "Experience unmatched control with premium gaming mousepads engineered for champions.",
+    title: "47Gear - Mousepad-uri Gaming Premium România",
+    description: "Mousepad-uri gaming profesionale. Control perfect, durabilitate maximă. Livrare rapidă în România.",
     creator: "@47gear",
   },
   robots: {

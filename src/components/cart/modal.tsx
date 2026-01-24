@@ -16,6 +16,7 @@ import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
 import { createCartAndSetCookie, redirectToCheckout } from "./actions";
+import { getOptimizedShopifyImage, getShopifyImageBlurDataURL } from "@/lib/shopify/image-optimizer";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -147,9 +148,13 @@ export default function CartModal() {
                                     item.merchandise.product.featuredImage
                                       .altText || item.merchandise.product.title
                                   }
-                                  src={
-                                    item.merchandise.product.featuredImage.url
-                                  }
+                                  src={getOptimizedShopifyImage(
+                                    item.merchandise.product.featuredImage.url,
+                                    { width: 128, height: 128, crop: 'center', format: 'webp' }
+                                  )}
+                                  quality={75}
+                                  placeholder="blur"
+                                  blurDataURL={getShopifyImageBlurDataURL(item.merchandise.product.featuredImage.url)}
                                 />
                               </div>
                               <Link

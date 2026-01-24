@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | 47Gear",
-  description: "Learn more about 47Gear - your premium gaming gear destination.",
+  title: "Despre Noi - Magazin Mousepad-uri Gaming România",
+  description: "47Gear - Magazin românesc de mousepad-uri gaming premium. Pasiune pentru gaming, calitate superioară, livrare rapidă în toată România. Descoperă povestea noastră.",
+  keywords: ["despre 47gear", "magazin gaming romania", "mousepad romania", "echipament gaming romanesc"],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/about-us`,
+  },
 };
 
 export default function AboutUsPage() {

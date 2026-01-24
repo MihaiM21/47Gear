@@ -4,6 +4,11 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useState } from "react";
 import { useProduct, useUpdateURL } from "./product-context";
+import { 
+  getOptimizedShopifyImage, 
+  getShopifyImageBlurDataURL,
+  getImageSizes 
+} from "@/lib/shopify/image-optimizer";
 
 export default function Gallery({
   images,
@@ -22,19 +27,27 @@ export default function Gallery({
   const buttonClassName =
     "h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center";
 
+  const currentImage = images[imageIndex];
+  const optimizedImageUrl = currentImage 
+    ? getOptimizedShopifyImage(currentImage.src, { width: 1200, format: 'webp' })
+    : '';
+
   return (
     <form>
       {/* Main Image - Adapts to image aspect ratio */}
       <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gaming-900/30">
-        {images[imageIndex] && (
+        {currentImage && (
           <>
             <Image
               className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
               fill
-              sizes="(min-width: 1024px) 60vw, 100vw"
-              src={images[imageIndex]?.src as string}
-              alt={images[imageIndex]?.altText as string}
-              priority={true}
+              sizes={getImageSizes('productGallery')}
+              src={optimizedImageUrl}
+              alt={currentImage.altText || 'Product image'}
+              priority={imageIndex === 0}
+              quality={85}
+              placeholder="blur"
+              blurDataURL={getShopifyImageBlurDataURL(currentImage.src)}
               onLoad={() => setImageLoaded(true)}
               style={{
                 objectFit: 'contain',
@@ -95,6 +108,13 @@ export default function Gallery({
           <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-accent-primary/50 scrollbar-track-gaming-900/30">
             {images.map((image, index) => {
               const isActive = index === imageIndex;
+              const thumbnailUrl = getOptimizedShopifyImage(image.src, { 
+                width: 160, 
+                height: 160, 
+                crop: 'center',
+                format: 'webp' 
+              });
+              
               return (
                 <button
                   key={image.src}
@@ -111,10 +131,13 @@ export default function Gallery({
                   }`}
                 >
                   <Image
-                    src={image.src}
+                    src={thumbnailUrl}
                     alt={image.altText}
                     fill
                     sizes="80px"
+                    quality={75}
+                    placeholder="blur"
+                    blurDataURL={getShopifyImageBlurDataURL(image.src)}
                     className="object-cover"
                   />
                   {isActive && (

@@ -2,6 +2,41 @@ import Grid from "@/components/grid";
 import ProductGridItems from "@/components/layout/product-grid-items";
 import { defaultSort, sorting } from "@/lib/constants";
 import { getCollectionProducts } from "@/lib/shopify";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ collection: string }>;
+}): Promise<Metadata> {
+  const { collection } = await params;
+  
+  // Format collection name
+  const formattedName = collection
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  return {
+    title: `${formattedName} - Mousepad-uri Gaming | 47Gear`,
+    description: `Descoperă colecția ${formattedName} de mousepad-uri gaming premium. Control perfect, durabilitate maximă, livrare rapidă în România. Cumpără online mousepad gaming profesional!`,
+    keywords: [
+      `mousepad ${collection}`,
+      "mousepad gaming",
+      "mousepad romania",
+      `${formattedName.toLowerCase()} gaming`,
+      "accesorii gaming",
+      "mousepad profesional"
+    ],
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/search/${collection}`,
+    },
+    openGraph: {
+      title: `${formattedName} - Mousepad-uri Gaming Premium`,
+      description: `Colecția ${formattedName} - mousepad-uri gaming de calitate superioară pentru performanță maximă.`,
+    },
+  };
+}
 
 export default async function CategoryPage({
   params,

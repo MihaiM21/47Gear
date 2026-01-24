@@ -4,8 +4,21 @@ import { defaultSort, sorting } from "@/lib/constants";
 import { getProducts } from "@/lib/shopify";
 
 export const metadata = {
-  title: "Products | 47Gear",
-  description: "Find premium gaming gear and accessories for professional gamers.",
+  title: "Toate Produsele - Mousepad-uri Gaming | 47Gear România",
+  description: "Explorează întreaga gamă de mousepad-uri gaming premium 47Gear. Control perfect, durabilitate maximă, livrare rapidă în toată România. Găsește mousepad-ul ideal!",
+  keywords: [
+    "mousepad gaming",
+    "produse gaming",
+    "accesorii gaming romania",
+    "mousepad profesional",
+    "mousepad mare",
+    "echipament gaming",
+    "mousepad control",
+    "mousepad xxl"
+  ],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/search`,
+  },
 };
 
 export default async function SearchPage({

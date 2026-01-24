@@ -331,7 +331,7 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-black relative">
       {/* Header with logout */}
-      <div className="bg-gaming-800/80 backdrop-blur-xl shadow-elegant border-b border-accent-primary/20 sticky top-0 z-50">
+      <div className="bg-black backdrop-blur-xl shadow-elegant border-b border-accent-primary/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center mt-20">
             <div className="flex items-center gap-3">

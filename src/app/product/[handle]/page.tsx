@@ -25,9 +25,27 @@ export async function generateMetadata({
   const { url, width, height, altText: alt } = product.featuredImage || {};
   const indexable = !product.tags.includes(HIDDEN_PRODUCT_TAG);
 
+  // Generate Romanian SEO-friendly title and description
+  const seoTitle = product.seo.title || `${product.title} - Mousepad Gaming Premium | 47Gear`;
+  const seoDescription = product.seo.description || 
+    `Cumpără ${product.title} - mousepad gaming profesional cu control perfect și durabilitate maximă. Livrare rapidă în România. Preț special online!`;
+
   return {
-    title: product.seo.title || product.title,
-    description: product.seo.description || product.description,
+    title: seoTitle,
+    description: seoDescription,
+    keywords: [
+      product.title.toLowerCase(),
+      "mousepad gaming",
+      "mousepad romania",
+      "mousepad gaming profesional",
+      "mousepad mare",
+      "mousepad control",
+      "accesorii gaming",
+      "47gear"
+    ],
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/product/${handle}`,
+    },
     robots: {
       index: indexable,
       follow: indexable,
@@ -36,18 +54,21 @@ export async function generateMetadata({
         follow: indexable,
       },
     },
-    openGraph: url
-      ? {
-          images: [
+    openGraph: {
+      title: seoTitle,
+      description: seoDescription,
+      type: 'website',
+      images: url
+        ? [
             {
               url,
               width,
               height,
-              alt,
+              alt: alt || `${product.title} - Mousepad Gaming`,
             },
-          ],
-        }
-      : null,
+          ]
+        : [],
+    },
   };
 }
 
@@ -91,7 +112,10 @@ export default async function ProductPage({
         {/* Product Specifications & Features */}
         <ProductSpecs />
 
-        
+        {/* Product Story */}
+        <div className="mb-24">
+          <ProductStory productHandle={product.handle} />
+        </div>
 
         {/* Reviews Section */}
         <ReviewsSection 

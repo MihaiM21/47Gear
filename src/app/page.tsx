@@ -6,10 +6,22 @@ import FeaturedReviewsSection from "@/components/featured-reviews-section";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 
 export const metadata = {
+  title: "Mousepad-uri Gaming Premium | 47Gear România",
   description:
-    "47Gear - Premium gaming mousepads for professional gamers and enthusiasts. Experience unmatched precision, comfort, and durability.",
+    "Cumpără cele mai bune mousepad-uri gaming în România. Control perfect, precizie maximă, durabilitate garantată. Mousepad-uri XXL, RGB, profesionale pentru gaming competitiv. Livrare rapidă!",
+  keywords: [
+    "mousepad gaming romania", "mousepad gaming bucuresti", "mousepad xxl",
+    "mousepad mare gaming", "cel mai bun mousepad", "mousepad profesional",
+    "mousepad esports", "mousepad control", "mousepad rapid", "mousepad rgb",
+    "accesorii gaming", "echipament gaming romania", "mousepad gamer"
+  ],
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  },
   openGraph: {
     type: "website",
+    title: "Mousepad-uri Gaming Premium | 47Gear România",
+    description: "Cele mai bune mousepad-uri gaming în România. Control perfect, durabilitate maximă, livrare rapidă.",
   },
 };
 
@@ -343,6 +355,57 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* SEO Content Section */}
+      {/* <section className="py-20 bg-gradient-to-b from-black to-gaming-900/20">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-6xl">
+          <div className="prose prose-invert max-w-none">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+              Mousepad-uri Gaming Premium în România
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 text-white/80 leading-relaxed">
+              <div className="glass-card p-6">
+                <h3 className="text-xl font-semibold text-accent-primary mb-4">De Ce 47Gear?</h3>
+                <p className="mb-4">
+                  <strong>47Gear</strong> oferă cele mai bune <strong>mousepad-uri gaming</strong> din România, special concepute pentru 
+                  gamerii care caută <strong>control perfect</strong> și <strong>durabilitate maximă</strong>. Fie că joci FPS, MOBA sau RTS, 
+                  mousepad-urile noastre îți oferă avantajul competitiv de care ai nevoie.
+                </p>
+                <p>
+                  Fiecare <strong>mousepad gaming mare</strong> este testat de profesioniști și optimizat pentru diferite stiluri de joc. 
+                  De la <strong>mousepad-uri XXL</strong> pentru setup-uri complete, până la variante compacte pentru portabilitate maximă.
+                </p>
+              </div>
+
+              <div className="glass-card p-6">
+                <h3 className="text-xl font-semibold text-accent-secondary mb-4">Livrare Rapidă în Toată România</h3>
+                <p className="mb-4">
+                  Comandă <strong>mousepad gaming online</strong> cu livrare rapidă în București, Cluj, Timișoara, Iași și în toată România. 
+                  <strong>Mousepad-uri profesionale</strong> pentru gaming competitiv, acum la un click distanță.
+                </p>
+                <p>
+                  Oferim <strong>cel mai bun mousepad</strong> pentru nevoile tale, cu suprafețe optimizate pentru control sau viteză, 
+                  bază anti-alunecare și materiale premium care rezistă ani de zile de gaming intens.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <h3 className="text-2xl font-semibold text-white mb-6">
+                Mousepad Gaming - Accesoriul Esențial
+              </h3>
+              <p className="text-white/70 max-w-4xl mx-auto leading-relaxed">
+                Un <strong>mousepad de calitate</strong> face diferența între o mișcare precisă și una ratată. 
+                <strong>Mousepad-urile gaming 47Gear</strong> sunt create cu tehnologie avansată pentru a oferi tracking perfect, 
+                control optim și confort pe termen lung. Investește în <strong>echipament gaming profesional</strong> și 
+                simte diferența de la prima utilizare. <strong>Cumpără mousepad gaming</strong> astăzi și îmbunătățește-ți performanța!
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </section> */}
     </main>
   );
 }

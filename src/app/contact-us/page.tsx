@@ -2,8 +2,12 @@ import { Metadata } from "next";
 import ContactForm from "@/components/forms/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us | 47Gear",
-  description: "Get in touch with the 47Gear team for any inquiries, support or feedback.",
+  title: "Contact - Suport Clienți Mousepad-uri Gaming",
+  description: "Contactează echipa 47Gear pentru întrebări despre mousepad-uri gaming, comenzi, livrare în România. Răspundem rapid la toate solicitările tale.",
+  keywords: ["contact 47gear", "suport clienti gaming", "contact mousepad romania", "asistenta cumparaturi"],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/contact-us`,
+  },
 };
 
 export default function ContactUsPage() {

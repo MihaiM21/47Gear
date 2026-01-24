@@ -1,4 +1,5 @@
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 
+  process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
 
@@ -7,7 +8,14 @@ export default function robots() {
     rules: [
       {
         userAgent: "*",
-        disallow: ["/management-portal", "/api/admin"],
+        allow: "/",
+        disallow: ["/management-portal", "/api/admin", "/api/", "/login", "/register", "/profile"],
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/management-portal", "/api/admin", "/api/", "/login", "/register", "/profile"],
+        crawlDelay: 0,
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

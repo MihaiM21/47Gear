@@ -42,9 +42,8 @@ export default async function Footer() {
             <div className="md:col-span-2">
               <h3 className="font-semibold text-white mb-4">Magazin</h3>
               <ul className="space-y-3">
-                <li><Link href="/search/gaming-collection" className="text-sm text-white/50 hover:text-white transition-colors">Gaming</Link></li>
-                <li><Link href="/search/special-collection" className="text-sm text-white/50 hover:text-white transition-colors">Special</Link></li>
-                <li><Link href="/search/desk-collection" className="text-sm text-white/50 hover:text-white transition-colors">Desk Mats</Link></li>
+                <li><Link href="/search/mousepad" className="text-sm text-white/50 hover:text-white transition-colors">Mousepad</Link></li>
+                <li><Link href="/search/bundle" className="text-sm text-white/50 hover:text-white transition-colors">Bundle</Link></li>
               </ul>
             </div>
 
@@ -52,9 +51,9 @@ export default async function Footer() {
             <div className="md:col-span-2">
               <h3 className="font-semibold text-white mb-4">Companie</h3>
               <ul className="space-y-3">
-                <li><Link href="/about-us" className="text-sm text-white/50 hover:text-white transition-colors">About</Link></li>
+                <li><Link href="/about-us" className="text-sm text-white/50 hover:text-white transition-colors">About Us</Link></li>
                 <li><Link href="/contact-us" className="text-sm text-white/50 hover:text-white transition-colors">Contact</Link></li>
-                <li><Link href="/profile" className="text-sm text-white/50 hover:text-white transition-colors">Account</Link></li>
+                <li><Link href="/profile" className="text-sm text-white/50 hover:text-white transition-colors">My Account</Link></li>
               </ul>
             </div>
 
