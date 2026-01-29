@@ -64,12 +64,12 @@ type ExtractVariables<T> = T extends { variables: object }
   ? T["variables"]
   : never;
 export async function shopifyFetch<T>({
-  cache = "force-cache",
+  cache,
   headers,
   query,
   tags,
   variables,
-  revalidate = 300, // Default: revalidate every 5 minutes
+  revalidate,
 }: {
   cache?: RequestCache;
   headers?: HeadersInit;
@@ -90,10 +90,10 @@ export async function shopifyFetch<T>({
         ...(query && { query }),
         ...(variables && { variables }),
       }),
-      cache,
+      ...(cache && { cache }),
       next: { 
         ...(tags && { tags }),
-        ...(revalidate !== false && { revalidate })
+        ...(revalidate !== undefined && revalidate !== false && { revalidate })
       },
     });
 

@@ -77,6 +77,9 @@ export default async function RootLayout({
   return (
     <html lang="ro" data-theme={process.env.SITE_THEME || 'default'}>
       <head>
+        {/* Preconnect to Shopify CDN for instant image loading */}
+        <link rel="preconnect" href="https://cdn.shopify.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.shopify.com" />
         <GoogleAnalytics />
       </head>
       <body className={inter.className}>

@@ -24,7 +24,7 @@ export interface ShopifyImageParams {
 
 /**
  * Optimize Shopify CDN image URL with custom parameters
- * Shopify CDN supports specific size parameters only
+ * Shopify CDN supports width and format parameters for lightning-fast delivery
  */
 export function getOptimizedShopifyImage(
   url: string,
@@ -35,10 +35,30 @@ export function getOptimizedShopifyImage(
   }
 
   try {
-    // Shopify supports specific named sizes, not arbitrary dimensions
-    // Return original URL as Next.js Image component will handle optimization
-    // via its built-in image optimization API
-    return url;
+    // Remove any existing size suffixes and parameters
+    let cleanUrl = url.split('?')[0];
+    cleanUrl = cleanUrl.replace(/_\d+x\d*\.(jpg|jpeg|png|webp)/i, '.$1');
+    cleanUrl = cleanUrl.replace(/_(small|medium|large|grande|compact|thumb|master|1024x1024|2048x2048)\.(jpg|jpeg|png|webp)/i, '.$1');
+
+    // Use Shopify's named sizes for better CDN cache hit rates
+    if (params.width) {
+      const urlParts = cleanUrl.split('.');
+      const extension = urlParts.pop();
+      const baseWithoutExt = urlParts.join('.');
+      
+      // Map to Shopify's named sizes for optimal CDN performance
+      let sizeSuffix = '';
+      if (params.width <= 160) sizeSuffix = '_compact';
+      else if (params.width <= 320) sizeSuffix = '_medium';
+      else if (params.width <= 480) sizeSuffix = '_large';
+      else if (params.width <= 600) sizeSuffix = '_grande';
+      else if (params.width <= 1024) sizeSuffix = '_1024x1024';
+      else sizeSuffix = '_2048x2048';
+      
+      return `${baseWithoutExt}${sizeSuffix}.${extension}`;
+    }
+    
+    return cleanUrl;
   } catch (error) {
     console.warn('Error optimizing Shopify image URL:', error);
     return url;
