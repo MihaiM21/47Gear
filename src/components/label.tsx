@@ -23,7 +23,7 @@ export default function Label({
         }
       )}
     >
-      <div className="rounded-3xl flex w-full flex-col gap-2 p-4 text-sm font-medium text-white backdrop-blur-sm">
+      <div className="rounded-3xl flex w-full flex-col gap-2 p-4 text-sm font-medium text-white">
         <h3 className="line-clamp-2 text-xl font-bold text-white group-hover:text-accent-secondary transition-colors duration-300 leading-snug">
           {title}
         </h3>
