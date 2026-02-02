@@ -110,7 +110,7 @@ export default async function ProductPage({
         </div>
 
         {/* Product Specifications & Features */}
-        <ProductSpecs />
+        <ProductSpecs images={product.images} />
 
         {/* Product Story */}
         <div className="mb-24">
@@ -131,7 +131,12 @@ export default async function ProductPage({
   );
 }
 
-function ProductSpecs() {
+function ProductSpecs({ images }: { images: Image[] }) {
+  // Use product images or fallback to default images
+  const surfaceImage = images[0]?.url || '/images/mousepads/impulse/water.jpg';
+  // Use the last image for base (different from surface), or fallback to default
+  //const baseImage = images.length > 1 ? images[images.length - 1]?.url : '/images/mousepads/impulse/back_front.jpg';
+  const baseImage = images.length > 1 ? images[images.length - 4]?.url : '/images/mousepads/impulse/back_front.jpg';
   return (
     <div className="border-t border-white/5 pt-16 pb-24">
       <div className="max-w-4xl mx-auto text-center mb-16">
@@ -149,7 +154,7 @@ function ProductSpecs() {
         {/* Premium Surface */}
         <div className="group">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gaming-900/30 mb-6 group-hover:border-white/20 transition-all duration-500">
-            <img src="/images/mousepads/impulse/water.jpg"
+            <img src={surfaceImage}
               className="absolute inset-0 w-full h-full object-cover object-center"
               alt="Premium Surface"
             />
@@ -157,23 +162,23 @@ function ProductSpecs() {
           </div>
           <h3 className="text-2xl font-bold text-white mb-3">Suprafață Premium</h3>
           <p className="text-white/60 leading-relaxed">
-            Material de înaltă calitate cu micro-textură oferă echilibrul perfect între viteză și control. 
-            Optimizat pentru senzori optici și laser, asigurând tracking perfect la nivel de pixel.
+            Material textil de înaltă calitate, cu micro-textură, oferă un echilibru excelent între viteză și control.
+             Optimizat pentru mouse-uri cu senzori optici și laser, asigură tracking precis și constant.
           </p>
         </div>
 
         {/* Anti-Slip Base */}
         <div className="group">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-gaming-900/30 mb-6 group-hover:border-white/20 transition-all duration-500">
-            <img src="/images/mousepads/impulse/back_front.jpg"
+            <img src={baseImage}
               className="absolute inset-0 w-full h-full object-cover object-center"
-              alt="Premium Surface"
+              alt="Anti-Slip Base"
             />
           </div>
           <h3 className="text-2xl font-bold text-white mb-3">Bază Antiderapantă</h3>
           <p className="text-white/60 leading-relaxed">
-            Baza din cauciuc natural ține mousepad-ul ferm pe loc în timpul sesiunilor intense de gaming. 
-            Fără alunecare, fără distracții—doar performanță pură.
+            Baza din cauciuc cu aderență ridicată asigură stabilitate excelentă pe orice suprafață de birou,
+             chiar și în cele mai intense momente de gaming.
           </p>
         </div>
       </div>
