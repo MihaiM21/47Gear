@@ -37,19 +37,24 @@ export default async function SearchPage({
   // When sorting by Relevance, show mousepads first and bundles last
   if (sortKey === 'RELEVANCE') {
     products = products.sort((a, b) => {
-      const aIsBundle = a.productType?.toLowerCase().includes('bundle') || 
-                        a.title.toLowerCase().includes('bundle') ||
-                        a.title.toLowerCase().includes('pack');
-      const bIsBundle = b.productType?.toLowerCase().includes('bundle') || 
-                        b.title.toLowerCase().includes('bundle') ||
-                        b.title.toLowerCase().includes('pack');
+      const aTagsLower = a.tags.map(tag => tag.toLowerCase()).join(' ');
+      const bTagsLower = b.tags.map(tag => tag.toLowerCase()).join(' ');
+      const aTitleLower = a.title.toLowerCase();
+      const bTitleLower = b.title.toLowerCase();
       
-      const aIsMousepad = a.productType?.toLowerCase().includes('mousepad') || 
-                          a.productType?.toLowerCase().includes('mouse pad') ||
-                          a.title.toLowerCase().includes('mousepad');
-      const bIsMousepad = b.productType?.toLowerCase().includes('mousepad') || 
-                          b.productType?.toLowerCase().includes('mouse pad') ||
-                          b.title.toLowerCase().includes('mousepad');
+      const aIsBundle = aTagsLower.includes('bundle') || 
+                        aTitleLower.includes('bundle') ||
+                        aTitleLower.includes('pack');
+      const bIsBundle = bTagsLower.includes('bundle') || 
+                        bTitleLower.includes('bundle') ||
+                        bTitleLower.includes('pack');
+      
+      const aIsMousepad = aTagsLower.includes('mousepad') || 
+                          aTagsLower.includes('mouse pad') ||
+                          aTitleLower.includes('mousepad');
+      const bIsMousepad = bTagsLower.includes('mousepad') || 
+                          bTagsLower.includes('mouse pad') ||
+                          bTitleLower.includes('mousepad');
       
       // Mousepads first (return -1 to put a before b)
       if (aIsMousepad && !bIsMousepad) return -1;
