@@ -177,8 +177,7 @@ export default function ProfilePage() {
       try {
         const customerAccessToken = localStorage.getItem('customerAccessToken');
         if (!customerAccessToken) {
-          setError('Please log in to view your profile');
-          setLoading(false);
+          router.push('/login');
           return;
         }
 
