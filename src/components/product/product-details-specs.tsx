@@ -137,6 +137,34 @@ export function ProductDetailsAndSpecs({ images }: { images: Image[] }) {
           </div>
         </div>
 
+        {/* Important Information Section */}
+        <div className="rounded-xl border-2 border-blue-500/30 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 p-6 md:p-8 mb-12">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30 flex-shrink-0">
+              <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg md:text-xl font-bold text-white mb-3">De ce nu este complet impermeabil?</h3>
+              <div className="space-y-3 text-sm md:text-base text-white/80 leading-relaxed">
+                <p>
+                  <span className="text-white font-medium">Mousepad-ul nu este complet impermeabil, și asta este intenționat.</span>
+                </p>
+                <p>
+                  Dacă ar fi fost 100% impermeabil, ar fi fost necesar un strat plastifiat aplicat deasupra suprafeței textile. Un astfel de strat ar fi afectat <span className="text-white">alunecarea naturală a mouse-ului</span>, <span className="text-white">precizia senzorului</span> și <span className="text-white">confortul în utilizarea pe termen lung</span>.
+                </p>
+                <p>
+                  În plus, suprafețele plastifiate sunt mult mai predispuse la <span className="text-white">zgârieturi și uzură vizibilă</span>, ceea ce duce la degradarea rapidă a suprafeței și la performanță inconsistentă în timp.
+                </p>
+                <p>
+                  De asemenea, în cazul suprafețelor complet impermeabile, efectul de impermeabilitate tinde să se diminueze după spălări repetate și utilizare îndelungată, pierzându-și eficiența inițială.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Tech Specs Compact */}
         <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
           <h3 className="text-xl font-bold text-white mb-6 text-center">Specificații Tehnice</h3>
