@@ -155,16 +155,16 @@ export default function ContactUsPage() {
             <p className="text-white/60">Ai întrebări? Avem răspunsuri.</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Care sunt timpii de livrare?</h3>
               <p className="text-white/60">Majoritatea comenzilor sunt expediate în 1-2 zile lucrătoare. Livrarea standard durează 3-5 zile lucrătoare, iar cea rapida 1-3 zile.</p>
             </div>
             
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
+            {/* <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Livrați internațional?</h3>
               <p className="text-white/60">Da! Livrăm în toată lumea. Livrarea internațională durează de obicei 7-14 zile lucrătoare în funcție de locație.</p>
-            </div>
+            </div> */}
             
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Care este politica de returnare?</h3>
