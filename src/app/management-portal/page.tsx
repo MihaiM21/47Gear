@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import LoadingDots from '@/components/loading-dots';
 import AdminReviewsManager from '@/components/admin/reviews-manager';
 import ProductStoriesManager from '@/components/admin/product-stories-manager';
+import ContentCreatorsManager from '@/components/admin/content-creators-manager';
 
-type TabType = 'reviews' | 'stories' | 'cache';
+type TabType = 'reviews' | 'stories' | 'creators' | 'cache';
 
 // Cache Manager Component
 function CacheManager() {
@@ -384,6 +385,19 @@ export default function AdminPage() {
               )}
             </button>
             <button
+              onClick={() => setActiveTab('creators')}
+              className={`px-6 py-3 font-medium transition-all relative ${
+                activeTab === 'creators'
+                  ? 'text-accent-secondary'
+                  : 'text-gaming-400 hover:text-gaming-200'
+              }`}
+            >
+              Content Creators
+              {activeTab === 'creators' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-secondary"></div>
+              )}
+            </button>
+            <button
               onClick={() => setActiveTab('cache')}
               className={`px-6 py-3 font-medium transition-all relative ${
                 activeTab === 'cache'
@@ -405,6 +419,8 @@ export default function AdminPage() {
         <AdminReviewsManager />
       ) : activeTab === 'stories' ? (
         <ProductStoriesManager />
+      ) : activeTab === 'creators' ? (
+        <ContentCreatorsManager />
       ) : (
         <CacheManager />
       )}

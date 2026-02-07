@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getCollections } from "@/lib/shopify";
 import TrustBadges from "@/components/trust-badges";
 import FeaturedReviewsSection from "@/components/featured-reviews-section";
+import ContentCreatorsSection from "@/components/content-creators-section-server";
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 
 export const metadata = {
@@ -156,14 +157,14 @@ export default async function Home() {
       <section className="py-24 md:py-32 bg-black relative">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20 space-y-4">
+            {/* <div className="text-center mb-20 space-y-4">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
                 Performanță fără Compromis
               </h2>
               <p className="text-lg text-white/50 max-w-2xl mx-auto">
                 Proiectat milimetric pentru precizie. Creat de jucători, pentru jucători.
               </p>
-            </div>
+            </div> */}
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="group p-8 rounded-2xl border border-white/5 hover:border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500">
@@ -305,6 +306,8 @@ export default async function Home() {
 
       
 
+      
+
       {/* CTA Section */}
       <section className="py-24 md:py-32 bg-gradient-to-br from-accent-secondary/10 via-black to-accent-primary/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(138,99,255,0.08),transparent_60%)]" />
@@ -340,17 +343,17 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Content Creators Section */}
+      <ContentCreatorsSection />
       {/* Social Proof Section */}
       <section className="py-16 bg-black/50 border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="text-center mb-12">
-            <p className="text-white/40 text-sm uppercase tracking-wider mb-8">De încredere pentru gameri profesioniști</p>
+            <p className="text-white/40 text-sm uppercase tracking-wider mb-8">Partenerii noștri</p>
             <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
-              <div className="text-white/60 text-lg font-bold">Team Alpha</div>
-              <div className="text-white/60 text-lg font-bold">ProLeague</div>
-              <div className="text-white/60 text-lg font-bold">GameCore</div>
-              <div className="text-white/60 text-lg font-bold">NexusGG</div>
-              <div className="text-white/60 text-lg font-bold">EpicPlay</div>
+              <Image src="/partners/FC_RAPID_ESPORTS.png" alt="Partner 1" width={120} height={60} className="object-contain" />
+              <Image src="/partners/GAMEXPERT.png" alt="Partner 2" width={120} height={60} className="object-contain" />
             </div>
           </div>
         </div>

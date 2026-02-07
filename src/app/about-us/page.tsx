@@ -76,7 +76,7 @@ export default function AboutUsPage() {
         {/* Why Choose Us */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gradient-purple">De Ce Să Alegi 47Gear?</h2>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="glass-card hover:shadow-glow-purple hover:translate-y-[-8px] transition-all duration-300 p-6 text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-purple-700 shadow-glow-sm mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
@@ -101,7 +101,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             
-            <div className="glass-card hover:shadow-glow-purple hover:translate-y-[-8px] transition-all duration-300 p-6 text-center">
+            {/* <div className="glass-card hover:shadow-glow-purple hover:translate-y-[-8px] transition-all duration-300 p-6 text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-purple-700 shadow-glow-sm mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                   <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
@@ -111,7 +111,7 @@ export default function AboutUsPage() {
               <p className="text-white/80">
                 Asistență 24/7 oferită de alți gameri care îți înțeleg nevoile și vorbesc aceeași limbă cu tine.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         
