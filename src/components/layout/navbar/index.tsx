@@ -57,13 +57,12 @@ export async function Navbar() {
           {/* Right Side - Cart & Account */}
           
           <div className="flex justify-end md:w-1/4 items-center gap-4">
-            <Link
-              href="/profile"
+            <a
+              href="https://account.47gear.ro"
               className="hidden md:block text-sm font-medium text-white/80 hover:text-white transition-colors"
-              prefetch={false}
             >
               My Account
-            </Link>
+            </a>
             <CartModal />
           </div>
         </div>
