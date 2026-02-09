@@ -351,9 +351,13 @@ export default async function Home() {
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="text-center mb-12">
             <p className="text-white/40 text-sm uppercase tracking-wider mb-8">Partenerii noștri</p>
-            <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
-              <Image src="/partners/FC_RAPID_ESPORTS.png" alt="Partner 1" width={120} height={60} className="object-contain" />
-              <Image src="/partners/GAMEXPERT.png" alt="Partner 2" width={120} height={60} className="object-contain" />
+            <div className="flex flex-wrap justify-center items-center gap-12 opacity-100">
+              <a href="https://www.instagram.com/fcrapid1923esports/" target="_blank" rel="noopener noreferrer">
+                <Image src="/partners/FC_RAPID_ESPORTS.png" alt="Partner 1" width={120} height={60} className="object-contain" />
+              </a>
+              <a href="https://www.instagram.com/gamexpert.ro/" target="_blank" rel="noopener noreferrer">
+                <Image src="/partners/GAMEXPERT.png" alt="Partner 2" width={120} height={60} className="object-contain" />
+              </a>
             </div>
           </div>
         </div>
