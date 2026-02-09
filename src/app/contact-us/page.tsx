@@ -166,7 +166,7 @@ export default function ContactUsPage() {
             
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Care este politica de returnare?</h3>
-              <p className="text-white/60">Oferim o politică de returnare de 14 de zile. Produsele trebuie să fie în stare originală cu tot ambalajul și accesoriile.</p>
+              <p className="text-white/60">Oferim o politică de returnare de 14 zile. Produsele trebuie să fie în stare originală cu tot ambalajul și accesoriile.</p>
             </div>
             
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
