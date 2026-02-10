@@ -21,52 +21,36 @@ export function ReviewForm({ productId, productName, productHandle, onReviewSubm
   const [success, setSuccess] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [customerName, setCustomerName] = useState("");
+  const [isCheckingAuth, setIsCheckingAuth] = useState(false);
+
+  const checkAuth = async () => {
+    setIsCheckingAuth(true);
+    try {
+      // Check authentication via Shopify session cookies
+      const response = await fetch('/api/auth/shopify-session', {
+        credentials: 'include', // Include cookies in request
+      });
+
+      const data = await response.json();
+
+      if (data.authenticated && data.customerToken) {
+        setCustomerName(data.customerName);
+        setIsAuthenticated(true);
+        // Store token in localStorage for review submission
+        localStorage.setItem('customerAccessToken', data.customerToken);
+      } else {
+        setIsAuthenticated(false);
+        localStorage.removeItem('customerAccessToken');
+      }
+    } catch (err) {
+      console.error('Error checking auth:', err);
+      setIsAuthenticated(false);
+    } finally {
+      setIsCheckingAuth(false);
+    }
+  };
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('customerAccessToken');
-      if (!token) {
-        setIsAuthenticated(false);
-        return;
-      }
-
-      try {
-        // Fetch customer info from Shopify
-        const response = await fetch(getShopifyUrl(), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            query: `
-              query getCustomer($customerAccessToken: String!) {
-                customer(customerAccessToken: $customerAccessToken) {
-                  firstName
-                  lastName
-                }
-              }
-            `,
-            variables: { customerAccessToken: token },
-          }),
-        });
-
-        const { data } = await response.json();
-
-        if (data?.customer) {
-          const fullName = `${data.customer.firstName} ${data.customer.lastName}`.trim();
-          setCustomerName(fullName);
-          setIsAuthenticated(true);
-        } else {
-          // Token invalid or expired
-          localStorage.removeItem('customerAccessToken');
-          setIsAuthenticated(false);
-        }
-      } catch (err) {
-        console.error('Error checking auth:', err);
-        setIsAuthenticated(false);
-      }
-    };
-
     checkAuth();
   }, []);
 
@@ -139,15 +123,32 @@ export function ReviewForm({ productId, productName, productHandle, onReviewSubm
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
           <p className="text-white/60 mb-6">Trebuie să fii autentificat pentru a lăsa o recenzie.</p>
-          <a
-            href="https://account.47gear.ro/"
-            className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold hover:shadow-lg hover:shadow-accent-primary/25 transition-all duration-300"
-          >
-            Autentifică-te
-          </a>
-          <p className="text-white/40 text-sm mt-4">
+          
+          <div className="space-y-3">
+            <a
+              href="https://account.47gear.ro/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold hover:shadow-lg hover:shadow-accent-primary/25 transition-all duration-300"
+            >
+              Autentifică-te
+            </a>
+            
+            <p className="text-white/50 text-sm">
+              Deja autentificat? După ce te-ai logat, 
+              <button
+                onClick={checkAuth}
+                disabled={isCheckingAuth}
+                className="ml-1 text-accent-secondary hover:text-accent-primary transition-colors underline disabled:opacity-50"
+              >
+                {isCheckingAuth ? 'Verificare...' : 'apasă aici pentru a reîmprospăta'}
+              </button>
+            </p>
+          </div>
+          
+          <p className="text-white/40 text-sm mt-6">
             Nu ai cont?{' '}
-            <a href="https://account.47gear.ro/" className="text-accent-secondary hover:text-accent-primary transition-colors">
+            <a href="https://account.47gear.ro/" target="_blank" rel="noopener noreferrer" className="text-accent-secondary hover:text-accent-primary transition-colors">
               Înregistrează-te aici
             </a>
           </p>
