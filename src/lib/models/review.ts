@@ -24,7 +24,10 @@ export async function getProductReviews(productId: string): Promise<ProductRevie
     const reviews = await collection
       .find({ 
         productId,
-        status: { $in: ['approved', null] } // Include old reviews without status field
+        $or: [
+          { status: 'approved' },
+          { status: { $exists: false } } // Include old reviews without status field
+        ]
       })
       .sort({ createdAt: -1 })
       .toArray();
