@@ -275,6 +275,7 @@ export type ProductReview = {
   featured?: boolean;
   productName?: string;
   productHandle?: string;
+  status?: 'pending' | 'approved' | 'rejected';
 };
 
 export type ProductReviews = {

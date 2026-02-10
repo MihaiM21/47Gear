@@ -8,7 +8,9 @@ import {
   updateReview, 
   setReviewFeatured,
   getReviewsByProduct,
-  getProductReviews
+  getProductReviews,
+  getPendingReviews,
+  updateReviewStatus
 } from "@/lib/models/review";
 import { ReviewDocument } from "@/lib/models/review";
 
@@ -86,6 +88,16 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         reviewIds: cleanFeatured.map(r => r.id),
         reviews: cleanFeatured
+      });
+    }
+
+    // Get pending reviews only
+    if (action === "pending") {
+      const pending = await getPendingReviews();
+      const cleanPending = pending.map(({ _id, ...review }) => review);
+      return NextResponse.json({
+        reviews: cleanPending,
+        totalPending: cleanPending.length
       });
     }
 

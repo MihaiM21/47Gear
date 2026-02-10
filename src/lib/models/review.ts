@@ -16,13 +16,16 @@ export async function getReviewsCollection(): Promise<Collection<ReviewDocument>
 }
 
 /**
- * Get all reviews for a specific product
+ * Get all reviews for a specific product (only approved reviews)
  */
 export async function getProductReviews(productId: string): Promise<ProductReviews> {
   try {
     const collection = await getReviewsCollection();
     const reviews = await collection
-      .find({ productId })
+      .find({ 
+        productId,
+        status: { $in: ['approved', null] } // Include old reviews without status field
+      })
       .sort({ createdAt: -1 })
       .toArray();
 
@@ -81,6 +84,26 @@ export async function deleteReview(reviewId: string): Promise<boolean> {
 export async function getAllReviews(): Promise<ReviewDocument[]> {
   const collection = await getReviewsCollection();
   return await collection.find({}).sort({ createdAt: -1 }).toArray();
+}
+
+/**
+ * Get pending reviews (awaiting admin approval)
+ */
+export async function getPendingReviews(): Promise<ReviewDocument[]> {
+  const collection = await getReviewsCollection();
+  return await collection.find({ status: 'pending' }).sort({ createdAt: -1 }).toArray();
+}
+
+/**
+ * Update review status (approve/reject)
+ */
+export async function updateReviewStatus(reviewId: string, status: 'approved' | 'rejected'): Promise<boolean> {
+  const collection = await getReviewsCollection();
+  const result = await collection.updateOne(
+    { id: reviewId },
+    { $set: { status, updatedAt: new Date().toISOString() } }
+  );
+  return result.modifiedCount > 0;
 }
 
 /**

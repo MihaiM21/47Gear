@@ -30,65 +30,19 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { productId, productName, productHandle, rating, title, content, author, customerAccessToken } = body;
-
-    // Validate customer authentication
-    if (!customerAccessToken) {
-      return NextResponse.json(
-        { error: "Authentication required. Please log in to submit a review." },
-        { status: 401 }
-      );
-    }
-
-    // Verify token and get customer info from Shopify
-    let verifiedCustomerName = author;
-    try {
-      const shopifyResponse = await fetch(
-        `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2023-01/graphql.json`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
-          },
-          body: JSON.stringify({
-            query: `
-              query getCustomer($customerAccessToken: String!) {
-                customer(customerAccessToken: $customerAccessToken) {
-                  firstName
-                  lastName
-                  email
-                }
-              }
-            `,
-            variables: { customerAccessToken },
-          }),
-        }
-      );
-
-      const { data } = await shopifyResponse.json();
-
-      if (!data?.customer) {
-        return NextResponse.json(
-          { error: "Invalid or expired session. Please log in again." },
-          { status: 401 }
-        );
-      }
-
-      // Use verified customer name from Shopify
-      verifiedCustomerName = `${data.customer.firstName} ${data.customer.lastName}`.trim();
-    } catch (err) {
-      console.error('Error verifying customer token:', err);
-      return NextResponse.json(
-        { error: "Failed to verify authentication" },
-        { status: 401 }
-      );
-    }
+    const { productId, productName, productHandle, rating, title, content, author } = body;
 
     // Validation
     if (!productId || !rating || !title || !content) {
       return NextResponse.json(
         { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    if (!author || !author.name || !author.email) {
+      return NextResponse.json(
+        { error: "Name and email are required" },
         { status: 400 }
       );
     }
@@ -100,7 +54,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create new review
+    if (title.length < 3 || title.length > 100) {
+      return NextResponse.json(
+        { error: "Title must be between 3 and 100 characters" },
+        { status: 400 }
+      );
+    }
+
+    if (content.length < 10 || content.length > 1000) {
+      return NextResponse.json(
+        { error: "Review must be between 10 and 1000 characters" },
+        { status: 400 }
+      );
+    }
+
+    // Create new review (will be pending approval)
     const newReview: ProductReview = {
       id: `review_${Date.now()}`,
       title,
@@ -108,11 +76,13 @@ export async function POST(request: NextRequest) {
       rating,
       createdAt: new Date().toISOString(),
       author: {
-        name: verifiedCustomerName,
+        name: author.name,
+        email: author.email,
       },
-      verifiedBuyer: true, // Always true since we verified the token
+      verifiedBuyer: false,
       productName,
       productHandle,
+      status: 'pending', // Reviews require admin approval
     };
 
     // Save to MongoDB
@@ -124,15 +94,10 @@ export async function POST(request: NextRequest) {
       featured: false,
     });
 
-    // Get updated statistics
-    const updatedReviews = await getProductReviews(productId);
-
     return NextResponse.json(
       { 
         success: true, 
-        review: newReview,
-        averageRating: updatedReviews.averageRating,
-        totalReviews: updatedReviews.totalReviews
+        message: "Review submitted successfully and pending approval",
       },
       { status: 201 }
     );

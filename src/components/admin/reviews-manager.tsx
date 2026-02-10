@@ -2,6 +2,7 @@
 
 import { ProductReview } from "@/lib/shopify/types";
 import { useEffect, useState } from "react";
+import { ReviewDocument } from "@/lib/models/review";
 
 interface ReviewWithProduct extends ProductReview {
   productId: string;
@@ -10,15 +11,18 @@ interface ReviewWithProduct extends ProductReview {
 
 export default function AdminReviewsManager() {
   const [reviews, setReviews] = useState<ReviewWithProduct[]>([]);
+  const [pendingReviews, setPendingReviews] = useState<ReviewDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [featuredCount, setFeaturedCount] = useState(0);
   const [sortBy, setSortBy] = useState<"recent" | "rating" | "featured">("recent");
   const [filterFeatured, setFilterFeatured] = useState<"all" | "featured" | "not-featured">("all");
   const [filterProduct, setFilterProduct] = useState<string>("all");
   const [error, setError] = useState("");
+  const [processing, setProcessing] = useState<string | null>(null);
 
   useEffect(() => {
     fetchReviews();
+    fetchPendingReviews();
   }, []);
 
   const fetchReviews = async () => {
@@ -38,7 +42,70 @@ export default function AdminReviewsManager() {
       setLoading(false);
     }
   };
+  const fetchPendingReviews = async () => {
+    try {
+      const response = await fetch("/api/admin/reviews?action=pending");
+      if (response.ok) {
+        const data = await response.json();
+        setPendingReviews(data.reviews || []);
+      }
+    } catch (error) {
+      console.error("Error fetching pending reviews:", error);
+    }
+  };
 
+  const handleApprove = async (reviewId: string, productId: string) => {
+    setProcessing(reviewId);
+    try {
+      const response = await fetch("/api/admin/reviews", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reviewId,
+          productId,
+          updates: { status: "approved" },
+        }),
+      });
+
+      if (response.ok) {
+        setPendingReviews(prev => prev.filter(r => r.id !== reviewId));
+        fetchReviews(); // Refresh the approved reviews list
+      } else {
+        alert("Failed to approve review");
+      }
+    } catch (error) {
+      console.error("Error approving review:", error);
+      alert("Failed to approve review");
+    } finally {
+      setProcessing(null);
+    }
+  };
+
+  const handleReject = async (reviewId: string, productId: string) => {
+    setProcessing(reviewId);
+    try {
+      const response = await fetch("/api/admin/reviews", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reviewId,
+          productId,
+          updates: { status: "rejected" },
+        }),
+      });
+
+      if (response.ok) {
+        setPendingReviews(prev => prev.filter(r => r.id !== reviewId));
+      } else {
+        alert("Failed to reject review");
+      }
+    } catch (error) {
+      console.error("Error rejecting review:", error);
+      alert("Failed to reject review");
+    } finally {
+      setProcessing(null);
+    }
+  };
   const toggleFeatured = async (reviewId: string, productId: string, currentStatus: boolean) => {
     try {
       const response = await fetch("/api/admin/reviews", {
@@ -90,6 +157,7 @@ export default function AdminReviewsManager() {
       if (response.ok) {
         // Remove from local state
         setReviews((prev) => prev.filter((review) => review.id !== reviewId));
+        setPendingReviews((prev) => prev.filter((review) => review.id !== reviewId));
         setError("");
       } else {
         const data = await response.json();
@@ -209,6 +277,103 @@ export default function AdminReviewsManager() {
         {error && (
           <div className="mb-6 p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400">
             {error}
+          </div>
+        )}
+
+        {/* Pending Reviews Section */}
+        {pendingReviews.length > 0 && (
+          <div className="mb-8 p-6 rounded-xl border-2 border-yellow-500/30 bg-yellow-500/5">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-2xl font-bold text-white">⏳ Pending Approval</h2>
+                <p className="text-white/60 text-sm mt-1">
+                  {pendingReviews.length} review{pendingReviews.length !== 1 ? 's' : ''} waiting for your approval
+                </p>
+              </div>
+              <button
+                onClick={fetchPendingReviews}
+                className="px-4 py-2 bg-gaming-700 hover:bg-gaming-600 text-white rounded-lg transition-colors text-sm"
+              >
+                🔄 Refresh
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              {pendingReviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="bg-gaming-800/30 rounded-xl border border-white/10 p-6"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <svg
+                              key={star}
+                              className={`w-5 h-5 ${
+                                star <= review.rating ? "text-yellow-400 fill-current" : "text-white/20"
+                              }`}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                              />
+                            </svg>
+                          ))}
+                        </div>
+                        <span className="text-white/40 text-sm">
+                          {new Date(review.createdAt).toLocaleDateString('ro-RO')}
+                        </span>
+                      </div>
+                      <h3 className="text-white font-semibold text-lg mb-2">{review.title}</h3>
+                      <p className="text-white/70 text-sm mb-3">{review.content}</p>
+                      
+                      <div className="flex items-center gap-4 text-sm text-white/60">
+                        <span><strong className="text-white">{review.author.name}</strong></span>
+                        {review.author.email && <span>{review.author.email}</span>}
+                        {review.productName && (
+                          <span className="text-accent-secondary">{review.productName}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3 pt-4 border-t border-white/5">
+                    <button
+                      onClick={() => handleApprove(review.id, review.productId)}
+                      disabled={processing === review.id}
+                      className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-green-600/50 text-white rounded-lg transition-colors font-medium text-sm"
+                    >
+                      {processing === review.id ? "..." : "✓ Approve"}
+                    </button>
+                    <button
+                      onClick={() => handleReject(review.id, review.productId)}
+                      disabled={processing === review.id}
+                      className="flex-1 px-4 py-2 bg-yellow-600 hover:bg-yellow-700 disabled:bg-yellow-600/50 text-white rounded-lg transition-colors font-medium text-sm"
+                    >
+                      {processing === review.id ? "..." : "⊘ Reject"}
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (confirm("Delete this review permanently?")) {
+                          deleteReview(review.id, review.productId);
+                        }
+                      }}
+                      disabled={processing === review.id}
+                      className="px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white rounded-lg transition-colors font-medium text-sm"
+                    >
+                      🗑
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
