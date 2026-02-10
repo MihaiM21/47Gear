@@ -2,7 +2,7 @@
 
 import { ProductReview } from "@/lib/shopify/types";
 import { useState, useEffect } from "react";
-import { getShopifyUrl } from "@/lib/shopify";
+import { getCustomerInfo, getCustomerToken } from "@/components/auth/actions";
 
 interface ReviewFormProps {
   productId: string;
@@ -26,21 +26,14 @@ export function ReviewForm({ productId, productName, productHandle, onReviewSubm
   const checkAuth = async () => {
     setIsCheckingAuth(true);
     try {
-      // Check authentication via Shopify session cookies
-      const response = await fetch('/api/auth/shopify-session', {
-        credentials: 'include', // Include cookies in request
-      });
+      // Check authentication via server-side cookies
+      const customerInfo = await getCustomerInfo();
 
-      const data = await response.json();
-
-      if (data.authenticated && data.customerToken) {
-        setCustomerName(data.customerName);
+      if (customerInfo?.authenticated && customerInfo.name) {
+        setCustomerName(customerInfo.name);
         setIsAuthenticated(true);
-        // Store token in localStorage for review submission
-        localStorage.setItem('customerAccessToken', data.customerToken);
       } else {
         setIsAuthenticated(false);
-        localStorage.removeItem('customerAccessToken');
       }
     } catch (err) {
       console.error('Error checking auth:', err);
@@ -60,6 +53,13 @@ export function ReviewForm({ productId, productName, productHandle, onReviewSubm
     setIsSubmitting(true);
 
     try {
+      // Get customer token from server-side cookies
+      const customerToken = await getCustomerToken();
+      
+      if (!customerToken) {
+        throw new Error("Authentication required. Please log in to submit a review.");
+      }
+
       const response = await fetch("/api/reviews", {
         method: "POST",
         headers: {
@@ -73,7 +73,7 @@ export function ReviewForm({ productId, productName, productHandle, onReviewSubm
           title,
           content,
           author: customerName,
-          customerAccessToken: localStorage.getItem('customerAccessToken'),
+          customerAccessToken: customerToken,
         }),
       });
 

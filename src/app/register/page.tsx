@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { CUSTOMER_CREATE, CUSTOMER_ACCESS_TOKEN_CREATE } from '@/lib/shopify/mutations/customer';
 import { getShopifyUrl } from '@/lib/shopify';
 import LoadingDots from '@/components/loading-dots';
+import { setCustomerToken } from '@/components/auth/actions';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -77,8 +78,8 @@ export default function RegisterPage() {
       }
 
       if (loginData?.customerAccessTokenCreate?.customerAccessToken?.accessToken) {
-        localStorage.setItem(
-          'customerAccessToken',
+        // Store token in server-side cookie
+        await setCustomerToken(
           loginData.customerAccessTokenCreate.customerAccessToken.accessToken
         );
         router.push('/profile');
