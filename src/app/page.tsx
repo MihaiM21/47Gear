@@ -358,6 +358,9 @@ export default async function Home() {
               <a href="https://www.instagram.com/gamexpert.ro/" target="_blank" rel="noopener noreferrer">
                 <Image src="/partners/GAMEXPERT.png" alt="Partner 2" width={120} height={60} className="object-contain" />
               </a>
+              <a href="https://www.instagram.com/loolishgaming?igsh=MThkZjc4aTNidnpoNQ==" target="_blank" rel="noopener noreferrer">
+                <Image src="/partners/Loolish_Logo.png" alt="Partner 2" width={120} height={60} className="object-contain" />
+              </a>
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@
 
 import { ProductReview } from "@/lib/shopify/types";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { getShopifyUrl } from "@/lib/shopify";
 
 interface ReviewFormProps {
@@ -140,17 +139,17 @@ export function ReviewForm({ productId, productName, productHandle, onReviewSubm
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
           <p className="text-white/60 mb-6">Trebuie să fii autentificat pentru a lăsa o recenzie.</p>
-          <Link
-            href="/login"
+          <a
+            href="https://account.47gear.ro/"
             className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold hover:shadow-lg hover:shadow-accent-primary/25 transition-all duration-300"
           >
             Autentifică-te
-          </Link>
+          </a>
           <p className="text-white/40 text-sm mt-4">
             Nu ai cont?{' '}
-            <Link href="/register" className="text-accent-secondary hover:text-accent-primary transition-colors">
+            <a href="https://account.47gear.ro/" className="text-accent-secondary hover:text-accent-primary transition-colors">
               Înregistrează-te aici
-            </Link>
+            </a>
           </p>
         </div>
       </div>
