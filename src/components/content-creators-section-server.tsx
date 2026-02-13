@@ -5,13 +5,7 @@ interface ContentCreator {
   name: string;
   bio: string;
   imageUrl: string;
-  socialLinks: {
-    youtube?: string;
-    twitch?: string;
-    instagram?: string;
-    tiktok?: string;
-    twitter?: string;
-  };
+  link?: string;
 }
 
 async function getContentCreators(): Promise<ContentCreator[]> {

@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
         name: creator.name,
         bio: creator.bio,
         imageUrl: creator.imageUrl,
-        socialLinks: creator.socialLinks,
+        link: creator.link,
       })),
     });
   } catch (error) {

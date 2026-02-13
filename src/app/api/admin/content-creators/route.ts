@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import {
   getAllContentCreators,
@@ -35,11 +36,23 @@ export async function GET(request: NextRequest) {
           { status: 404 }
         );
       }
-      return NextResponse.json({ creator });
+      return NextResponse.json({
+        creator: {
+          ...creator,
+          id: creator._id?.toString(),
+          _id: undefined,
+        }
+      });
     }
 
     const creators = await getAllContentCreators();
-    return NextResponse.json({ creators });
+    return NextResponse.json({
+      creators: creators.map(creator => ({
+        ...creator,
+        id: creator._id?.toString(),
+        _id: undefined,
+      }))
+    });
   } catch (error) {
     console.error('Error in GET /api/admin/content-creators:', error);
     return NextResponse.json(
@@ -65,7 +78,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, bio, imageUrl, socialLinks, featured, order } = body;
+    const { name, bio, imageUrl, link, featured } = body;
 
     // Validation
     if (!name || !bio || !imageUrl) {
@@ -79,12 +92,14 @@ export async function POST(request: NextRequest) {
       name: name.trim(),
       bio: bio.trim(),
       imageUrl: imageUrl.trim(),
-      socialLinks: socialLinks || {},
+      link: link?.trim() || undefined,
       featured: featured || false,
-      order: order || 0,
     };
 
     const creatorId = await createContentCreator(creatorData);
+
+    // Revalidate the home page to show new content creator
+    revalidatePath('/');
 
     return NextResponse.json(
       {
@@ -119,7 +134,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { id, name, bio, imageUrl, socialLinks, featured, order } = body;
+    const { id, name, bio, imageUrl, link, featured } = body;
 
     if (!id) {
       return NextResponse.json(
@@ -133,9 +148,8 @@ export async function PUT(request: NextRequest) {
     if (name !== undefined) updateData.name = name.trim();
     if (bio !== undefined) updateData.bio = bio.trim();
     if (imageUrl !== undefined) updateData.imageUrl = imageUrl.trim();
-    if (socialLinks !== undefined) updateData.socialLinks = socialLinks;
+    if (link !== undefined) updateData.link = link?.trim() || undefined;
     if (featured !== undefined) updateData.featured = featured;
-    if (order !== undefined) updateData.order = order;
 
     const success = await updateContentCreator(id, updateData);
 
@@ -145,6 +159,9 @@ export async function PUT(request: NextRequest) {
         { status: 404 }
       );
     }
+
+    // Revalidate the home page to show updated content creator
+    revalidatePath('/');
 
     return NextResponse.json({
       success: true,
@@ -192,6 +209,9 @@ export async function DELETE(request: NextRequest) {
         { status: 404 }
       );
     }
+
+    // Revalidate the home page to remove deleted content creator
+    revalidatePath('/');
 
     return NextResponse.json({
       success: true,

@@ -6,15 +6,8 @@ export interface ContentCreatorDocument {
   name: string;
   bio: string;
   imageUrl: string;
-  socialLinks: {
-    youtube?: string;
-    twitch?: string;
-    instagram?: string;
-    tiktok?: string;
-    twitter?: string;
-  };
+  link?: string;
   featured: boolean;
-  order: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -34,7 +27,6 @@ export async function getAllContentCreators(featuredOnly: boolean = false): Prom
     
     const creators = await collection
       .find(query)
-      .sort({ order: 1, createdAt: -1 })
       .toArray();
 
     return creators;

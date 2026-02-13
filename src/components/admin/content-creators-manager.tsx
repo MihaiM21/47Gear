@@ -8,34 +8,29 @@ interface ContentCreator {
   name: string;
   bio: string;
   imageUrl: string;
-  socialLinks: {
-    youtube?: string;
-    twitch?: string;
-    instagram?: string;
-    tiktok?: string;
-    twitter?: string;
-  };
+  link?: string;
   featured: boolean;
-  order: number;
 }
 
 export default function ContentCreatorsManager() {
   const [creators, setCreators] = useState<ContentCreator[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [editingCreator, setEditingCreator] = useState<ContentCreator | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string>('');
 
   // Form state
   const [formData, setFormData] = useState<ContentCreator>({
     name: '',
     bio: '',
     imageUrl: '',
-    socialLinks: {},
+    link: '',
     featured: false,
-    order: 0,
   });
 
   useEffect(() => {
@@ -56,11 +51,57 @@ export default function ContentCreatorsManager() {
     }
   };
 
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      // Create preview URL
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async (): Promise<string> => {
+    if (!selectedFile) {
+      throw new Error('No file selected');
+    }
+
+    setUploading(true);
+    try {
+      const uploadFormData = new FormData();
+      uploadFormData.append('file', selectedFile);
+
+      const response = await fetch('/api/admin/upload-image', {
+        method: 'POST',
+        body: uploadFormData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to upload image');
+      }
+
+      const data = await response.json();
+      return data.imageUrl;
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.bio || !formData.imageUrl) {
-      setError('Name, bio, and image URL are required');
+    if (!formData.name || !formData.bio) {
+      setError('Name and bio are required');
+      return;
+    }
+
+    // Check if we have either a file or an image URL
+    if (!selectedFile && !formData.imageUrl) {
+      setError('Please upload an image or provide an image URL');
       return;
     }
 
@@ -69,11 +110,17 @@ export default function ContentCreatorsManager() {
     setSuccess('');
 
     try {
+      // Upload image if a file was selected
+      let imageUrl = formData.imageUrl;
+      if (selectedFile) {
+        imageUrl = await uploadImage();
+      }
+
       const url = '/api/admin/content-creators';
       const method = editingCreator ? 'PUT' : 'POST';
       const body = editingCreator 
-        ? { ...formData, id: editingCreator.id }
-        : formData;
+        ? { ...formData, imageUrl, id: editingCreator.id }
+        : { ...formData, imageUrl };
 
       const response = await fetch(url, {
         method,
@@ -91,7 +138,7 @@ export default function ContentCreatorsManager() {
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error('Error saving content creator:', err);
-      setError('Failed to save content creator');
+      setError(err instanceof Error ? err.message : 'Failed to save content creator');
     } finally {
       setSaving(false);
     }
@@ -103,10 +150,11 @@ export default function ContentCreatorsManager() {
       name: creator.name,
       bio: creator.bio,
       imageUrl: creator.imageUrl,
-      socialLinks: creator.socialLinks || {},
+      link: creator.link || '',
       featured: creator.featured || false,
-      order: creator.order || 0,
     });
+    setPreviewUrl(creator.imageUrl);
+    setSelectedFile(null);
     setShowForm(true);
     setError('');
     setSuccess('');
@@ -140,10 +188,11 @@ export default function ContentCreatorsManager() {
       name: '',
       bio: '',
       imageUrl: '',
-      socialLinks: {},
+      link: '',
       featured: false,
-      order: 0,
     });
+    setSelectedFile(null);
+    setPreviewUrl('');
     setEditingCreator(null);
     setShowForm(false);
   };
@@ -207,20 +256,6 @@ export default function ContentCreatorsManager() {
                 />
               </div>
 
-              <div>
-                <label className="block text-white mb-2 font-medium">
-                  Image URL <span className="text-accent-red">*</span>
-                </label>
-                <input
-                  type="url"
-                  value={formData.imageUrl}
-                  onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                  className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="https://example.com/image.jpg"
-                  required
-                />
-              </div>
-
               <div className="md:col-span-2">
                 <label className="block text-white mb-2 font-medium">
                   Bio <span className="text-accent-red">*</span>
@@ -235,85 +270,78 @@ export default function ContentCreatorsManager() {
                 />
               </div>
 
-              <div>
-                <label className="block text-white mb-2 font-medium">YouTube</label>
+              <div className="md:col-span-2">
+                <label className="block text-white mb-2 font-medium">
+                  Link URL
+                </label>
                 <input
-                  type="url"
-                  value={formData.socialLinks.youtube || ''}
-                  onChange={(e) => setFormData({ 
-                    ...formData, 
-                    socialLinks: { ...formData.socialLinks, youtube: e.target.value }
-                  })}
+                  type="text"
+                  value={formData.link || ''}
+                  onChange={(e) => setFormData({ ...formData, link: e.target.value })}
                   className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="https://youtube.com/@username"
+                  placeholder="https://example.com (optional - makes image clickable)"
                 />
               </div>
 
-              <div>
-                <label className="block text-white mb-2 font-medium">Twitch</label>
-                <input
-                  type="url"
-                  value={formData.socialLinks.twitch || ''}
-                  onChange={(e) => setFormData({ 
-                    ...formData, 
-                    socialLinks: { ...formData.socialLinks, twitch: e.target.value }
-                  })}
-                  className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="https://twitch.tv/username"
-                />
-              </div>
+              <div className="md:col-span-2">
+                <label className="block text-white mb-2 font-medium">
+                  Image <span className="text-accent-red">*</span>
+                </label>
+                <div className="space-y-4">
+                  {/* File Upload */}
+                  <div>
+                    <label className="block cursor-pointer">
+                      <div className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-3 text-white hover:border-accent-primary transition-colors text-center">
+                        {selectedFile ? (
+                          <span className="text-accent-primary">Selected: {selectedFile.name}</span>
+                        ) : (
+                          <span className="text-gaming-400">Click to upload image (or use URL below)</span>
+                        )}
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileSelect}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
 
-              <div>
-                <label className="block text-white mb-2 font-medium">Instagram</label>
-                <input
-                  type="url"
-                  value={formData.socialLinks.instagram || ''}
-                  onChange={(e) => setFormData({ 
-                    ...formData, 
-                    socialLinks: { ...formData.socialLinks, instagram: e.target.value }
-                  })}
-                  className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="https://instagram.com/username"
-                />
-              </div>
+                  {/* Or divider */}
+                  <div className="flex items-center gap-4">
+                    <div className="flex-1 h-px bg-white/10"></div>
+                    <span className="text-gaming-400 text-sm">OR</span>
+                    <div className="flex-1 h-px bg-white/10"></div>
+                  </div>
 
-              <div>
-                <label className="block text-white mb-2 font-medium">TikTok</label>
-                <input
-                  type="url"
-                  value={formData.socialLinks.tiktok || ''}
-                  onChange={(e) => setFormData({ 
-                    ...formData, 
-                    socialLinks: { ...formData.socialLinks, tiktok: e.target.value }
-                  })}
-                  className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="https://tiktok.com/@username"
-                />
-              </div>
+                  {/* Image URL Input */}
+                  <input
+                    type="text"
+                    value={formData.imageUrl}
+                    onChange={(e) => {
+                      setFormData({ ...formData, imageUrl: e.target.value });
+                      setPreviewUrl(e.target.value);
+                      setSelectedFile(null);
+                    }}
+                    className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
+                    placeholder="https://example.com/image.jpg or /path/to/image.jpg"
+                  />
 
-              <div>
-                <label className="block text-white mb-2 font-medium">Twitter/X</label>
-                <input
-                  type="url"
-                  value={formData.socialLinks.twitter || ''}
-                  onChange={(e) => setFormData({ 
-                    ...formData, 
-                    socialLinks: { ...formData.socialLinks, twitter: e.target.value }
-                  })}
-                  className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="https://twitter.com/username"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white mb-2 font-medium">Display Order</label>
-                <input
-                  type="number"
-                  value={formData.order}
-                  onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) || 0 })}
-                  className="w-full bg-gaming-800 border border-accent-primary/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-accent-primary"
-                  placeholder="0"
-                />
+                  {/* Image Preview */}
+                  {previewUrl && (
+                    <div className="mt-4">
+                      <p className="text-white text-sm mb-2">Preview:</p>
+                      <img
+                        src={previewUrl}
+                        alt="Preview"
+                        className="w-32 h-32 object-contain rounded-lg border border-accent-primary/20 bg-gaming-900"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://via.placeholder.com/150?text=Invalid+Image';
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="flex items-center">
@@ -332,15 +360,23 @@ export default function ContentCreatorsManager() {
             <div className="flex gap-4 mt-6">
               <button
                 type="submit"
-                disabled={saving}
+                disabled={saving || uploading}
                 className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white px-6 py-2 rounded-lg hover:shadow-neon-purple transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-medium"
               >
-                {saving ? <LoadingDots className="bg-white" /> : (editingCreator ? 'Update Creator' : 'Add Creator')}
+                {(saving || uploading) ? (
+                  <>
+                    <LoadingDots className="bg-white" />
+                    {uploading && <span className="ml-2">Uploading...</span>}
+                  </>
+                ) : (
+                  editingCreator ? 'Update Creator' : 'Add Creator'
+                )}
               </button>
               <button
                 type="button"
                 onClick={resetForm}
-                className="bg-gaming-700 text-white px-6 py-2 rounded-lg hover:bg-gaming-600 transition-all font-medium"
+                disabled={saving || uploading}
+                className="bg-gaming-700 text-white px-6 py-2 rounded-lg hover:bg-gaming-600 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Cancel
               </button>
@@ -357,7 +393,7 @@ export default function ContentCreatorsManager() {
           ) : (
             creators.map((creator: any) => (
               <div
-                key={creator._id}
+                key={creator.id}
                 className="bg-gaming-900/50 rounded-lg p-6 border border-accent-primary/10 hover:border-accent-primary/30 transition-all"
               >
                 <div className="flex items-start gap-6">
@@ -381,7 +417,6 @@ export default function ContentCreatorsManager() {
                             </span>
                           )}
                         </h3>
-                        <p className="text-gaming-400 text-sm">Order: {creator.order}</p>
                       </div>
                       <div className="flex gap-2">
                         <button
@@ -391,7 +426,7 @@ export default function ContentCreatorsManager() {
                           Edit
                         </button>
                         <button
-                          onClick={() => handleDelete(creator._id)}
+                          onClick={() => handleDelete(creator.id)}
                           className="bg-accent-red/20 text-accent-red px-4 py-1 rounded hover:bg-accent-red/30 transition-all text-sm"
                         >
                           Delete
@@ -400,61 +435,6 @@ export default function ContentCreatorsManager() {
                     </div>
                     
                     <p className="text-gaming-300 mb-3">{creator.bio}</p>
-                    
-                    {Object.keys(creator.socialLinks || {}).length > 0 && (
-                      <div className="flex gap-3">
-                        {creator.socialLinks.youtube && (
-                          <a
-                            href={creator.socialLinks.youtube}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gaming-400 hover:text-accent-primary transition-colors"
-                          >
-                            YouTube
-                          </a>
-                        )}
-                        {creator.socialLinks.twitch && (
-                          <a
-                            href={creator.socialLinks.twitch}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gaming-400 hover:text-accent-primary transition-colors"
-                          >
-                            Twitch
-                          </a>
-                        )}
-                        {creator.socialLinks.instagram && (
-                          <a
-                            href={creator.socialLinks.instagram}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gaming-400 hover:text-accent-primary transition-colors"
-                          >
-                            Instagram
-                          </a>
-                        )}
-                        {creator.socialLinks.tiktok && (
-                          <a
-                            href={creator.socialLinks.tiktok}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gaming-400 hover:text-accent-primary transition-colors"
-                          >
-                            TikTok
-                          </a>
-                        )}
-                        {creator.socialLinks.twitter && (
-                          <a
-                            href={creator.socialLinks.twitter}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gaming-400 hover:text-accent-primary transition-colors"
-                          >
-                            Twitter/X
-                          </a>
-                        )}
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
