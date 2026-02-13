@@ -9,6 +9,9 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+    volumes:
+      # Persist uploaded content creator images
+      - content-creators-uploads:/app/public/content-creators
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
       interval: 30s
@@ -20,3 +23,6 @@ services:
       - "traefik.http.routers.47gear.rule=Host(`yourdomain.com`)"
       - "traefik.http.routers.47gear.entrypoints=websecure"
       - "traefik.http.routers.47gear.tls.certresolver=letsencrypt"
+
+volumes:
+  content-creators-uploads:
