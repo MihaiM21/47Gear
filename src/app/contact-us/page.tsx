@@ -166,8 +166,8 @@ export default function ContactUsPage() {
         </div>
               
 
-        {/* FAQ Section */}
-        <div className="mt-20">
+        {/* FAQ Section Removed on 18.02.2026 - discord request */}
+        {/* <div className="mt-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-3 text-white">Întrebări Frecvente</h2>
             <p className="text-white/60">Ai întrebări? Avem răspunsuri.</p>
@@ -179,10 +179,10 @@ export default function ContactUsPage() {
               <p className="text-white/60">Majoritatea comenzilor sunt expediate în 1-2 zile lucrătoare. Livrarea standard durează 3-5 zile lucrătoare, iar cea rapida 1-3 zile.</p>
             </div>
             
-            {/* <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Livrați internațional?</h3>
               <p className="text-white/60">Da! Livrăm în toată lumea. Livrarea internațională durează de obicei 7-14 zile lucrătoare în funcție de locație.</p>
-            </div> */}
+            </div>
             
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Care este politica de returnare?</h3>
@@ -194,7 +194,7 @@ export default function ContactUsPage() {
               <p className="text-white/60">Toate produsele vin cu o garanție de 2 ani împotriva defectelor.</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
