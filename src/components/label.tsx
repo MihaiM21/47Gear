@@ -14,6 +14,22 @@ export default function Label({
   position?: "bottom" | "center";
   availableForSale?: boolean;
 }) {
+  // 1. Format just the number without the currency symbol
+  const formattedNumber = new Intl.NumberFormat(undefined, {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(parseFloat(amount));
+
+  // 2. Extract symbol ($, €, RON etc.)
+  const currencySymbol = new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency: currencyCode,
+    currencyDisplay: "narrowSymbol",
+  })
+    .formatToParts(0)
+    .find((part) => part.type === "currency")?.value || currencyCode;
+
   return (
     <div
       className={clsx(
@@ -27,26 +43,28 @@ export default function Label({
         <h3 className="line-clamp-2 text-xl font-bold text-white group-hover:text-accent-secondary transition-colors duration-300 leading-snug">
           {title}
         </h3>
+        
         <div className="flex items-center justify-between">
           <div className="inline-flex items-baseline gap-1">
+            {/* SHOW NUMBER */}
             <span className="text-l font-bold text-white">
-              {new Intl.NumberFormat(undefined, {
-                style: "currency",
-                currency: currencyCode,
-                currencyDisplay: "narrowSymbol",
-              }).format(parseFloat(amount))}
+              {formattedNumber}
             </span>
-            <span className="text-xs text-gaming-300 font-medium">{currencyCode}</span>
+            
+            {/* SHOW CURRENCY SYMBOL */}
+            <span className="text-xs text-gaming-300 font-medium uppercase">
+              {currencySymbol}
+            </span>
           </div>
-          {availableForSale && (
+
+          {availableForSale ? (
             <div className="inline-flex items-center gap-1 text-accent-green text-xs font-medium">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               In Stock
             </div>
-          )}
-          {!availableForSale && (
+          ) : (
             <div className="inline-flex items-center gap-1 text-red-500 text-xs font-medium">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
