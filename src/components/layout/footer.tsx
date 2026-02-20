@@ -19,7 +19,7 @@ export default async function Footer() {
                 Premium gaming mousepads engineered for champions. Precision, comfort, durability.
               </p>
               <div className="flex gap-4 pt-2">
-                <a 
+                <a
                   href={`https://wa.me/${process.env.WHATSAPP_PHONE_NUMBER || '40123456789'}?text=Hi! I have a question about 47Gear products.`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -101,11 +101,14 @@ export default async function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-white/30">
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <p className="text-xs text-white/30 md:flex-1">
               © {new Date().getFullYear()} 47Gear. All rights reserved.
             </p>
-            <p className="text-xs text-white/30">
+            <div className="flex items-center gap-2 text-xs text-white/50 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+              <span className="font-medium tracking-wide">Produs în UE</span>
+            </div>
+            <p className="text-xs text-white/30 md:flex-1 md:text-right">
               Engineered for champions
             </p>
           </div>

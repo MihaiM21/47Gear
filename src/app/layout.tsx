@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
+import MadeInEuPopup from "@/components/layout/made-in-eu-popup";
 import Footer from "@/components/layout/footer";
 import { CartProvider } from "@/components/cart/cart-context";
 import WhatsAppFloat from "@/components/whatsapp-float";
@@ -86,6 +87,7 @@ export default async function RootLayout({
         <CartProvider cartPromise={cart}>
           <Navbar />
           {children}
+          <MadeInEuPopup />
           <Footer />
           <WhatsAppFloat />
         </CartProvider>
