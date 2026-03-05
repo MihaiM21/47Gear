@@ -101,6 +101,10 @@ module.exports = {
           '0%': { backgroundPosition: '0% 0' },
           '100%': { backgroundPosition: '100% 0' },
         },
+        'pulse-subtle': {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.85 },
+        },
       },
       blink: {
         "0%": { opacity: 0.2 },
@@ -111,6 +115,7 @@ module.exports = {
         fadeIn: "fadeIn 0.3s ease-in-out",
         blink: "blink 1.4s both infinite",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
         glow: "glow 2s ease-in-out infinite",
         glowPurple: "glowPurple 2s ease-in-out infinite",
         glowYellow: "glowYellow 2s ease-in-out infinite",
