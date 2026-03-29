@@ -35,14 +35,14 @@ export async function Navbar() {
                 className="text-sm font-medium text-white/80 hover:text-white transition-colors"
                 prefetch={false}
               >
-                Shop
+                Magazin
               </Link>
               <Link
                 href="/about-us"
                 className="text-sm font-medium text-white/80 hover:text-white transition-colors"
                 prefetch={false}
               >
-                About
+                Despre Noi
               </Link>
               <Link
                 href="/contact-us"
@@ -61,7 +61,7 @@ export async function Navbar() {
               href="https://account.47gear.ro"
               className="hidden md:block text-sm font-medium text-white/80 hover:text-white transition-colors"
             >
-              My Account
+              Contul Meu
             </a>
             <CartModal />
           </div>

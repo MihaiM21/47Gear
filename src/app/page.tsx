@@ -116,7 +116,7 @@ export default async function Home() {
             <div className="space-y-8">
               {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-secondary animate-pulse" />
-                <span className="text-xs font-medium text-white/80 tracking-wider uppercase">47Gear Presents</span>
+                <span className="text-xs font-medium text-white/80 tracking-wider uppercase">Mousepad-uri fabricate în Europa</span>
               </div> */}
               
               {/* <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]">
@@ -128,6 +128,7 @@ export default async function Home() {
               {/* <p className="text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
                 Experience unmatched control with mousepads engineered for champions. Every move, every moment, perfected.
               </p> */}
+              
               
               <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
                 <Link
