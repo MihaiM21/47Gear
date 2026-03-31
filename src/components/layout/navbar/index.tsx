@@ -11,7 +11,12 @@ export async function Navbar() {
   const menu = await getMenu("next-js-frontend-menu");
   return (
     <NavbarWrapper>
-      <nav id="header" className="flex items-center justify-between px-6 py-4 lg:px-12">
+      <div className="border-b border-white/10 bg-white/[0.04] px-6 py-1.5 text-center lg:px-12">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/75">
+          Produse fabricate in Europa
+        </p>
+      </div>
+      <nav id="header" className="flex items-center justify-between px-6 py-2 lg:px-12">
         <div className="block flex-none md:hidden">
           <MobileMenu menu={menu} />
         </div>
