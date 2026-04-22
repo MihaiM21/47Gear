@@ -9,7 +9,7 @@ import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structu
 export const metadata = {
   title: "Mousepad-uri Gaming Premium | 47Gear România",
   description:
-    "Cumpără cele mai bune mousepad-uri gaming în România. Control perfect, precizie maximă, durabilitate garantată. Mousepad-uri XXL, RGB, profesionale pentru gaming competitiv. Livrare rapidă!",
+    "Cumpără cele mai bune mousepad-uri gaming în România. Control perfect, precizie maximă, durabilitate garantată. Mousepad-uri XXL, profesionale pentru gaming competitiv. Livrare rapidă!",
   keywords: [
     "mousepad gaming romania", "mousepad gaming bucuresti", "mousepad xxl",
     "mousepad mare gaming", "cel mai bun mousepad", "mousepad profesional",
