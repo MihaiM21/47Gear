@@ -97,6 +97,33 @@ export default async function SearchPage({
         )}
       </div> */}
 
+      {/* Marketing Banner */}
+      <div className="relative py-4 md:py-8 bg-gradient-to-r from-black via-accent-secondary/5 to-black rounded-2xl border border-white/10 overflow-hidden">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(138,99,255,0.15),transparent_70%)]" />
+        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center space-y-4 max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
+            Mousepad-ul care îți face aim-ul mai consistent.
+          </h2>
+          <p className="text-base md:text-lg text-white/85">
+            Testează 15 zile fără risc. Banii înapoi dacă nu simți diferența în performanță.
+          </p>
+          {/* <div className="grid gap-2 sm:grid-cols-3 pt-2">
+            <div className="rounded-lg border border-white/15 bg-white/[0.04] p-3 backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Fără risc</p>
+              <p className="text-sm font-semibold text-white">Testează 15 zile</p>
+            </div>
+            <div className="rounded-lg border border-white/15 bg-white/[0.04] p-3 backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Garanție</p>
+              <p className="text-sm font-semibold text-white">Banii înapoi dacă nu simți diferența</p>
+            </div>
+            <div className="rounded-lg border border-white/15 bg-white/[0.04] p-3 backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Disponibilitate</p>
+              <p className="text-sm font-semibold text-white">Stoc limitat pe lotul curent</p>
+            </div>
+          </div> */}
+        </div>
+      </div>
+
       {/* Products grid */}
       {products.length > 0 ? (
           <div className="relative px-4">
