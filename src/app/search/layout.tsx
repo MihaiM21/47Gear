@@ -24,10 +24,10 @@ export default function SearchLayout({
               <h2 className="text-xl font-bold mb-4 text-primary">Categorii</h2>
               <Collections />
             </div>
-            <div className="order-first flex-none md:order-first md:w-[200px] glass-card p-4 md:p-6 h-fit">
+            {/* <div className="order-first flex-none md:order-first md:w-[200px] glass-card p-4 md:p-6 h-fit">
               <h2 className="text-xl font-bold mb-4 text-primary">Filtre</h2>
               <FilterList list={sorting} title="" />
-            </div>
+            </div> */}
           </div>
           
           <div className="order-last min-h-screen w-full md:order-none">
