@@ -224,7 +224,7 @@ export default function CartModal() {
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-gaming-700 pb-3 pt-1">
                       <p>Transport</p>
-                      <p className="text-right text-gaming-200">Calculat la checkout</p>
+                      <p className="text-right text-gaming-200">Calculat la plată</p>
                     </div>
                     <div className="mb-6 flex items-center justify-between border-b border-gaming-700 pb-3 pt-1">
                       <p className="font-bold text-white">Total</p>
@@ -283,7 +283,7 @@ function CheckoutButton() {
       type="submit"
       disabled={pending}
     >
-      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Checkout</span></>}
+      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Plătește</span></>}
     </button>
   );
 }
