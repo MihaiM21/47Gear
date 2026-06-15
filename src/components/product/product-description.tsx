@@ -83,7 +83,7 @@ export function ProductDescription({ product }: { product: Product }) {
         </div>
         <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
           <div className="text-xs text-white/50 mb-1">Garantie</div>
-          <div className="text-sm font-medium text-white">1 an</div>
+          <div className="text-sm font-medium text-white">2 ani</div>
         </div>
       </div>
     </div>
