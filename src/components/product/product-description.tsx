@@ -57,7 +57,7 @@ export function ProductDescription({ product }: { product: Product }) {
               </svg>
             </div>
             <div>
-              <p className="text-sm font-medium text-white">Testează 15 zile</p>
+              <p className="text-sm font-medium text-white">Testează 14 zile</p>
               <p className="text-xs text-white/60">Timp pentru a testa mousepad-ul</p>
             </div>
           </div>
@@ -83,7 +83,7 @@ export function ProductDescription({ product }: { product: Product }) {
         </div>
         <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
           <div className="text-xs text-white/50 mb-1">Garantie</div>
-          <div className="text-sm font-medium text-white">2 ani</div>
+          <div className="text-sm font-medium text-white">1 an</div>
         </div>
       </div>
     </div>

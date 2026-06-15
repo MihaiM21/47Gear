@@ -191,7 +191,7 @@ export default function ContactUsPage() {
             
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-500">
               <h3 className="text-lg font-semibold text-white mb-3">Oferiți garanție pentru produse?</h3>
-              <p className="text-white/60">Toate produsele vin cu o garanție de 2 ani împotriva defectelor.</p>
+              <p className="text-white/60">Toate produsele vin cu o garanție de 1 an împotriva defectelor.</p>
             </div>
           </div>
         </div> */}

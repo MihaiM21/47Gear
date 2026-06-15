@@ -105,12 +105,12 @@ export default async function SearchPage({
             Mousepad-ul care îți face aim-ul mai consistent.
           </h2>
           <p className="text-base md:text-lg text-white/85">
-            Testează 15 zile fără risc. Banii înapoi dacă nu simți diferența în performanță.
+            Testează 14 zile fără risc. Banii înapoi dacă nu simți diferența în performanță.
           </p>
           {/* <div className="grid gap-2 sm:grid-cols-3 pt-2">
             <div className="rounded-lg border border-white/15 bg-white/[0.04] p-3 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Fără risc</p>
-              <p className="text-sm font-semibold text-white">Testează 15 zile</p>
+              <p className="text-sm font-semibold text-white">Testează 14 zile</p>
             </div>
             <div className="rounded-lg border border-white/15 bg-white/[0.04] p-3 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Garanție</p>

@@ -54,6 +54,7 @@ export default async function Footer() {
               <ul className="space-y-3">
                 <li><Link href="/search/mousepad" className="text-sm text-white/50 hover:text-white transition-colors">Mousepad</Link></li>
                 <li><Link href="/search/bundle" className="text-sm text-white/50 hover:text-white transition-colors">Bundle</Link></li>
+                <li><Link href="https://account.47gear.ro/" className="text-sm text-white/50 hover:text-white transition-colors">Dreptul de retragere (Retur online)</Link></li>
               </ul>
             </div>
 

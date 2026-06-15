@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const TOP_BAR_MESSAGES_DESKTOP = [
   'Produse fabricate in Europa',
   'Mousepad-ul care iti face aim-ul mai consistent.',
-  'Optimizat pentru CS2 & Valorant. Testeaza 15 zile fara risc.',
+  'Optimizat pentru CS2 & Valorant. Testeaza 14 zile fara risc.',
   'Banii inapoi daca nu simti diferenta.',
   'Stoc limitat pe lotul curent'
 ];
@@ -13,7 +13,7 @@ const TOP_BAR_MESSAGES_DESKTOP = [
 const TOP_BAR_MESSAGES_MOBILE = [
   'Fabricate in Europa',
   'Aim-ul mai consistent',
-  'CS2 & Valorant - 15 zile fara risc',
+  'CS2 & Valorant - 14 zile fara risc',
   'Banii inapoi 100%',
   'Stoc limitat'
 ];
