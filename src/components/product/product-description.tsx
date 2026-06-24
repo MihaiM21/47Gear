@@ -20,8 +20,8 @@ export function ProductDescription({ product }: { product: Product }) {
               currencyCode={product.priceRange.maxVariantPrice.currencyCode}
             />
           </div>
-          {/* <span className="text-sm text-white/40">Free shipping</span> */}
         </div>
+        <p className="text-xs text-white/40">Prețul include TVA 21%</p>
       </div>
 
       {/* Divider */}

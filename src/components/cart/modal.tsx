@@ -276,6 +276,9 @@ export default function CartModal() {
                   <form action={redirectToCheckout}>
                     <CheckoutButton disabled={!easyboxChecked} />
                   </form>
+                  <p className="mt-3 text-center text-xs text-white/30">
+                    Acceptăm comenzi și de la firme / persoane juridice.
+                  </p>
                 </div>
               )}
             </Dialog.Panel>
