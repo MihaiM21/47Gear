@@ -25,6 +25,7 @@ type MerchandiseSearchParams = {
 export default function CartModal() {
   const { cart, updateCartItem } = useCart();
   const [isOpen, setIsOpen] = useState(false);
+  const [easyboxChecked, setEasyboxChecked] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
@@ -241,10 +242,10 @@ export default function CartModal() {
                     <div className="flex items-start gap-3">
                       <div className="relative flex-shrink-0">
                         <div className="absolute inset-0 animate-ping rounded-full bg-yellow-500/20"></div>
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          className="relative h-6 w-6 text-yellow-400 mt-0.5" 
-                          viewBox="0 0 20 20" 
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="relative h-6 w-6 text-yellow-400 mt-0.5"
+                          viewBox="0 0 20 20"
                           fill="currentColor"
                         >
                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
@@ -257,12 +258,23 @@ export default function CartModal() {
                         <p className="text-sm text-white font-medium leading-relaxed">
                           Pentru comenzile la EasyBox, selectarea punctului de ridicare se va face <span className="text-yellow-400 font-bold">după finalizarea plății</span>.
                         </p>
+                        <label className="mt-3 flex items-start gap-2 cursor-pointer select-none">
+                          <input
+                            type="checkbox"
+                            checked={easyboxChecked}
+                            onChange={(e) => setEasyboxChecked(e.target.checked)}
+                            className="mt-0.5 h-4 w-4 flex-shrink-0 accent-yellow-400 cursor-pointer"
+                          />
+                          <span className="text-xs text-yellow-200 leading-snug">
+                            Am înțeles că pentru livrarea la EasyBox, punctul de ridicare se selectează după finalizarea plății.
+                          </span>
+                        </label>
                       </div>
                     </div>
                   </div>
 
                   <form action={redirectToCheckout}>
-                    <CheckoutButton />
+                    <CheckoutButton disabled={!easyboxChecked} />
                   </form>
                 </div>
               )}
@@ -274,16 +286,17 @@ export default function CartModal() {
   );
 }
 
-function CheckoutButton() {
+function CheckoutButton({ disabled: disabledProp }: { disabled?: boolean }) {
   const { pending } = useFormStatus();
+  const isDisabled = pending || disabledProp;
 
   return (
     <button
-      className="block w-full rounded-lg bg-accent-primary p-4 text-center text-sm font-bold text-white transition-all duration-300 hover:shadow-neon transform hover:scale-[1.02]"
+      className="block w-full rounded-lg p-4 text-center text-sm font-bold text-white transition-all duration-300 transform disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 enabled:hover:shadow-neon enabled:hover:scale-[1.02] bg-accent-primary"
       type="submit"
-      disabled={pending}
+      disabled={isDisabled}
     >
-      {pending ? <LoadingDots className="bg-white" /> : <><span className="text-white">Plătește</span></>}
+      {pending ? <LoadingDots className="bg-white" /> : <span className="text-white">Plătește</span>}
     </button>
   );
 }
